@@ -14,7 +14,7 @@ public interface MemberMapper {
 
 	public int alter_userKey_service(String member_id, String key); // 인증 확인 메서드 (Y 값으로 바꿔주는 메서드)
 
-	public int naverMemberInsert(Member member);
+	public int naverMemberInsert(Member member); //소셜 로그인 멤버 추가
 	
 }
 

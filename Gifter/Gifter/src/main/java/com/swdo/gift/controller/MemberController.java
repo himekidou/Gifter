@@ -3,14 +3,24 @@ package com.swdo.gift.controller;
 
 
 import java.io.IOException;
-
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -23,9 +33,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.google.connect.GoogleOAuth2Template;
 import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +45,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.swdo.gift.dao.MemberDAO;
@@ -63,14 +73,78 @@ public class MemberController {
 	/* GoogleLogin */
 	@Inject
     private AuthInfo authInfo;
+	
 	@Autowired
-	private GoogleConnectionFactory googleConnectionFactory;
-	@Autowired
-	private OAuth2Parameters googleOAuth2Parameters;
+    private GoogleOAuth2Template googleOAuth2Template;
+    
+    @Autowired
+    private OAuth2Parameters googleOAuth2Parameters;
+	
+    /*Kakao Login */
+    private final static String K_CLIENT_ID = "e729d4032cec6c7d96f0672f736e5c0e"; 	//이런식으로 REDIRECT_URI를 써넣는다.  
+    private final static String K_REDIRECT_URI = "http://localhost:8888/gift/member/oauth";
 
+    
+     public static String getAuthorizationUrl(HttpSession session) { 
+    	 String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" 
+    			 + "client_id=" + K_CLIENT_ID + "&redirect_uri=" 
+    			 + K_REDIRECT_URI + "&response_type=code"; 
+    	 return kakaoUrl; 
+    }
+     
+     public static JsonNode getAccessToken(String autorize_code) { 
+    	 final String RequestUrl = "https://kauth.kakao.com/oauth/token"; 
+    	 final ArrayList<NameValuePair> postParams = new ArrayList<NameValuePair>(); 
+    	 postParams.add(new BasicNameValuePair("grant_type", "authorization_code")); 
+    	 postParams.add(new BasicNameValuePair("client_id", "e729d4032cec6c7d96f0672f736e5c0e"));  //REST API KEY 
+    	 postParams.add(new BasicNameValuePair("redirect_uri"
+    			 , "http://localhost:8888/gift/member/oauth")); // 리다이렉트 URI 
+    	 postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값 
+    	 final HttpClient client = HttpClientBuilder.create().build(); 
+    	 final HttpPost post = new HttpPost(RequestUrl); 
+    	 JsonNode returnNode = null; 
+    	 try { 
+    		 post.setEntity(new UrlEncodedFormEntity(postParams)); 
+    		 final HttpResponse response = client.execute(post); 
+    		 // JSON 형태 반환값 처리 
+    	 	ObjectMapper mapper = new ObjectMapper(); 
+    	 	returnNode = mapper.readTree(response.getEntity().getContent()); 
+    	 } catch (UnsupportedEncodingException e) { 
+    		 e.printStackTrace(); 
+    	 } catch (ClientProtocolException e) { 
+    		 e.printStackTrace(); 
+    	 } catch (IOException e) { 
+    		 e.printStackTrace(); 
+    	 } finally { 
+    		 // clear resources 
+    	 } 
+    	 return returnNode;
+    } 
 
-
-		
+    public static JsonNode getKakaoUserInfo(JsonNode accessToken) { 
+    	 final String RequestUrl = "https://kapi.kakao.com/v2/user/me"; 
+    	 final HttpClient client = HttpClientBuilder.create().build(); 
+    	 final HttpPost post = new HttpPost(RequestUrl);
+    	 // add header 
+    	 post.addHeader("Authorization", "Bearer " + accessToken); 
+    	 JsonNode returnNode = null; 
+    	 try { 
+    		 final HttpResponse response = client.execute(post); 
+    		 // JSON 형태 반환값 처리 
+    		 ObjectMapper mapper = new ObjectMapper(); 
+    		 returnNode = mapper.readTree(response.getEntity().getContent()); 
+    	 } catch (ClientProtocolException e) { 
+    		 e.printStackTrace(); 
+    	 } catch (IOException e) { 
+    		 e.printStackTrace(); 
+    	 } finally { 
+    		 // clear resources 
+    	 } 
+    	 return returnNode; 
+    } 
+     
+    
+    
 	@Autowired
 	private MemberDAO dao;
 	
@@ -148,27 +222,29 @@ public class MemberController {
 	public String naverLogin(Model model, HttpSession session) {
 		logger.info("로그인 폼");
 		
-		//1)네이버 로그인 
-		
+		//1)네이버 로그인 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 		 String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		 
 		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
 		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
 		
-		logger.info("네이버: " + naverAuthUrl);
-		model.addAttribute("url", naverAuthUrl);
+		logger.info("네이버 로그인, url " + naverAuthUrl);
+		model.addAttribute("naver_url", naverAuthUrl);
 			
-		//2)구글 로그인
-		
+		//2)구글 로그인		
 		/* 구글code 발행 */
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+		//URL을 생성한다.
+        String url = googleOAuth2Template.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+        logger.info("구글 로그인, url : " + url);
+        model.addAttribute("google_url", url);
+        
+        //3)카카오 로그인
+        String kakaoUrl = getAuthorizationUrl(session);
+        logger.info("카카오 로그인, url : " +  kakaoUrl);
+        model.addAttribute("kakao_url", kakaoUrl);
 
-		logger.info("구글: " + url);
-
-		model.addAttribute("google_url", url);
-
+       
 		return "member/loginForm";
 	}
 	
@@ -198,6 +274,7 @@ public class MemberController {
 		//3. 데이터 파싱
 		//Top레벨 단계 _response 파싱
 		JSONObject response_obj = (JSONObject)jsonObj.get("response");
+		
 		//response의 nickname값 파싱
 		String nickname = (String)response_obj.get("nickname");
 		logger.info("아이디는 {}",nickname);
@@ -280,17 +357,141 @@ public class MemberController {
         System.out.println(new String(Base64.decodeBase64(tokens[0]), "utf-8"));
         System.out.println(new String(Base64.decodeBase64(tokens[1]), "utf-8"));
  
-        //Jackson을 사용한 JSON을 자바 Map 형식으로 변환
+        //Jackson을 사용한 JSON을 자바 Map 형식으로 변환   
+       
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, String> result = mapper.readValue(body, Map.class);
-        System.out.println(result.get(""));
-		//session.setAttribute(name, value);
+      	Map<String, String> result = mapper.readValue(body, Map.class);
+      	
+      	
+      	//Map에서 키가 email로 된 것의 값을 추출
+      	System.out.println("result.get : " + result.get("email")); //email 주소를 가져온 것을 확인함
+      	
+      	//가져온 이메일을 활용해 db에 넣기(이메일을 자른 것을 닉네임으로 하고 이메일은 그대로 쓴다)
+        String email = result.get("email"); //받아온 메일 주소
         
+        int idx = email.indexOf("@");		//@의 위치 파악
         
+        String star = "";
+        for(int i = 0 ; i < (idx/2); i++) {		//@ /2 만큼의 별(*)을 찍는다.
+			star += "*";		
+		}
+         
+        String showingNickname= email.substring(0, (idx/2)) + star; //0번부터 idx/2까지 보여주고 나머지는 별(*)로 처리한다.
+        String nickname=  email.substring(0, idx); 
+        
+        //랜덤 비밀번호 생성
+      	String tempPassword = ""; 
+
+      	for(int i=0; i<10; i++) { 
+      		int rndVal = (int)(Math.random() * 62); 
+      		if(rndVal < 10) { tempPassword += rndVal; } 
+      		else if(rndVal > 35) { tempPassword += (char)(rndVal + 61); } 
+      		else { tempPassword += (char)(rndVal + 55); 
+      		} 
+      			
+      	} 
+      	System.out.println("tempPassword : " + tempPassword);
+      		
+      	Member member = new Member() ;
+      	member.setMember_id("go-" + nickname);
+      	member.setMember_pw(tempPassword);
+      	member.setMember_email(email);
+      	member.setMember_key("Y");
+      		
+      	int cnt = dao.naverMemberInsert(member);
+      	logger.info(Integer.toString(cnt));	
+      	if(cnt == 0) {
+      		logger.info("회원가입 실패");
+      	}
+      	else {
+      		logger.info("회원가입 성공");
+      	}
+      			
+      	//파싱 닉네임 세션으로 저장
+      	session.setAttribute("member_id",showingNickname); //세션 생성
+             
 		return "redirect:/member/loginForm";
 	}
 	
+	///카카오 로그인 콜백
+	@RequestMapping(value = "/oauth", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST }) 
+	public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request
+	, HttpServletResponse response, HttpSession session) throws Exception { 
+		
+		// 결과값을 node에 담아줌 
+		JsonNode node = getAccessToken(code); 
+		// accessToken에 사용자의 로그인한 모든 정보가 들어있음 
+		JsonNode accessToken = node.get("access_token"); 
+		// 사용자의 정보 
+		JsonNode userInfo = getKakaoUserInfo(accessToken); 
+		String kemail = null; 
+		String kname = null; 
+		// 유저정보 카카오에서 가져오기 Get properties 
+		JsonNode properties = userInfo.path("properties"); 
+		JsonNode kakao_account = userInfo.path("kakao_account"); 
+		kemail = kakao_account.path("email").asText(); 
+		kname = properties.path("nickname").asText(); 
+		System.out.println("이메일 주소는? : " + kemail);
+		System.out.println("닉네임은? : " + kname);
+		
+		//랜덤 비밀번호 생성
+      	String tempPassword = ""; 
 
+      	for(int i=0; i<10; i++) { 
+      		int rndVal = (int)(Math.random() * 62); 
+      		if(rndVal < 10) { tempPassword += rndVal; } 
+      		else if(rndVal > 35) { tempPassword += (char)(rndVal + 61); } 
+      		else { tempPassword += (char)(rndVal + 55); 
+      		}  			
+      	} 
+      	System.out.println("tempPassword : " + tempPassword);
+		
+      	//보여줄 닉네임 수정(* 활용)
+      	int idx = kname.length(); //닉네임 길이
+      	System.out.println("닉네임의 길이는 : " + idx);
+            	
+      	int endNum = 0;
+            	
+      	if(idx % 2 == 0) {
+      		endNum = idx / 2;
+      	}
+      	else {
+      		endNum = idx / 2 ;
+      	}
+      	System.out.println("*앞까지의 숫자는? : " + endNum);
+            	
+      	String star = "";
+      	for(int i = 0 ; i < endNum; i++) {	
+      		star += "*";		
+      	}     	
+              
+      	String showingNickname = kname.substring(0, idx - endNum) + star;
+      	System.out.println("보여줄 닉네임 : " + showingNickname);
+      	
+      	
+		Member member = new Member();
+		member.setMember_email(kemail);
+		member.setMember_id("ka-" + kname);
+		member.setMember_pw(tempPassword);
+		member.setMember_key("Y");
+		
+		int cnt = dao.naverMemberInsert(member);
+      	logger.info(Integer.toString(cnt));	
+      	if(cnt == 0) {
+      		logger.info("회원가입 실패");
+      	}
+      	else {
+      		logger.info("회원가입 성공");
+      	}
+			
+		session.setAttribute("member_id", showingNickname); 
+		
+	
+		return "redirect:/member/loginForm"; 
+	}
+
+	
+	
 	//로그아웃
 	@RequestMapping(value="logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {

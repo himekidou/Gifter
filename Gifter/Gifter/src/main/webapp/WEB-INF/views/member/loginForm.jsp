@@ -10,7 +10,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <style type="text/css">
-	#loginForm, #naver_id_login{
+	#loginForm, #naver_id_login, #google_id_login, #kakao_id_login{
 		margin: 0 auto;
 		text-align: center;
 		width: 1510px;
@@ -72,19 +72,24 @@
 	<br/>
 	
 	<!-- 네이버 로그인 창으로 이동 -->
-	<div id="naver_id_login" style="text-align:center"><a href="${url}">
+	<div id="naver_id_login" style="text-align:center"><a href="${naver_url}">
 	<img width="190" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-	<br>
-	</c:otherwise>
-	</c:choose>
-	
-	<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	
-	
-	
+	<br/>
 	<!-- 구글 로그인 화면으로 이동 시키는 URL -->
 	<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
-	<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="195" src="https://github.com/NUKnightLab/StoryMapJS/blob/master/static/img/google/2x/btn_google_signin_dark_normal_web@2x.png?raw=true"/></a></div>  
+	<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="190" src="${pageContext.request.contextPath}/resources/btn_google_signin_dark_focus_web@2x.png"/></a></div>  
+	<br/>
+	
+	<!--카카오 로그인 창으로 이동  -->
+	<div id="kakao_id_login" style="text-align: center"> 
+		<a href="${kakao_url}"> 
+		<img width="190" src="${pageContext.request.contextPath}/resources/kakao_account_login_btn_medium_narrow.png" /></a> 
+	</div>
+
+
+	</c:otherwise>
+	</c:choose>
+
 	
 	
 	

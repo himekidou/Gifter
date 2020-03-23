@@ -54,8 +54,8 @@
 			member_key = #{param2}
 	</update>
 	
-	<!--네이버로 로그인한 사람을 회원가입 시킴  -->
-	<insert id="naverMemberInsert" parameterType="member">
+	<!--소셜로 로그인한 사람을 회원가입 시킴  -->
+	<insert id="naverlMemberInsert" parameterType="member">
 		insert into 
 			gi_member(
 			member_id	
