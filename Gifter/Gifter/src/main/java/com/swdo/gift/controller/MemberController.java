@@ -283,8 +283,18 @@ public class MemberController {
 		String email = (String)response_obj.get("email");
 		logger.info("이메일은 {}", email);
 		
+		
 		//4.db에 넣기
-			
+		
+		//이미 아이디와 이메일이 있다면 바로 jsp로 이동시키기		
+		int memberCnt = dao.socialMemberFind(email);
+		if(memberCnt == 1) {
+			logger.info("이미 회원 가입함");
+			session.setAttribute("member_id",nickname);
+			return "redirect:/member/loginForm";		
+		}
+		logger.info("회원에 없으니 회원가입 시킨다");	
+		
 		//랜덤 비밀번호 생성
 		String tempPassword = ""; 
 
@@ -368,9 +378,21 @@ public class MemberController {
       	
       	System.out.println("이름 값 : " + result.get("name"));
       	
+      	
+      	//db에 있는지 확인
+      	
+         	
       	String member_id = result.get("name");
       	String email = result.get("email");
       	
+      //이미 아이디와 이메일이 있다면 바로 jsp로 이동시키기		
+      int memberCnt = dao.socialMemberFind(email);
+      if(memberCnt == 1) {
+      	logger.info("이미 회원 가입함");
+      	session.setAttribute("member_id", member_id);
+      	return "redirect:/member/loginForm";		
+      }
+      logger.info("회원에 없으니 회원가입 시킨다");	
       	
 //      	//가져온 이메일을 활용해 db에 넣기(이메일을 자른 것을 닉네임으로 하고 이메일은 그대로 쓴다)
 //        String email = result.get("email"); //받아온 메일 주소
@@ -439,6 +461,16 @@ public class MemberController {
 		kname = properties.path("nickname").asText(); 
 		System.out.println("이메일 주소는? : " + kemail);
 		System.out.println("닉네임은? : " + kname);
+		
+		//이미 아이디와 이메일이 있다면 바로 jsp로 이동시키기		
+	      int memberCnt = dao.socialMemberFind(kemail);
+	      if(memberCnt == 1) {
+	      	logger.info("이미 회원 가입함");
+	      	session.setAttribute("member_id", kname);
+	      	return "redirect:/member/loginForm";		
+	      }
+	      logger.info("회원에 없으니 회원가입 시킨다");	
+		
 		
 		//랜덤 비밀번호 생성
       	String tempPassword = ""; 

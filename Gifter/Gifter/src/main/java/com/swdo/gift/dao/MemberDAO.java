@@ -49,11 +49,22 @@ public class MemberDAO {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		return cnt;
-		
-		
+		return cnt;		
 	}
 	
+	
+	public int socialMemberFind(String member_email) {
+		int cnt = 0;
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			cnt = mapper.socialMemberFind(member_email);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;	
+		
+	}
 	
 	
 }

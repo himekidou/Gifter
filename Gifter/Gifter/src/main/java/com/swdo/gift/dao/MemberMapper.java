@@ -16,5 +16,6 @@ public interface MemberMapper {
 
 	public int socialMemberInsert(Member member); //소셜 로그인 멤버 추가
 	
+	public int socialMemberFind(String member_email);
 }
 
