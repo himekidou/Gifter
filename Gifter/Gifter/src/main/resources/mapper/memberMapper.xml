@@ -55,7 +55,7 @@
 	</update>
 	
 	<!--소셜로 로그인한 사람을 회원가입 시킴  -->
-	<insert id="naverlMemberInsert" parameterType="member">
+	<insert id="socialMemberInsert" parameterType="member">
 		insert into 
 			gi_member(
 			member_id	

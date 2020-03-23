@@ -40,11 +40,11 @@ public class MemberDAO {
 		return cnt;
 	}
 	
-	public int naverMemberInsert(Member member) {
+	public int socialMemberInsert(Member member) {
 		int cnt = 0;
 		try {
 			MemberMapper mapper = session.getMapper(MemberMapper.class);
-			cnt = mapper.naverMemberInsert(member);
+			cnt = mapper.socialMemberInsert(member);
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -304,7 +304,7 @@ public class MemberController {
 		member.setMember_email(email);
 		member.setMember_key("Y");
 		
-		int cnt = dao.naverMemberInsert(member);
+		int cnt = dao.socialMemberInsert(member);
 		logger.info(Integer.toString(cnt));	
 		if(cnt == 0) {
 			logger.info("회원가입 실패");
@@ -364,20 +364,26 @@ public class MemberController {
       	
       	
       	//Map에서 키가 email로 된 것의 값을 추출
-      	System.out.println("result.get : " + result.get("email")); //email 주소를 가져온 것을 확인함
+      	System.out.println("이메일 값 : " + result.get("email")); //email 주소를 가져온 것을 확인함
       	
-      	//가져온 이메일을 활용해 db에 넣기(이메일을 자른 것을 닉네임으로 하고 이메일은 그대로 쓴다)
-        String email = result.get("email"); //받아온 메일 주소
-        
-        int idx = email.indexOf("@");		//@의 위치 파악
-        
-        String star = "";
-        for(int i = 0 ; i < (idx/2); i++) {		//@ /2 만큼의 별(*)을 찍는다.
-			star += "*";		
-		}
-         
-        String showingNickname= email.substring(0, (idx/2)) + star; //0번부터 idx/2까지 보여주고 나머지는 별(*)로 처리한다.
-        String nickname=  email.substring(0, idx); 
+      	System.out.println("이름 값 : " + result.get("name"));
+      	
+      	String member_id = result.get("name");
+      	String email = result.get("email");
+      	
+      	
+//      	//가져온 이메일을 활용해 db에 넣기(이메일을 자른 것을 닉네임으로 하고 이메일은 그대로 쓴다)
+//        String email = result.get("email"); //받아온 메일 주소
+//        
+//        int idx = email.indexOf("@");		//@의 위치 파악
+//        
+//        String star = "";
+//        for(int i = 0 ; i < (idx/2); i++) {		//@ /2 만큼의 별(*)을 찍는다.
+//			star += "*";		
+//		}
+//         
+//        String showingNickname= email.substring(0, (idx/2)) + star; //0번부터 idx/2까지 보여주고 나머지는 별(*)로 처리한다.
+//        String nickname=  email.substring(0, idx); 
         
         //랜덤 비밀번호 생성
       	String tempPassword = ""; 
@@ -393,12 +399,12 @@ public class MemberController {
       	System.out.println("tempPassword : " + tempPassword);
       		
       	Member member = new Member() ;
-      	member.setMember_id("go-" + nickname);
+      	member.setMember_id("go-" + member_id);
       	member.setMember_pw(tempPassword);
       	member.setMember_email(email);
       	member.setMember_key("Y");
       		
-      	int cnt = dao.naverMemberInsert(member);
+      	int cnt = dao.socialMemberInsert(member);
       	logger.info(Integer.toString(cnt));	
       	if(cnt == 0) {
       		logger.info("회원가입 실패");
@@ -408,7 +414,7 @@ public class MemberController {
       	}
       			
       	//파싱 닉네임 세션으로 저장
-      	session.setAttribute("member_id",showingNickname); //세션 생성
+      	session.setAttribute("member_id", member_id); //세션 생성
              
 		return "redirect:/member/loginForm";
 	}
@@ -475,7 +481,7 @@ public class MemberController {
 		member.setMember_pw(tempPassword);
 		member.setMember_key("Y");
 		
-		int cnt = dao.naverMemberInsert(member);
+		int cnt = dao.socialMemberInsert(member);
       	logger.info(Integer.toString(cnt));	
       	if(cnt == 0) {
       		logger.info("회원가입 실패");

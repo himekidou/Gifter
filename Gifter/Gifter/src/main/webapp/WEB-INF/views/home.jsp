@@ -27,10 +27,15 @@
 	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="인스타그램 ID 입력">
 	 			<input type="submit" id="btn1" value="검색">	
 	 		</form>	
-	 		<br/> 		
 	 		<a href="member/logout">로그아웃</a><br/>
 	 	</c:when>
 	 	<c:otherwise>
+	 		<p>선물할 인스타그램 ID를 입력해 주세요.</p>	 		
+	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
+	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="인스타그램 ID 입력">
+	 			<input type="submit" id="btn1" value="검색">	
+	 		</form>	
+	 		<br/> 		
 	 		<a href="member/signupForm">회원가입</a><br/>
 			<a href="member/loginForm">로그인</a><br/>
 	 	</c:otherwise>
