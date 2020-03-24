@@ -15,15 +15,15 @@
 		var age_range = $('select[name=age_range]').val();
 		var gender = $('select[name=gender]').val();
 	
-		if(age == null || age == ""){
+		if(age != 10 && age != 20 && age != 30 && age != 40){
 			alert("나이를 선택해주세요");
 			return false;
 		}
-		if(age_range == null || age_range == ""){
+		if(age_range != 0 && age_range != 5){
 			alert("나이대를 선택해주세요");
 			return false;
 		}
-		if(gender == null || gender == ""){
+		if(gender != 0 && gender != 1){
 			alert("성별을 선택해주세요");
 			return false;
 		}
@@ -49,10 +49,10 @@
 				<td>
 					<select name="age" id="age" required="required">
 						<option>Choose The Age of The Recipient.</option>
-						<option value="10">1 ~ 10</option>
-						<option value="20">11 ~ 20</option>
-						<option value="30">21 ~ 30</option>
-						<option value="40">31 ~ 40</option>
+						<option value="10">0 ~ 9</option>
+						<option value="20">10 ~ 19</option>
+						<option value="30">20 ~ 29</option>
+						<option value="40">30 ~ 39</option>
 					</select>			
 				</td>
 				<td>

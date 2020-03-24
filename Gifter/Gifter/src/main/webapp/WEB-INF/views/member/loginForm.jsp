@@ -53,10 +53,7 @@
 			<h3>'${member_id}'님 환영합니다! </h3>			
 		</c:if>
 	
-		<c:if test="${member_email != null}">
-			<h3>${member_email}</h3>
-		</c:if>
-			<h3><a href="/gift">메인 이동</a></h3>
+			<h3><a href="/">메인 이동</a></h3>
 	</c:when>
 	
 	<c:otherwise>
