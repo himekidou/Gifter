@@ -44,6 +44,8 @@ public class TakerController {
 		if(savedId == null) { 
 			System.out.println("비회원 검색");
 			
+			
+			
 			//랜덤 아이디 생성
 			String tempId = ""; 
 

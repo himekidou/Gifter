@@ -82,7 +82,7 @@ public class MemberController {
 	
     /*Kakao Login */
     private final static String K_CLIENT_ID = "e729d4032cec6c7d96f0672f736e5c0e"; 	//이런식으로 REDIRECT_URI를 써넣는다.  
-    private final static String K_REDIRECT_URI = "http://localhost:8888/gift/member/oauth";
+    private final static String K_REDIRECT_URI = "http://localhost:8080/member/oauth";
 
     
      public static String getAuthorizationUrl(HttpSession session) { 
@@ -98,7 +98,7 @@ public class MemberController {
     	 postParams.add(new BasicNameValuePair("grant_type", "authorization_code")); 
     	 postParams.add(new BasicNameValuePair("client_id", "e729d4032cec6c7d96f0672f736e5c0e"));  //REST API KEY 
     	 postParams.add(new BasicNameValuePair("redirect_uri"
-    			 , "http://localhost:8888/gift/member/oauth")); // 리다이렉트 URI 
+    			 , "http://localhost:8080/member/oauth")); // 리다이렉트 URI 
     	 postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값 
     	 final HttpClient client = HttpClientBuilder.create().build(); 
     	 final HttpPost post = new HttpPost(RequestUrl); 
@@ -293,6 +293,7 @@ public class MemberController {
 			session.setAttribute("member_id",nickname);
 			return "redirect:/member/loginForm";		
 		}
+		
 		logger.info("회원에 없으니 회원가입 시킨다");	
 		
 		//랜덤 비밀번호 생성

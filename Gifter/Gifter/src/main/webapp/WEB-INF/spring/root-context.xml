@@ -68,7 +68,7 @@
         <property name="scope"
             value="email profile"></property>
         <property name="redirectUri"
-            value="http://localhost:8888/gift/member/oauth2callback" />
+            value="http://localhost:8080/member/oauth2callback" />
     </bean>
    	
    	<bean id="authInfo" class="com.swdo.gift.util.AuthInfo">
