@@ -25,6 +25,19 @@
 	
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
 	<beans:bean id="naverLoginBO" class="com.swdo.gift.util.NaverLoginBO" />
-
+	
+	<!-- interceptor 등록 -->
+	<beans:bean id="LoginInterceptor" class="com.swdo.gift.interceptor.LoginInterceptor" />
+	
+	<!--  interceptor 적용 -->
+ 	<interceptors> 
+ 		<interceptor> 
+ 			<mapping path="/member/beforeReg"/>
+ 			<mapping path="/member/callback"/>		
+ 			<beans:ref bean="LoginInterceptor"/> 
+		</interceptor>
+ 	</interceptors> 
+ 	
 	
 </beans:beans>
+

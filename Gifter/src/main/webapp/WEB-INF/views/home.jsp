@@ -4,33 +4,57 @@
 <head>
 	<title>Home</title>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-<script>
-	var naverLogin = new naver.LoginWithNaverId(
-		{
-			clientId: "X4NLFyXcxFZNi41PvgJ5",
-			callbackUrl: "http://172.30.1.30:8888/gift/member/callback",
-			isPopup: false, /* 팝업을 통한 연동처리 여부 */
-			callbackHandle: true,
-			loginButton: {color: "green", type: 2, height: 40} /* 로그인 버튼의 타입을 지정 */
-		}
-	);
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<script type="text/javascript">
+	function formCheck(){
+		var taker_insta = document.getElementById("taker_insta");
 
-
-	naverLogin.getLoginStatus();
+		
+		if(taker_insta.value == '' || taker_insta.value.length == 0){
+			alert("인스타그램 ID를 입력해주세요");
+			return false;
+		}		
+		return true;
+	}
+</script>
+<style type="text/css">
 	
-	
-</script>	
+</style>
 </head>
 <body>
-	<h1>선물 추천 시스템 GIFTER</h1>
+	<h1>GIFTER</h1>
 	 <c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
-	 		환영합니다. ${sessionScope.member_id}님 <br/>
-	 		<a href="member/logout">로그아웃</a><br/>
+	 		환영합니다. ${sessionScope.member_id}님 
+	 		<br/> 		
+	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
+	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="인스타그램 ID 입력">
+	 			<input type="submit" id="btn1" value="검색">	
+	 		</form>		 		
+	 		<br/>
+	 		<a href="member/logout">logout</a>
+			&nbsp;
+	 		<a href="category/bestForm">best</a>
+			&nbsp;
 	 	</c:when>
 	 	<c:otherwise>
-	 		<a href="member/signupForm">회원가입</a><br/>
-			<a href="member/loginForm">로그인</a><br/>
+	 		<a href="<c:url value="/"/>">home</a>
+	 		&nbsp;
+	 		<a href="member/signupForm">sign up</a>
+			&nbsp;
+			<a href="member/loginForm">login</a>
+			&nbsp;
+			<a href="category/bestForm">best</a>
+			&nbsp;	
+			<br/>
+			<br/>
+			<div id="instaSearch">
+	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
+	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O">
+	 			<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
+	 		</form>	
+	 		</div>
+	 		<br/>	 						
 	 	</c:otherwise>
 	 </c:choose>
 </body>

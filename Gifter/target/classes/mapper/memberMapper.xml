@@ -7,9 +7,9 @@
 	<insert id="memberInsert" parameterType="member">
 		insert into 
 			gi_member(
-		member_id	
-		,member_pw
-		,member_email
+			member_id	
+			,member_pw
+			,member_email
 		)
 		 values(
 		 	#{member_id}
@@ -53,5 +53,43 @@
 		and
 			member_key = #{param2}
 	</update>
+	
+	<!--소셜로 로그인한 사람을 회원가입 시킴  -->
+	<insert id="socialMemberInsert" parameterType="member">
+		insert into 
+			gi_member(
+			member_id	
+			,member_pw
+			,member_email
+			,member_key
+		)
+		 values(
+		 	#{member_id}
+		 	,#{member_pw}
+		 	,#{member_email}
+		 	,#{member_key}		 	
+		 )		
+	</insert>
+	
+	<!--소셜 로그인으로 가입한 회원 찾기  -->
+	<select id="socialMemberFind" parameterType="string" resultType="int">
+		select
+			count(*)
+		from
+			gi_member
+		where
+			member_email = #{member_email}
+	</select>
+	
+	<!--비회원 아이디 중복 체크  -->
+	<select id="nonMemberCheck" parameterType="string" resultType="int">
+		select
+			count(*)
+		from
+			gi_member
+		where
+			member_id = #{member_id}
+	</select>
+
 </mapper>
 		

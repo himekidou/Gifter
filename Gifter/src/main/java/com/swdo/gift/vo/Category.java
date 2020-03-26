@@ -7,4 +7,6 @@ public class Category {
 
 	String cat_name;
 	int cat_incre;
+	int info_age;
+	int info_gender;
 }
