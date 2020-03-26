@@ -30,28 +30,39 @@
 		return true; 
 	}
 </script>
+<style type="text/css">
+ #signupForm{
+ 	margin: 0 auto;
+	text-align: center;
+	width: 1510px;
+ }
+</style>
 </head>
 <body>
+	
 	<form action="signup" method="post">
-		<h1>회원가입</h1>
+		
+		<h1>Sign up</h1>
 		<table>
 		<tr>
-			<th>아이디</th>
-			<td><input type="text" placeholder="3~10글자 미만 입력" id="member_id" name="member_id"><br/></td>
+			<th>ID</th>
+			<td><input type="text" placeholder="ID (3~10글자) " id="member_id" name="member_id"><br/></td>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
-			<td><input type="password" placeholder="3~10글자 미만 입력" id="member_pw" name="member_pw"><br/></td> 
+			<th>password</th>
+			<td><input type="password" placeholder="password (3~10글자) " id="member_pw" name="member_pw"><br/></td> 
 		</tr>
 		<tr>
-			<th>이메일 주소</th>
-			<td><input type="email" placeholder="인증 받을 이메일 주소" id="member_email" name="member_email"></td>
+			<th>e-mail</th>
+			<td><input type="email" placeholder="e-mail (인증받을 이메일) " id="member_email" name="member_email"></td>
 		</tr>
 		<tr>
 			<td><input type="submit" id="btn1 "value="가입" onclick="return formCheck();"></td>	
 			<td><a href="<c:url value="/"/>"><input type="button" id="btn2" value="취소"></a></td>
 		</tr>
 		</table>
+		
 	</form>
+	
 </body>
 </html>

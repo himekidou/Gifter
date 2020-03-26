@@ -40,6 +40,44 @@ public class MemberDAO {
 		return cnt;
 	}
 	
+	public int socialMemberInsert(Member member) {
+		int cnt = 0;
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			cnt = mapper.socialMemberInsert(member);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;		
+	}
+	
+	
+	public int socialMemberFind(String member_email) {
+		int cnt = 0;
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			cnt = mapper.socialMemberFind(member_email);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;	
+		
+	}
+	
+	public int nonMemberCheck(String member_id) {	
+		int cnt = 0;
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			cnt = mapper.nonMemberCheck(member_id);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;	
+	}
+	
 	
 	
 }

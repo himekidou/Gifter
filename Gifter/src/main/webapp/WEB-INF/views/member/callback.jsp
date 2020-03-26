@@ -22,7 +22,7 @@
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "X4NLFyXcxFZNi41PvgJ5",
-				callbackUrl: "http://172.30.1.30:8888/gift/member/callback",
+				callbackUrl: "http://localhost:8888/gift/member/callback",
 				isPopup: false,
 				callbackHandle: true
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
@@ -46,11 +46,8 @@
 						naverLogin.reprompt();
 						return;
 					}
-
 					
-					
-							
-					window.location.replace("http://172.30.1.30:8888/gift/");
+					window.location.replace("http://localhost:8888/gift/"");
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}
