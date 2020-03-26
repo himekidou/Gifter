@@ -75,7 +75,6 @@ public class SeleniumCrawling {
             srcs = new ArrayList<String>();
                      
             for(int i = 0; i < el.size(); i++) {
-                 System.out.println(el.get(i).getAttribute("src"));
                  srcs.add(el.get(i).getAttribute("src"));
             }
             
@@ -84,7 +83,6 @@ public class SeleniumCrawling {
 			// 가격 값 담을 변수 준비
 			String[] prices = new String[price.size()];
 			
-			System.out.println("가격 테스트");
 			for (int i = 0; i < price.size(); i++) {
 				prices[i] = price.get(i).getText();
 				

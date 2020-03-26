@@ -45,7 +45,9 @@
 			<a href="member/loginForm">login</a>
 			&nbsp;
 			<a href="category/bestForm">best</a>
-			&nbsp;	
+			&nbsp;
+			<a href="category/viewCategory">viewCategory</a>
+			&nbsp;		
 			<br/>
 			<br/>
 			<div id="instaSearch">

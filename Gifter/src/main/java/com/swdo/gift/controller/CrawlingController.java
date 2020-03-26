@@ -18,6 +18,7 @@ import com.swdo.gift.util.PageNavigator;
 import com.swdo.gift.util.SeleniumCrawling;
 
 @Controller
+@RequestMapping(value="/category")
 public class CrawlingController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CrawlingController.class);
@@ -25,7 +26,7 @@ public class CrawlingController {
 	private final int countPerPage = 5;
 	private final int pagePerGroup = 5;
     
-    @RequestMapping(value = "selenium", method = RequestMethod.GET)
+    @RequestMapping(value = "/viewCategory", method = RequestMethod.GET)
 	public String selenium2(Model model, HttpSession session
 			, @RequestParam(value="currentPage", defaultValue="1") int currentPage) throws Exception {
 		
@@ -53,7 +54,7 @@ public class CrawlingController {
 		
 		model.addAttribute("navi", navi);
 
-		return "/selenium";
+		return "/category/viewCategory";
 	}
     
     @RequestMapping(value = "selePageMove", method = RequestMethod.GET)
@@ -76,6 +77,6 @@ public class CrawlingController {
 		model.addAttribute("title", title);
 		model.addAttribute("prices", prices);
     	
-    	return "/selenium";
+    	return "/category/viewCategory";
     }
 }
