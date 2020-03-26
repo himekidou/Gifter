@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.swdo</groupId>
 	<artifactId>gift</artifactId>
-	<name>Gifter_200320</name>
+	<name>Gifter</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
