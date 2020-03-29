@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.swdo.gift.dao.MemberMapper;
+import com.swdo.gift.vo.Member;
 
 @Service
 public class UserMailSendService {
@@ -69,7 +70,7 @@ public class UserMailSendService {
 				+ "<a href='http://localhost:8080" + request.getContextPath() + "/member/key_alter?member_id="+ member_id +"&member_key="+key+"'>인증하기</a></p>"
 				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 		try {
-			mail.setSubject("[본인인증] 인증메일입니다", "utf-8");
+			mail.setSubject("[Gifter] 본인 인증메일입니다", "utf-8");
 			mail.setText(htmlStr, "utf-8", "html");
 			mail.addRecipient(RecipientType.TO, new InternetAddress(e_mail));
 			mailSender.send(mail);
@@ -95,4 +96,33 @@ public class UserMailSendService {
 		
 	}
 
+	// 패스워드 찾기 이메일 발송
+	public void mailSendWithPassword(String member_id, String member_email, HttpServletRequest request) {
+			
+		// 비밀번호는 10자리로 보내고 데이터베이스 비밀번호를 바꿔준다
+		String key = getKey(false, 10);
+		userDao = sqlSession.getMapper(MemberMapper.class);
+				
+		// 회원 이름 꺼내는 코드
+		Member vo = userDao.memberInfoById(member_id);
+		String name = vo.getMember_id();
+						
+		MimeMessage mail = mailSender.createMimeMessage();
+		String htmlStr = "<h2>안녕하세요 '"+ name +"' 님</h2><br><br>" 
+				+ "<p>비밀번호 찾기를 신청해주셔서 임시 비밀번호를 발급해드렸습니다.</p>"
+				+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + key +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주시면 됩니다.</p><br>"
+				+ "<h3><a href='http://localhost:8080/member/loginForm'>Gifter 홈페이지 접속 </a></h3><br><br>"
+				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
+		try {
+			mail.setSubject("[Gifter] 임시 비밀번호가 발급되었습니다", "utf-8");
+			mail.setText(htmlStr, "utf-8", "html");
+			mail.addRecipient(RecipientType.TO, new InternetAddress(member_email));
+			mailSender.send(mail);
+		} catch (MessagingException e) { 
+			e.printStackTrace();
+		}
+	
+		userDao.tempPassword(member_id, member_email, key);
+	}
+	
 }

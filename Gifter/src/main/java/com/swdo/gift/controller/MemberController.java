@@ -207,23 +207,19 @@ public class MemberController {
 	@RequestMapping(value="login", method= RequestMethod.POST)
 	public String login(Member member, HttpSession session, Model model) {
 		logger.info("로그인 하기");
-		//model.addAttribute("msg", true);
-		//session.setAttribute("msg", true);
 		
+		//로그인 실패를 대비한 세션 설정
+		session.setAttribute("msg", "success");
 		
-		if(session.getAttribute("msg") == "fail") {
-			session.invalidate();
-		}
 		int result = dao.memberLogin(member);
 		
 		if(result != 1) {
-			logger.info("로그인 실패");			 
-			
-			//로그인 실패시 jsp로 돌아가 실패했다는 내용을 alert()로 띄우기
+			logger.info("로그인 실패");			
 			session.setAttribute("msg", "fail");
-			
-			return "redirect:member/loginForm";
+			System.out.println("세션에 담긴 값 : " + session.getAttribute("msg"));
+			return "redirect:/member/loginForm";
 		}
+		
 		logger.info("로그인 성공");
 		session.setAttribute("member_id", member.getMember_id());
 		return "redirect:/";
@@ -553,6 +549,81 @@ public class MemberController {
 	}	
 	
 	
+	//아이디 찾기 이동
+	@RequestMapping(value="idFinder", method =RequestMethod.GET)	
+	public String idFinder() {
+		logger.info("아이디 찾기로 이동");	
+		return "member/idFinder";
+	}
+	
+	//아이디 찾기
+	@RequestMapping(value="idFind", method=RequestMethod.POST)	
+	public String idFind(String member_email, HttpSession session) {
+		logger.info("아이디 찾기");
+		
+		ArrayList<Member> list = dao.memberIdFind(member_email);
+		System.out.println("가져온 리스트는 : " +  list);
+		
+		if(list.isEmpty()) {
+			logger.info("가입한 아이디가 존재하지 않음");
+			session.setAttribute("msg2", "fail");
+			return "redirect:/member/idFindResult";
+		}
+		
+		logger.info("가입한 아이디가 존재함");
+		System.out.println("가입한 아이디는 : " + list);
+		
+		session.setAttribute("msg2", list);
+	
+		return "redirect:/member/idFindResult";
+	}
+	
+	@RequestMapping(value="idFindResult", method = RequestMethod.GET)
+	public String idFindResult() {
+		logger.info("아이디 찾기 결과로 이동");
+		return "member/idFindResult";
+	}
+	
+	
+	//비밀번호 찾기 이동
+	@RequestMapping(value="pwFinder", method =RequestMethod.GET)	
+	public String pwFinder() {
+		logger.info("비밀번호 찾기로 이동");	
+		return "member/pwFinder";
+	}
+	
+	//비밀번호 찾기
+	@RequestMapping(value="pwFind", method=RequestMethod.POST)
+	public String pwFind(String member_id, String member_email
+			, HttpSession session, HttpServletRequest request) {
+		logger.info("비밀번호 찾기");
+		
+		Member member = new Member();
+		member.setMember_id(member_id);
+		member.setMember_email(member_email);
+		
+		int cnt = dao.emailAuthCheck(member);
+		System.out.println(cnt);
+		if(cnt == 0) {
+			logger.info("이메일 인증이 된 아이디가 아닙니다.");
+			
+			//이메일 인증이 안됐다는 것을 jsp에서 알려준다.
+			session.setAttribute("msg3", "fail");
+			return "redirect:/member/pwFindResult";
+		}
+		
+		logger.info("이메일 인증이 된 아이디입니다.");
+		mailsender.mailSendWithPassword(member_id, member_email, request);
+			
+		
+		return "redirect:/member/pwFindResult";
+	}
+	
+	@RequestMapping(value="pwFindResult", method = RequestMethod.GET)
+	public String pwFindResult() {
+		logger.info("비밀번호 찾기 결과로 이동");
+		return "member/pwFindResult";
+	}
 	
 	
 }

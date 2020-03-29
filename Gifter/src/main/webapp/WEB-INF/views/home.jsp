@@ -25,17 +25,20 @@
 	<h1>GIFTER</h1>
 	 <c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
-	 		환영합니다. ${sessionScope.member_id}님 
+	 		환영합니다. ${sessionScope.member_id}님 <br/><br/>
+	 		<a href="<c:url value="/"/>">home</a>
+	 		&nbsp;
+	 		<a href="member/logout">logout</a>
+			&nbsp;
+	 		<a href="category/bestForm">best</a>
+			&nbsp;
+	 		<br/> 
 	 		<br/> 		
 	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
 	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="인스타그램 ID 입력">
 	 			<input type="submit" id="btn1" value="검색">	
 	 		</form>		 		
 	 		<br/>
-	 		<a href="member/logout">logout</a>
-			&nbsp;
-	 		<a href="category/bestForm">best</a>
-			&nbsp;
 	 	</c:when>
 	 	<c:otherwise>
 	 		<a href="<c:url value="/"/>">home</a>

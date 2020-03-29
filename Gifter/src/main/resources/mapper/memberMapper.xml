@@ -91,5 +91,55 @@
 			member_id = #{member_id}
 	</select>
 
+	<!--이메일을 입력해 아이디 찾기  -->
+	<select id="memberIdFind" parameterType="string" resultType="member">
+		select 
+			member_id
+		from
+			gi_member
+		where
+			member_email = #{member_email}
+	</select>
+
+	<!--비밀번호 찾기 전 이메일 인증 여부 확인   -->
+	<select id="emailAuthCheck" parameterType="member" resultType="int">
+		select
+			count(*)
+		from
+			gi_member
+		where
+			member_id = #{member_id}
+			and
+			member_email = #{member_email}
+			and
+			member_key = 'Y'
+	</select>
+	
+	 <!--아이디로 회원 정보 찾기  -->
+	 <select id="memberInfoById" parameterType="string" resultType="member">
+	 	select 
+	 		member_id
+	 		,member_pw
+	 		,member_email
+	 		,member_key
+	 	from
+	 		gi_member
+	 	where
+	 		member_id = #{member_id}
+	 </select>
+	
+	
+	<!-- 회원 임시 비밀번호-->
+	<update id="tempPassword" parameterType="Map">
+		update 
+			gi_member 
+		set 
+			member_pw = #{param3} 
+		where 
+			member_id = #{param1} 
+		and 
+			member_email = #{param2}
+	</update>
+
 </mapper>
 		
