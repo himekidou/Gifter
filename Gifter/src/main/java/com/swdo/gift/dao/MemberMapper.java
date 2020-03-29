@@ -1,14 +1,12 @@
 package com.swdo.gift.dao;
 
-import java.util.ArrayList;
-
 import com.swdo.gift.vo.Member;
 
 public interface MemberMapper {
 
-	public int memberInsert(Member member); //회원 가입
+	public int memberInsert(Member member);
 	
-	public int memberLogin(Member member); //회원 로그인
+	public int memberLogin(Member member);
 	
 	public int GetKey(String member_id, String key);//유저 인증키 생성 메서드
 	
@@ -18,16 +16,9 @@ public interface MemberMapper {
 
 	public int socialMemberInsert(Member member); //소셜 로그인 멤버 추가
 	
-	public int socialMemberFind(String member_email); //소셜 로그인 멤버 찾기
+	public int socialMemberFind(String member_email);
 	
 	public int nonMemberCheck(String member_id); //비회원 아이디 중복 체크용
 	
-	public ArrayList<Member> memberIdFind(String member_email); //회원 아이디 찾기
-	
-	public int emailAuthCheck(Member member); //이메일 인증 여부 확인
-	
-	public Member memberInfoById(String member_id); //아이디로 회원 정보 찾기
-	
-	public int tempPassword(String member_id, String member_email, String key);
 }
 
