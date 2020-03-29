@@ -30,20 +30,23 @@
 		return true; 
 	}
 </script>
+
 <style type="text/css">
- #signupForm{
+ #title, #form {
  	margin: 0 auto;
 	text-align: center;
 	width: 1510px;
  }
+ 
 </style>
 </head>
 <body>
 	
-	<form action="signup" method="post">
-		
-		<h1>Sign up</h1>
-		<table>
+	<form action="signup" method="post" id="form">
+		<div id="title">
+			<h1>Sign up</h1>
+		</div>
+		<table style="margin-left: auto; margin-right: auto; text-align: center;">	
 		<tr>
 			<th>ID</th>
 			<td><input type="text" placeholder="ID (3~10글자) " id="member_id" name="member_id"><br/></td>
@@ -60,6 +63,7 @@
 			<td><input type="submit" id="btn1 "value="가입" onclick="return formCheck();"></td>	
 			<td><a href="<c:url value="/"/>"><input type="button" id="btn2" value="취소"></a></td>
 		</tr>
+		
 		</table>
 		
 	</form>
