@@ -57,6 +57,8 @@ $(function () {
 </head>
 <body>
 
+<a href="recommendList">간단 상품추천!</a>
+<P>
 <table>
 	<c:forEach items="${srcs}" varStatus="sta">
 	<c:set var="flag" value="false"/>
