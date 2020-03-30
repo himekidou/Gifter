@@ -8,7 +8,7 @@
 <title>에러 페이지</title>
 </head>
 <body>
-	에러가 발생했습니다.
+	에러가 발생했습니다. <br/>
 	<a href="<c:url value="/"/>"><input type="button" value="메인 페이지로 이동"></a>
 </body>
 </html>

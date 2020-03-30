@@ -169,4 +169,30 @@ public class MemberDAO {
 		return cnt;
 	}
 	
+	
+	public int pwUpdate(Member member) {
+		int cnt = 0;
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			cnt = mapper.pwUpdate(member);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
+	public int memberDeletion(Member member) {
+		int cnt = 0;
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			cnt = mapper.memberDeletion(member);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
+		
+	}
+	
 }

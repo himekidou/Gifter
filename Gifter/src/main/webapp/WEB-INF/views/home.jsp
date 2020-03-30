@@ -30,6 +30,8 @@
 	 		&nbsp;
 	 		<a href="member/logout">logout</a>
 			&nbsp;
+			<a href="member/myPage">My Page</a>
+			&nbsp;
 	 		<a href="category/bestForm">best</a>
 			&nbsp;
 	 		<br/> 

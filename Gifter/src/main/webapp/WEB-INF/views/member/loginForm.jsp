@@ -74,13 +74,7 @@
 				<div id="question">
 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder__question_help_faq_question_mark_4213446.png" width="22" height="22" onclick="explain()">
 				</div>
-			</form>
-			
-				<c:if test="${msg == 'fail'}">
-					<div id="loginFail" style="color: red">
-						아이디 또는 패스워드가 틀렸습니다.
-					</div>						
-				</c:if>		
+			</form>	
 			
 			<br/>
 				<div id="find">

@@ -121,7 +121,6 @@
 	 		member_id
 	 		,member_pw
 	 		,member_email
-	 		,member_key
 	 	from
 	 		gi_member
 	 	where
@@ -140,6 +139,28 @@
 		and 
 			member_email = #{param2}
 	</update>
-
+	
+	<!--비밀번호 수정  -->
+	<update id="pwUpdate" parameterType="member">
+		update
+			gi_member
+		set
+			member_pw = #{member_pw}
+		where
+			member_id = #{member_id}
+			and
+			member_email = #{member_email}
+	</update>
+	
+	<!--회원 탈퇴  -->
+	<delete id="memberDeletion" parameterType="member">
+		delete from
+			gi_member
+		where
+			member_id = #{member_id}
+			and
+			member_pw = #{member_pw}
+	</delete>
+	
 </mapper>
 		

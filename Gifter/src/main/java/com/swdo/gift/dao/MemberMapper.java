@@ -29,5 +29,10 @@ public interface MemberMapper {
 	public Member memberInfoById(String member_id); //아이디로 회원 정보 찾기
 	
 	public int tempPassword(String member_id, String member_email, String key); //임시 비밀번호 생성
+	
+	public int pwUpdate(Member member); //비밀번호 수정
+	
+	public int memberDeletion(Member member); //회원 탈퇴
+	
 }
 

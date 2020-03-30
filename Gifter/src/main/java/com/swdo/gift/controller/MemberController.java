@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,6 +45,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -205,19 +207,15 @@ public class MemberController {
 	
 	//로그인 하기
 	@RequestMapping(value="login", method= RequestMethod.POST)
-	public String login(Member member, HttpSession session, Model model) {
+	public String login(Member member, HttpSession session) {
 		logger.info("로그인 하기");
 		
-		//로그인 실패를 대비한 세션 설정
-		session.setAttribute("msg", "success");
-		
+	
 		int result = dao.memberLogin(member);
 		
 		if(result != 1) {
 			logger.info("로그인 실패");			
-			session.setAttribute("msg", "fail");
-			System.out.println("세션에 담긴 값 : " + session.getAttribute("msg"));
-			return "redirect:/member/loginForm";
+			return "redirect:/member/loginFail";
 		}
 		
 		logger.info("로그인 성공");
@@ -226,10 +224,18 @@ public class MemberController {
 	}
 	
 	
+	//로그인 실패
+	@RequestMapping(value="loginFail", method= RequestMethod.GET)
+	public String loginFail() {
+		logger.info("로그인 실패 창 이동");
+		return "member/loginFail";
+	}
+		
 	//로그인 폼 이동
 	@RequestMapping(value="loginForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String naverLogin(Model model, HttpSession session) {
 		logger.info("로그인 폼");
+	
 		
 		//1)네이버 로그인 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
@@ -625,5 +631,62 @@ public class MemberController {
 		return "member/pwFindResult";
 	}
 	
+	@RequestMapping(value="myPage", method = RequestMethod.GET)
+	public String myPage(HttpSession session, Model model) {
+		logger.info("마이 페이지 이동");
+		
+		String member_id = (String)session.getAttribute("member_id");
+		Member member = dao.memberInfoById(member_id);
+		model.addAttribute("info", member);
+		
+		return "member/myPage";
+	}
 	
+	@RequestMapping(value="pwUpdate", method = RequestMethod.POST)
+	public String pwUpdate(Member member, HttpSession session) {
+		logger.info("비밀번호 변경");
+			
+		int cnt = dao.pwUpdate(member);
+		if(cnt == 0) {
+			logger.info("비밀번호 업데이트 실패");
+			session.setAttribute("msg4", "fail");
+			return "redirect:/member/pwUpdateResult";
+		}
+		else {	
+			logger.info("비밀번호 업데이트 성공");
+			session.setAttribute("msg4", "success");
+		}
+		return "redirect:/member/pwUpdateResult";
+	}
+	
+	@RequestMapping(value="pwUpdateResult", method = RequestMethod.GET)
+	public String pwUpdateResult() {
+		logger.info("비밀번호 수정 결과");
+		return "member/pwUpdateResult";
+	}
+	
+	
+	@RequestMapping(value="deleteMemberForm", method = RequestMethod.GET)
+	public String deleteMemberForm(Model model, HttpSession session) {
+		logger.info("회원 탈퇴 폼 이동");
+		//String member_id = (String)session.getAttribute("member_id");
+		//model.addAttribute("info", member_id);
+		return "member/deleteMemberForm";
+	}
+	
+	@RequestMapping(value="deleteMember", method = RequestMethod.POST)
+	public String deleteMember(Member member, HttpSession session){
+		logger.info("회원 탈퇴");
+		
+		
+		int cnt = dao.memberDeletion(member);
+		if(cnt == 0) {
+			logger.info("회원 탈퇴 실패");
+		}
+		logger.info("회원 탈퇴 성공");
+		
+		session.removeAttribute("member_id");
+			
+		return "redirect:/";
+	}
 }
