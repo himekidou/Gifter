@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
 
 	function formCheck(){
@@ -38,30 +41,59 @@
 		width: 1510px;
  	}
 </style>
+<style type="text/css">
+ html, body{width:100%;height:100%;}
+ #setting{width:300px;height:200px;position:absolute;left:50%;top:50%;margin:-100px 0 0 -150px; }
+</style>
 </head>
 <body>	
-	<form action="signup" method="post" id="form">
-		<div id="title">
-			<h1>Sign up</h1>
-		</div>
-		<table style="margin-left: auto; margin-right: auto; text-align: center;">	
-		<tr>
-			<th>ID</th>
-			<td><input type="text" placeholder="ID (3~10글자) " id="member_id" name="member_id"><br/></td>
-		</tr>
-		<tr>
-			<th>password</th>
-			<td><input type="password" placeholder="password (3~10글자) " id="member_pw" name="member_pw"><br/></td> 
-		</tr>
-		<tr>
-			<th>e-mail</th>
-			<td><input type="email" placeholder="e-mail (인증받을 이메일) " id="member_email" name="member_email"></td>
-		</tr>
-		<tr>
-			<td><input type="submit" id="btn1 "value="가입" onclick="return formCheck();"></td>	
-			<td><a href="<c:url value="/"/>"><input type="button" id="btn2" value="취소"></a></td>
-		</tr>		
-		</table>		
-	</form>	
+	<br>
+	<div class="container">
+		<ul class="nav justify-content-end">
+    		<li class="nav-item">
+      			<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    		</li>
+    		<li class="nav-item">
+      			<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    		</li>
+    		<li class="nav-item">
+     				<a class="nav-link" href="/member/loginForm">Login</a>
+    		</li>
+    		<li class="nav-item">
+      			<a class="nav-link " href="/category/bestForm">Best</a>
+    		</li>
+    		<li class="nav-item">
+      			<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    		</li>
+  		</ul>	
+	</div>
+
+
+	<div id="setting">
+	<div class="text-center">
+		<h2>Sign Up</h2>	
+	</div>
+	<div  class="d-flex justify-content-center align-items-center ">
+  		<form action="signup" method="post">
+  			<div class="form-group"> 			
+      			<label for="id">ID</label>    		
+      			<input type="text" class="form-control" placeholder="3 ~ 10 글자" id="member_id" name="member_id" style="width:250px; height:25px; font-size:18px;">		
+    		</div>			
+    		<div class="form-group">
+      			<label for="pwd">Password</label>
+      			<input type="password" class="form-control" placeholder="3 ~ 10 글자" id="member_pw" name="member_pw" style="width:250px; height:25px; font-size:18px;">
+    		</div>
+    		<div class="form-group"> 			
+      			<label for="email">Email</label>    		
+      			<input type="email" class="form-control" placeholder="인증받을 이메일" id="member_email" name="member_email" style="width:250px; height:25px; font-size:18px;">		
+    		</div>	
+    		<div class="form-group text-center">
+    			<input type="submit" class="btn btn-primary" id="btn1 "value="가입" onclick="return formCheck();">  			
+    			&emsp; 
+    			<a href="<c:url value="/"/>"><input type="button" class="btn btn-danger" id="btn2" value="취소"></a>   			 		
+    		</div>
+  		</form>
+	</div>
+	</div>
 </body>
 </html>

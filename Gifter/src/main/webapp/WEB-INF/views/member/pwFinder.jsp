@@ -30,7 +30,8 @@
 </head>
 <body>
 	<h3>비밀번호 찾기</h3>
-	가입할 때 입력한 아이디와 이메일을 적어 주세요 <br/><br/>
+	가입할 때 입력한 아이디와 이메일을 적어 주세요 <br/>
+	이메일로 임시 비밀번호를 보내 드립니다 ! <br/><br/>
 	 <form action="pwFind" method="post">
 	 	<table>
 	 	<tr>

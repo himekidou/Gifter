@@ -32,8 +32,7 @@
 	<!--  interceptor 적용 -->
  	<interceptors> 
  		<interceptor> 
- 			<mapping path="/member/beforeReg"/>
- 			<mapping path="/member/callback"/>		
+ 			<mapping path="/member/deleteMemberForm"/>	
  			<beans:ref bean="LoginInterceptor"/> 
 		</interceptor>
  	</interceptors> 

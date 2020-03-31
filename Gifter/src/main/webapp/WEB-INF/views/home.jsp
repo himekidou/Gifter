@@ -17,49 +17,79 @@
 		return true;
 	}
 </script>
-<style type="text/css">
-	
-</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
 </head>
 <body>
-	<h1>GIFTER</h1>
 	 <c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
-	 		환영합니다. ${sessionScope.member_id}님 <br/><br/>
-	 		<a href="<c:url value="/"/>">home</a>
-	 		&nbsp;
-	 		<a href="member/logout">logout</a>
-			&nbsp;
-			<a href="member/myPage">My Page</a>
-			&nbsp;
-	 		<a href="category/bestForm">best</a>
-			&nbsp;
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+					<li class="nav-item">
+      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+    				</li>
+					<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Log Out</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+				</ul>	
+			</div>
+			
 	 		<br/> 
 	 		<br/> 		
-	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
-	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="인스타그램 ID 입력">
-	 			<input type="submit" id="btn1" value="검색">	
-	 		</form>		 		
+	 		
+	 		<div class="d-flex justify-content-center align-items-center " style="height:300px">		
+	 			<form action="taker/search" method="get" onsubmit="return formCheck();">
+	 				<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px;">
+	 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
+	 			</form>	
+	 		</div>	 		
 	 		<br/>
+	 		
 	 	</c:when>
 	 	<c:otherwise>
-	 		<a href="<c:url value="/"/>">home</a>
-	 		&nbsp;
-	 		<a href="member/signupForm">sign up</a>
-			&nbsp;
-			<a href="member/loginForm">login</a>
-			&nbsp;
-			<a href="category/bestForm">best</a>
-			&nbsp;
-			<a href="category/viewCategory">viewCategory</a>
-			&nbsp;		
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+    				<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+  				</ul>	
+			</div>
+			
 			<br/>
 			<br/>
-			<div id="instaSearch">
-	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
-	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O">
-	 			<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
-	 		</form>	
+					
+			<div class="d-flex justify-content-center align-items-center " style="height:300px">		
+	 			<form action="taker/search" method="get" onsubmit="return formCheck();">
+	 				<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px;">
+	 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
+	 			</form>	
 	 		</div>
 	 		<br/>	 						
 	 	</c:otherwise>

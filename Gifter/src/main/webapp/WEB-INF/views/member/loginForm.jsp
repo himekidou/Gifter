@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>  -->
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 
 <style type="text/css">
 	#title, #loginForm, #naver_id_login, #google_id_login, #kakao_id_login, #question, #find, #loginFail{
@@ -49,9 +52,7 @@
 </script>
 </head>
 <body>
-	<div id="title">
-	<h1>Login Form</h1>
-	</div>	
+	
 	<c:choose>
 		<c:when test="${member_id != null}">
 			<c:if test="${member_id != null}">
@@ -60,7 +61,10 @@
 			</c:if>	
 				<h3><a href="/">메인 이동</a></h3>
 		</c:when>	
-		<c:otherwise>		
+		<c:otherwise>	
+			<div id="title">
+					<h1>Login</h1>
+				</div>		
 			<form action="/member/login" method="post" name="frm" style="width:470px;">
 				<div id="loginForm">				
 					<input type="text" name="member_id" id="member_id" class="w3-input w3-border" placeholder="ID"> <br>

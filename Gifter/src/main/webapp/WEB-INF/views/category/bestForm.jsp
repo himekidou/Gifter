@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>best</title>
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script>	
 	$(function(){			
 		$("#age, #age_range, #gender").mouseup(function(){
@@ -24,37 +26,40 @@
 			}				
 		});
 
-		
-// 		$("#ctList").click(function(){
-// 			var age = $('select[name=age]').val();
-// 			var age_range = $('select[name=age_range]').val();
-// 			var gender = $('select[name=gender]').val();
-
-// 			//age != 10 && age != 20 && age != 30 && age != 40
-// 			//age_range != 10 && age_range != 5
-// 			//gender != 0 && gender != 1
-			
-			
-// 			if(age == "not"){
-// 				alert("나이를 선택해주세요");
-// 				return false;
-// 			}
-			
-// 			if(age_range == "not"){
-// 				alert("나이대를 선택해주세요");
-// 				return false;
-// 			}
-			
-// 			if(gender == "not"){
-// 				alert("성별을 선택해주세요");
-// 				return false;
-// 			}
-// 			return true;			
-// 		});		
 	});
 </script>
 </head>
 <body>
+	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+	 		<a href="<c:url value="/"/>">home</a>
+	 		&nbsp;
+	 		<a href="member/logout">logout</a>
+			&nbsp;
+			<a href="member/myPage">My Page</a>
+			&nbsp;
+	 		<a href="category/bestForm">best</a>
+			&nbsp;
+	 		<br/> 
+	 		<br/> 					
+	 		<br/>
+	 	</c:when>
+	 	<c:otherwise>
+	 		<a href="<c:url value="/"/>">home</a>
+	 		&nbsp;
+	 		<a href="member/signupForm">sign up</a>
+			&nbsp;
+			<a href="member/loginForm">login</a>
+			&nbsp;
+			<a href="category/bestForm">best</a>
+			&nbsp;
+			<a href="category/viewCategory">viewCategory</a>
+			&nbsp;		
+			<br/>	
+	 		<br/>	 						
+	 	</c:otherwise>
+	 </c:choose>
+
 	<form action="categoryList" method="post" id="ctForm" onsubmit="return formCheck();">
 		<table id="ctTable">
 			<tr>
