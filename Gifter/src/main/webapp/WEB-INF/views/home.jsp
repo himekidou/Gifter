@@ -34,9 +34,6 @@
       					<a class="nav-link" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="/member/logout">Log Out</a>
-    				</li>
-    				<li class="nav-item">
      				 	<a class="nav-link" href="/member/myPage">My Page</a>
     				</li>
     				<li class="nav-item">
@@ -45,13 +42,15 @@
     				<li class="nav-item">
       					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
     				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Logout</a>
+    				</li>
 				</ul>	
 			</div>
 			
 	 		<br/> 
-	 		<br/> 		
-	 		
-	 		<div class="d-flex justify-content-center align-items-center " style="height:300px">		
+	 		<br/> 			
+	 		<div class="d-flex justify-content-center align-items-center " style="height:450px">		
 	 			<form action="taker/search" method="get" onsubmit="return formCheck();">
 	 				<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px;">
 	 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
@@ -85,7 +84,7 @@
 			<br/>
 			<br/>
 					
-			<div class="d-flex justify-content-center align-items-center " style="height:300px">		
+			<div class="d-flex justify-content-center align-items-center " style="height:450px">		
 	 			<form action="taker/search" method="get" onsubmit="return formCheck();">
 	 				<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px;">
 	 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">

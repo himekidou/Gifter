@@ -34,17 +34,7 @@
 	}
 </script>
 
-<style type="text/css">
- 	#title, #form {
- 		margin: 0 auto;
-		text-align: center;
-		width: 1510px;
- 	}
-</style>
-<style type="text/css">
- html, body{width:100%;height:100%;}
- #setting{width:300px;height:200px;position:absolute;left:50%;top:50%;margin:-100px 0 0 -150px; }
-</style>
+
 </head>
 <body>	
 	<br>
@@ -67,8 +57,7 @@
     		</li>
   		</ul>	
 	</div>
-
-
+	<br/><br/><br/><br/>
 	<div id="setting">
 	<div class="text-center">
 		<h2>Sign Up</h2>	
@@ -95,5 +84,6 @@
   		</form>
 	</div>
 	</div>
+	
 </body>
 </html>

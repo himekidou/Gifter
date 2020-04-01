@@ -20,47 +20,84 @@
 				if($("#ctList2").length == 1){
 					return false;
 				}
-				var str = "<input type='submit' id='ctList2' value='next'>"
+				var str = "<input type='submit' id='ctList2' value='next' onclick='return formCheck();'>"
 				//버튼 만들기
 				$("#last").append(str); //				
-			}				
+			}		
+				
 		});
-
 	});
+
+	function formCheck(){	
+		var age = $('select[name=age]').val();
+		var age_range = $('select[name=age_range]').val();
+		var gender = $('select[name=gender]').val();
+
+		if(age == 'not' || age_range == 'not' || gender == 'not'){
+			alert("3개 모두 선택해주세요.");
+			return false;
+		}
+		return true;
+	}
 </script>
 </head>
 <body>
 	<c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
-	 		<a href="<c:url value="/"/>">home</a>
-	 		&nbsp;
-	 		<a href="member/logout">logout</a>
-			&nbsp;
-			<a href="member/myPage">My Page</a>
-			&nbsp;
-	 		<a href="category/bestForm">best</a>
-			&nbsp;
-	 		<br/> 
-	 		<br/> 					
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+					<li class="nav-item">
+      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+    				</li>
+					<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Logout</a>
+    				</li>
+				</ul>	
+			</div>
+			<br/>	
 	 		<br/>
 	 	</c:when>
 	 	<c:otherwise>
-	 		<a href="<c:url value="/"/>">home</a>
-	 		&nbsp;
-	 		<a href="member/signupForm">sign up</a>
-			&nbsp;
-			<a href="member/loginForm">login</a>
-			&nbsp;
-			<a href="category/bestForm">best</a>
-			&nbsp;
-			<a href="category/viewCategory">viewCategory</a>
-			&nbsp;		
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+    				<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+  				</ul>	
+			</div>	
 			<br/>	
 	 		<br/>	 						
 	 	</c:otherwise>
 	 </c:choose>
-
-	<form action="categoryList" method="post" id="ctForm" onsubmit="return formCheck();">
+	
+	<div class="d-flex justify-content-center align-items-center " style="height:300px">		
+	<form action="categoryList" method="post" id="ctForm">
 		<table id="ctTable">
 			<tr>
 				<th>AGE</th>
@@ -104,11 +141,8 @@
 			</tr>		
 		</table>
 	</form>
-	<div id="">
-		
+	<br/>
+	<br/>
 	</div>
-	<br/>
-	<br/>
-	<a href="<c:url value="/"/>"><input type="button" value="메인 페이지로 이동"></a></body>
 </body>
 </html>

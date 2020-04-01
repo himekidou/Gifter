@@ -6,22 +6,90 @@
 <head>
 <meta charset="UTF-8">
 <title>카테고리 리스트</title>
-
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<style>
+	#list{
+		width:300px;
+		height:300px;
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin:-100px 0 0 -150px;  
+	}
+</style>
 
 </head>
 <body>
-	<h1>
-	순위(1~10위) 
-	</h1>
+	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+					<li class="nav-item">
+      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+    				</li>
+					<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Logout</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+				</ul>	
+			</div>
+			<br/>	
+	 		<br/>
+	 	</c:when>
+	 	<c:otherwise>
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+    				<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+  				</ul>	
+			</div>	
+			<br/>	
+	 		<br/>	 						
+	 	</c:otherwise>
+	 </c:choose>
+
+	<div id="list" class="">
+	<h2>1~10위</h2>
 	<form>
-		<table border="1">
+		<table class="table">
+			<thead>
 			<tr>
-				<th>카테고리 이름</th>
-				<th>총 횟수</th>
+				<th>카테고리 </th>
+				<th>횟수</th>
 				<th>나이</th>
 				<th>성별</th>
 			</tr>
+			</thead>
 			<c:forEach  var="item" items="${list}">
+				<tbody>
 				<tr>
 					<td>${item.cat_name}</td>
 					<td>${item.cat_incre}</td>	
@@ -34,10 +102,11 @@
 						여자
 					</c:if>	
 					</td>
-				</tr>		
+				</tr>	
+				</tbody>	
 			</c:forEach>
 		</table>
 	</form>
-	<br/>
-	<a href="<c:url value="/"/>"><input type="button" value="메인 페이지로 이동"></a></body>
+	</div>
+	
 </html>
