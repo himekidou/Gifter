@@ -25,7 +25,7 @@
 	<br/>
 	<h3>이메일 인증을 하면</h3> 
 	<h3>로그인이 가능합니다</h3>
-	<a href="/">메인으로 이동</a>
+	<a href="/" class="btn btn-outline-info">메인으로 이동</a>
 	</div>
 </body>
 </html>

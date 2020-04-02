@@ -47,8 +47,7 @@
     				</li>
 				</ul>	
 			</div>
-			<br/>	
-	 		<br/>
+			
 	 	</c:when>
 	 	<c:otherwise>
 	 		<br/>
@@ -71,26 +70,26 @@
     				</li>
   				</ul>	
 			</div>	
-			<br/>	
-	 		<br/>	 						
+				 						
 	 	</c:otherwise>
 	 </c:choose>
-
-	<div id="list" class="">
-	<h2>1~10위</h2>
+	<br/><br/><br/><br/>
+	<div id="list" class="d-flex justify-content-center align-items-center ">
 	<form>
-		<table class="table">
+		<table class="table" style="width:350px;">
 			<thead>
 			<tr>
+				<th>순위</th>
 				<th>카테고리 </th>
 				<th>횟수</th>
 				<th>나이</th>
 				<th>성별</th>
 			</tr>
 			</thead>
-			<c:forEach  var="item" items="${list}">
+			<c:forEach  var="item" items="${list}" varStatus="status">
 				<tbody>
 				<tr>
+					<td>${status.count}</td>
 					<td>${item.cat_name}</td>
 					<td>${item.cat_incre}</td>	
 					<td>${item.info_age}</td>

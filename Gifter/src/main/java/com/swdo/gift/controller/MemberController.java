@@ -669,24 +669,34 @@ public class MemberController {
 	@RequestMapping(value="deleteMemberForm", method = RequestMethod.GET)
 	public String deleteMemberForm(Model model, HttpSession session) {
 		logger.info("회원 탈퇴 폼 이동");
+		
+		//session.removeAttribute("deleteFail");
+		
 		//String member_id = (String)session.getAttribute("member_id");
 		//model.addAttribute("info", member_id);
 		return "member/deleteMemberForm";
 	}
 	
 	@RequestMapping(value="deleteMember", method = RequestMethod.POST)
-	public String deleteMember(Member member, HttpSession session){
+	public String deleteMember(Member member, HttpSession session, Model model){
 		logger.info("회원 탈퇴");
 		
 		
 		int cnt = dao.memberDeletion(member);
 		if(cnt == 0) {
 			logger.info("회원 탈퇴 실패");
+			return "redirect:/member/deleteMemberFail";
 		}
 		logger.info("회원 탈퇴 성공");
 		
 		session.removeAttribute("member_id");
 			
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="deleteMemberFail", method = RequestMethod.GET)
+	public String deleteMemberFail() {
+		logger.info("회원 탈퇴 실패 창 이동");
+		return "member/deleteMemberFail";
 	}
 }

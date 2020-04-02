@@ -94,13 +94,14 @@
 	</div>
 	<div class="d-flex justify-content-center align-items-center ">
 	 <form action="idFind" method="post">
-	 	email &nbsp; 
-	 	<input type="text" id="member_email" name="member_email" placeholder="abc@gmail.com">
-	 	<br/><br/>
+	 	<div class="form-group">
+	 		<label for="email">Email</label> 
+	 		<input type="text" class="form-control" id="member_email" name="member_email" placeholder="abc@gmail.com">
+	 	</div>
 	 	<div class="form-group text-center">
-	 	<input type="submit" id="btn" class="btn btn-primary" value="확인">
-	 	&emsp;
-	 	<a href="<c:url value='/'/>"><input type="button" class="btn btn-danger" value="취소"></a>
+	 		<input type="submit" id="btn" class="btn btn-primary" value="확인">
+	 		&emsp;
+	 		<a href="<c:url value='/'/>"><input type="button" class="btn btn-danger" value="취소"></a>
 	 	</div>
 	 </form>
 	</div>
