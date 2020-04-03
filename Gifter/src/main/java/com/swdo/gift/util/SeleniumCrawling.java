@@ -51,15 +51,17 @@ public class SeleniumCrawling {
         
         driver = new ChromeDriver(option);
        
-        base_url = "https://shopping.naver.com/";
+        
     }
 
-    public HashMap<String, Object> crawl() {
+    public HashMap<String, Object> crawl(String age_range, String gender, String categoryName) {
         try {
         	// 쇼핑페이지 접근
+        	base_url = "https://shopping.naver.com/";
         	driver.get(base_url);
+        	String searchText = age_range + " " +gender+ " " + categoryName;
         	driver.findElement(By.name("query")).click();
-            driver.findElement(By.name("query")).sendKeys("20대 여성 신발");
+            driver.findElement(By.name("query")).sendKeys(searchText);
             driver.findElement(By.name("query")).sendKeys(Keys.ENTER);
             
             // 스크롤 이동
@@ -67,6 +69,7 @@ public class SeleniumCrawling {
             	Thread.sleep(100);
                 JavascriptExecutor jsx = (JavascriptExecutor)driver;
                 jsx.executeScript("window.scrollBy(0,1000)","");
+                
             }
             
             // 이미지 크롤링
@@ -125,5 +128,90 @@ public class SeleniumCrawling {
         
         return map;
         
+    }
+    
+    public ArrayList<String> InstaCrawl(String InstaID){
+    	
+    	base_url = "https://www.instagram.com/" + InstaID;
+    	driver.get(base_url);
+    	ArrayList<String> imgURL = new ArrayList<String>();
+    	
+    	try {
+    		
+    		
+    		for(int i = 0; i < 10; i++) {
+    			JavascriptExecutor jsx = (JavascriptExecutor)driver;
+    			jsx.executeScript("window.scrollTo(0, document.body.scrollHeight);","");   		
+            	Thread.sleep(500);
+    		}
+    		List<WebElement> urlList = driver.findElements(By.className("FFVAD"));
+    		for(int i = 0; i < urlList.size(); i++) {
+        		imgURL.add(urlList.get(i).getAttribute("src"));
+        	}
+    		System.out.println(urlList.size());
+    	}
+    	
+    	catch(Exception e) {
+        	e.printStackTrace();
+        }
+    	
+    	finally {
+            driver.close();
+        }
+    		
+            
+    	
+    	
+    	//for(int j = 0; j < imgNum; j++) {
+//    		List<WebElement> urlList = driver.findElements(By.className("FFVAD"));
+//    		for(int i = 0; i < urlList.size(); i++) {
+//        		tempURL.add(urlList.get(i).getAttribute("src"));
+//        	}
+//            if(imgURL.size() ==0) {
+//            	for(int i = 0; i < tempURL.size(); i++) {
+//            		imgURL.add(tempURL.get(i));
+//            		System.out.println(imgURL.get(i));
+//            	}
+//            }
+            
+//            else if(imgURL.size() > 0 && imgURL.size() < 50){
+//            	int tempURLSize = 0;
+//            	for(int i = 0; i < imgURL.size(); i++) {
+//            		int tempSize = 0;
+//                	for(int k = 0; k < tempURL.size(); k++) {
+//                		if(imgURL.get(i).equals(tempURL.get(k))) {             			
+//                			continue;
+//                		}
+//                		else {
+//                			tempURLSize = k;
+//                			tempSize++;
+//                		}
+//                	}
+//            		if(tempSize > 1) {
+//            			break;
+//            		}
+//                }
+//            	for(int k = tempURLSize; k < tempURL.size(); k++) {
+//            		if(imgURL.size() < 50) {
+//            			imgURL.add(tempURL.get(k));
+//            			System.out.println("in"+tempURL.get(k));
+//            		}
+//            		else {
+//            			break;
+//            		}
+//            	}
+//            	tempURL.clear();
+//            }
+//            else {
+//            	driver.close();
+//            	return imgURL;
+//            }
+            //j = imgURL.size();
+            
+            
+            
+    	//} 	
+    	
+    	return imgURL;
     }
 }
