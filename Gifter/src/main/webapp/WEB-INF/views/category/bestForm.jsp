@@ -20,7 +20,7 @@
 				if($("#ctList2").length == 1){
 					return false;
 				}
-				var str = "<input type='submit' id='ctList2' value='next' onclick='return formCheck();'>"
+				var str = "<input type='submit' id='ctList2' class='btn btn-secondary' value='next >' onclick='return formCheck();'>"
 				//버튼 만들기
 				$("#last").append(str); //				
 			}		
@@ -111,30 +111,33 @@
 			<tr>
 				<td>
 					<select name="age" id="age" required="required">
-						<option value="not">Choose The Age of The Recipient.</option>
+						<option value="not">Choose The Age of The Recipient</option>
 						<option value="10">0 ~ 9</option>
 						<option value="20">10 ~ 19</option>
 						<option value="30">20 ~ 29</option>
 						<option value="40">30 ~ 39</option>
-					</select>			
+					</select>	
+					&emsp;		
 				</td>
 				<td>
 				</td>
 				<td>
 					<select name="age_range" id="age_range" required="required">
-						<option value="not">Choose An Age Group.</option>
+						<option value="not">Choose An Age Group</option>
 						<option value="10">Early</option>
 						<option value="5">Late</option>
-					</select>			
+					</select>
+					&emsp;			
 				</td>
 				<td>
 				</td>
 				<td >
 					<select name="gender" id="gender" required="required">					
-						<option value="not">Please Choose Your Gender.</option>
+						<option value="not">Please Choose Your Gender</option>
 						<option value="0">Male</option>
 						<option value="1">Female</option>
 					</select>	
+					&emsp;
 				</td>
 				<td id="last">
 				</td>

@@ -130,8 +130,6 @@
 		<div id="next">
 	
 		</div>
-	</div>
-	
-	
+	</div>	
 </body>
 </html>

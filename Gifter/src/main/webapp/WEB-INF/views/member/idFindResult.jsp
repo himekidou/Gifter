@@ -71,12 +71,11 @@
 	 	</c:otherwise>
 	 </c:choose>
 
-
-
 	<c:choose>
 		<c:when test="${msg2 == 'fail'}">
 			<div id="setting" class="text-center">
-				<h4>가입한 아이디가 존재하지 않습니다.</h4>
+				<h4>가입한 아이디가 </h4>
+				<h4>존재하지 않습니다</h4>
 				<br/>
 				<a href="<c:url value="/"/>"><input type="button" class="btn btn-outline-info" value="메인 페이지로 이동"></a>
 			</div>

@@ -94,53 +94,54 @@
 				<h3>'${member_id}'님 환영합니다! </h3>
 				<br/>	
 				<h3><a href="/">메인 이동</a></h3>		
-				</div>
-				
+				</div>			
 			</c:if>				
 		</c:when>	
 		<c:otherwise>
+		
 		<br/><br/><br/><br/>	
+		
 		<div id="setting">
-		<div class="text-center">
-			<h2>Login</h2>	
-		</div>
-		<div class="d-flex justify-content-center align-items-center ">
-  			<form action="/member/login" method="post">
-  				<div class="form-group"> 			
-      				<label for="id">ID</label>    		
-      				<input type="text" class="form-control" placeholder="ID" id="member_id" name="member_id" style="width:250px; height:25px; font-size:18px;">		
-    			</div>			
-    			<div class="form-group">
-      				<label for="pwd">Password</label>
-      				<input type="password" class="form-control" placeholder="Password" id="member_pw" name="member_pw" style="width:250px; height:25px; font-size:18px;">
-    			</div> 
-    			<div class="form-group text-center">
-    				<input type="submit" class="btn btn-primary" id="btn1 "value="로그인" onclick="return formCheck();">  			
-    				&emsp; &nbsp;
-    				<a href="<c:url value="/"/>"><input type="button" class="btn btn-danger" id="btn2" value="취소"></a>   			 		
-    			</div>
-  			</form>
-		</div>
-		<div class="text-center">
-			<input type="button" class="btn btn-secondary"  id="idFind" value="아이디 찾기">
-			&emsp;
-			<input type="button"  class="btn btn-secondary" id="pwFind" value="비밀번호 찾기">					
-		</div>	
-		<br/>
-		<!-- 네이버 로그인 창으로 이동 -->
-			<div id="naver_id_login" class="text-center"><a href="${naver_url}">
-			<img width="190" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-			<br/>
-			<!-- 구글 로그인 화면으로 이동 시키는 URL -->
-			<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
-			<div id="google_id_login" class="text-center"><a href="${google_url}"><img width="190" src="${pageContext.request.contextPath}/resources/btn_google_signin_dark_focus_web@2x.png"/></a></div>  
-			<br/>	
-			<!--카카오 로그인 창으로 이동  -->
-			<div id="kakao_id_login" class="text-center"> 
-				<a href="${kakao_url}"> 
-				<img width="190" src="${pageContext.request.contextPath}/resources/kakao_account_login_btn_medium_narrow.png" /></a> 
+			<div class="text-center">
+				<h2>Login</h2>	
+			</div>
+			<div class="d-flex justify-content-center align-items-center">
+  				<form action="/member/login" method="post">
+  					<div class="form-group"> 			
+      					<label for="id">ID</label>    		
+      					<input type="text" class="form-control" placeholder="ID" id="member_id" name="member_id" style="width:250px; height:25px; font-size:18px;">		
+    				</div>			
+    				<div class="form-group">
+      					<label for="pwd">Password</label>
+      					<input type="password" class="form-control" placeholder="Password" id="member_pw" name="member_pw" style="width:250px; height:25px; font-size:18px;">
+    				</div> 
+    				<div class="form-group text-center">
+    					<input type="submit" class="btn btn-primary" id="btn1 "value="로그인" onclick="return formCheck();">  			
+    					&emsp; &nbsp;
+    					<a href="<c:url value="/"/>"><input type="button" class="btn btn-danger" id="btn2" value="취소"></a>   			 		
+    				</div>
+  				</form>
+			</div>
+			<div class="text-center">
+				<input type="button" class="btn btn-secondary"  id="idFind" value="아이디 찾기">
+				&emsp;
+				<input type="button"  class="btn btn-secondary" id="pwFind" value="비밀번호 찾기">					
 			</div>	
-	</div>
+			<br/>
+			<!-- 네이버 로그인 창으로 이동 -->
+				<div id="naver_id_login" class="text-center"><a href="${naver_url}">
+				<img width="190" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+				<br/>
+				<!-- 구글 로그인 화면으로 이동 시키는 URL -->
+				<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
+				<div id="google_id_login" class="text-center"><a href="${google_url}"><img width="190" src="${pageContext.request.contextPath}/resources/btn_google_signin_dark_focus_web@2x.png"/></a></div>  
+				<br/>	
+				<!--카카오 로그인 창으로 이동  -->
+				<div id="kakao_id_login" class="text-center"> 
+					<a href="${kakao_url}"> 
+					<img width="190" src="${pageContext.request.contextPath}/resources/kakao_account_login_btn_medium_narrow.png" /></a> 
+				</div>	
+		</div>
 		</c:otherwise>
 	</c:choose>
 	

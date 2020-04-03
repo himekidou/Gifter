@@ -6,12 +6,78 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 실패</title>
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<style>
+	#setting {
+		width:300px;
+		height:300px;
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin:-100px 0 0 -150px;  
+	}
+</style>
 </head>
 <body>
-	로그인에 실패 했습니다. <br/>
-	다시 로그인 해 주세요. <br/>
-	<a href="<c:url value='/member/loginForm'/>"><input type="button" value="로그인 하기"></a>
-	<a href="<c:url value='/'/>"><input type="button" value="취소"></a>
-	<br/>
+	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+					<li class="nav-item">
+      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+    				</li>
+					<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Logout</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+				</ul>	
+			</div>
+	 	</c:when>
+	 	<c:otherwise>
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+    				<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+  				</ul>	
+			</div>						
+	 	</c:otherwise>
+	 </c:choose>
+	
+	<div id="setting" class="text-center">
+		<h4>로그인에 실패 했습니다 </h4>
+		<h4>다시 로그인 해 주세요 </h4><br/>
+		<a href="<c:url value='/member/loginForm'/>"><input type="button" class="btn btn-primary" value="로그인"></a>
+		&emsp;
+		<a href="<c:url value='/'/>"><input type="button" class="btn btn-danger" value="취소"></a>
+	</div>
+	
 </body>
 </html>

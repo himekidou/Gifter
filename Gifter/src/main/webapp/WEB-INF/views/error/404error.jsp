@@ -21,9 +21,63 @@
 </style>
 </head>
 <body>
+	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+					<li class="nav-item">
+      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+    				</li>
+					<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Logout</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+				</ul>	
+			</div>
+			<br/>	
+	 		<br/>
+	 	</c:when>
+	 	<c:otherwise>
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-end">
+    				<li class="nav-item">
+      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    				</li>
+    				<li class="nav-item">
+     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/bestForm">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+  				</ul>	
+			</div>	
+			<br/>	
+	 		<br/>	 						
+	 	</c:otherwise>
+	 </c:choose>
+	 
 	<div id="setting" class="text-center">
 		<h5>페이지가 존재하지 않습니다</h5> <br/>
-		<a href="<c:url value="/"/>"><input type="button" class="btn btn-outline-info" value="메인 페이지로 이동"></a>
+		<a href="<c:url value="/"/>"><input type="button" class="btn btn-outline-info" value="메인 페이지 이동"></a>
 	</div>
 </body>
 </html>

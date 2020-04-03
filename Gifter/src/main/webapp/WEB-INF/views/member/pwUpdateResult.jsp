@@ -90,7 +90,7 @@
 				<h4>${member_id}님의</h4>
 				<h4>비밀번호가 수정 됐습니다</h4>
 				<br/>
-				<a href="<c:url value="/"/>"><input type="button" class="btn btn-success" value="메인 이동"></a>
+				<a href="<c:url value="/"/>"><input type="button" class="btn btn-outline-info" value="메인 이동"></a>
 			</div>
 		</c:when>
 		<c:otherwise>

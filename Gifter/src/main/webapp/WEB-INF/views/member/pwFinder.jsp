@@ -82,28 +82,28 @@
 	<br/><br/><br/><br/><br/><br/>
 	
 	<div id="setting">
-	<div class="text-center" >
-	<h3>비밀번호 찾기</h3>
-	가입할 때 입력한 아이디와 이메일을 적어 주세요 <br/>
-	이메일로 임시 비밀번호를 보내 드립니다 ! <br/><br/>
-	</div>
-	<div class="d-flex justify-content-center align-items-center ">
-	 <form action="pwFind" method="post">
-	 	<div class="form-group"> 
-	 		<label for="id">ID</label>   
-	 		<input type="text" class="form-control" id="member_id" name="member_id" placeholder="가입한 아이디" style="width:250px; height:25px; font-size:16px;">
+		<div class="text-center" >
+			<h3>비밀번호 찾기</h3>
+			가입할 때 입력한 아이디와 이메일을 적어 주세요 <br/>
+			이메일로 임시 비밀번호를 보내 드립니다 ! <br/><br/>
+		</div>
+		<div class="d-flex justify-content-center align-items-center ">
+	 		<form action="pwFind" method="post">
+	 			<div class="form-group"> 
+	 				<label for="id">ID</label>   
+	 				<input type="text" class="form-control" id="member_id" name="member_id" placeholder="가입한 아이디" style="width:250px; height:25px; font-size:16px;">
+	 			</div>
+	 			<div class="form-group"> 
+	 				<label for="email">email</label> 
+	 				<input type="text" class="form-control" id="member_email" name="member_email" placeholder="abc@gmail.com" style="width:250px; height:25px; font-size:16px;">
+	 			</div>
+	 			<div class="form-group text-center">	
+	 				<input type="submit" class="btn btn-primary" id="btn" value="확인">
+	 				&emsp;
+	 				<a href="<c:url value='/'/>"><input type="button" class="btn btn-danger" value="취소"></a>	
+	 			</div>
+	 		</form>
 	 	</div>
-	 	<div class="form-group"> 
-	 		<label for="email">email</label> 
-	 		<input type="text" class="form-control" id="member_email" name="member_email" placeholder="abc@gmail.com" style="width:250px; height:25px; font-size:16px;">
-	 	</div>
-	 	<div class="form-group text-center">	
-	 		<input type="submit" class="btn btn-primary" id="btn" value="확인">
-	 		&emsp;
-	 		<a href="<c:url value='/'/>"><input type="button" class="btn btn-danger" value="취소"></a>	
-	 	</div>
-	 </form>
-	 </div>
 	 </div>
 </body>
 </html>

@@ -20,14 +20,36 @@
 </style>
 </head>
 <body>
+	 	<div class="container">
+			<ul class="nav justify-content-end">
+    			<li class="nav-item">
+      				<a class="nav-link" href="<c:url value="/"/>">Home</a>
+    			</li>
+    			<li class="nav-item">
+      				<a class="nav-link" href="/member/signupForm">Sign Up</a>
+    			</li>
+    			<li class="nav-item">
+     				 <a class="nav-link" href="/member/loginForm">Login</a>
+    			</li>
+    			<li class="nav-item">
+      				<a class="nav-link " href="/category/bestForm">Best</a>
+    			</li>
+    			<li class="nav-item">
+      				<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    			</li>
+  			</ul>	
+		</div>	
+		<br/>	
+	 	<br/>	 						
+	 	 
 	<div id="setting" class="text-center">
 		<h3>안녕하세요, ${param.member_id} 님</h3>
 		<br/>
-		<p>회원가입이 정상적으로 이루어 졌습니다.</p>
+		<p>회원가입이 정상적으로 이루어 졌습니다</p>
 		<br>
 		<p>로그인 하시면</p>
-		<p>모든 서비스를 이용하실 수 있습니다.</p>
-		<br> <a href="/member/loginForm">로그인 페이지로 이동하기</a>
+		<p>모든 서비스를 이용하실 수 있습니다</p>
+		<br> <a href="/member/loginForm" class="btn btn-outline-info">로그인</a>
 	</div>
 </body>
 </html>
