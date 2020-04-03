@@ -100,6 +100,11 @@ public class CrawlingController {
     	int[] num = new int[3];
     	for (int i = 0; i < 3; i++) {
     		num[i] = random.nextInt(srcs.size());
+    		for (int j = 0; j < i; j++) {
+    			if(num[i] == num[j]) {
+    				i--;
+    			}
+			}
     	}
     	// 상품 이미지 3개
     	String recomSrc1 = srcs.get(num[0]);
