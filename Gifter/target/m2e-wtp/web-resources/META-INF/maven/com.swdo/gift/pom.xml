@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.swdo</groupId>
 	<artifactId>gift</artifactId>
-	<name>Gifter_200320</name>
+	<name>Gifter</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -13,6 +13,7 @@
 		<org.aspectj-version>1.8.10</org.aspectj-version>
 		<org.slf4j-version>1.7.22</org.slf4j-version>
 	</properties>
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -253,6 +254,13 @@
 			<scope>test</scope>
 		</dependency>  
 		
+		<dependency>
+             <groupId>com.google.cloud</groupId>
+             <artifactId>google-cloud-vision</artifactId>
+             <version>1.97.0</version>
+          </dependency>
+        
+        
 			       
 	</dependencies>
     <build>

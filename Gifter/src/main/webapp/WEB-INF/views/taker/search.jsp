@@ -50,6 +50,15 @@
 		
 	})
 </script>
+
+<script type="text/javascript">
+function moveCategory(){
+	var age_range = "20대"
+	var gender = "여성"
+	var categoryName = "화장품"
+	location.href = "/category/viewCategory?age_range="+age_range+"&gender="+gender+"&categoryName="+categoryName;
+}
+</script>
 </head>
 <body>
 	여기는 검색 결과인 카테고리별 순위 10개에 대한 정보를 보여주는 곳입니다.<br/>
@@ -63,7 +72,7 @@
 				<th>3위</th>			
 			</tr>	
 			<tr>
-				<td>화장품</td>
+				<td><a href="javascript:moveCategory();">화장품</a></td>
 				<td>스마트폰</td>
 				<td>옷</td>
 			</tr>	

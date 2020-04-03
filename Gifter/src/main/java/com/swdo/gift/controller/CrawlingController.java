@@ -30,10 +30,11 @@ public class CrawlingController {
     
     @RequestMapping(value = "/viewCategory", method = RequestMethod.GET)
 	public String selenium2(Model model, HttpSession session
+			, String age_range, String gender, String categoryName
 			, @RequestParam(value="currentPage", defaultValue="1") int currentPage) throws Exception {
 		
     	SeleniumCrawling selCrawl = new SeleniumCrawling();
-		HashMap<String, Object> map = selCrawl.crawl();
+		HashMap<String, Object> map = selCrawl.crawl(age_range,gender,categoryName);
 		
 		// 크롤링한 값 가져옴
 		ArrayList<String> srcs = (ArrayList<String>) map.get("srcs");
@@ -128,6 +129,8 @@ public class CrawlingController {
     	
    		return "/category/recommendList";
    	}
+    
+    
     
     
 }
