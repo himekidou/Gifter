@@ -101,7 +101,7 @@
 		
 		<br/><br/><br/><br/>	
 		
-		<div id="setting">
+		<div id="setting" class="container border  border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:370px; height:370px;">
 			<div class="text-center">
 				<h2>Login</h2>	
 			</div>
@@ -123,12 +123,12 @@
   				</form>
 			</div>
 			<div class="text-center">
-				<input type="button" class="btn btn-secondary"  id="idFind" value="아이디 찾기">
+				<input type="button" class="btn btn-outline-secondary"  id="idFind" value="아이디 찾기">
 				&emsp;
-				<input type="button"  class="btn btn-secondary" id="pwFind" value="비밀번호 찾기">					
+				<input type="button"  class="btn btn-outline-secondary" id="pwFind" value="비밀번호 찾기">					
 			</div>	
-			<br/>
 			
+			<br/>
 			<div class="text-center">
 				<!-- 네이버 로그인 창으로 이동 -->
 				<a href="${naver_url}">

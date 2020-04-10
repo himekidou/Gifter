@@ -58,7 +58,7 @@
   		</ul>	
 	</div>
 	<br/><br/><br/><br/>
-	<div id="setting">
+	<div id="setting" class="container border  border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:350px; height:350px;">
 	<div class="text-center">
 		<h2>Sign Up</h2>	
 	</div>

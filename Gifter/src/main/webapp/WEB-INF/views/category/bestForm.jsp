@@ -20,7 +20,7 @@
 				if($("#ctList2").length == 1){
 					return false;
 				}
-				var str = "<input type='submit' id='ctList2' class='btn btn-secondary' value='next >' onclick='return formCheck();'>"
+				var str = "<input type='submit' id='ctList2' class='btn btn-secondary pull-right' value='next >' onclick='return formCheck();'>"
 				//버튼 만들기
 				$("#last").append(str); //				
 			}		
@@ -96,7 +96,7 @@
 	 	</c:otherwise>
 	 </c:choose>
 	
-	<div class="d-flex justify-content-center align-items-center " style="height:300px">		
+	<div class="d-flex justify-content-center container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:800px; height:200px;">		
 	<form action="categoryList" method="post" id="ctForm">
 		<table id="ctTable">
 			<tr>
@@ -105,7 +105,6 @@
 				<th>AGE RANGE</th>
 				<th></th>
 				<th>GENDER</th>
-				<th></th>
 				<th></th>
 			</tr>
 			<tr>
@@ -139,13 +138,14 @@
 					</select>	
 					&emsp;
 				</td>
-				<td id="last">
-				</td>
-			</tr>		
+				<td>
+				</td>		
 		</table>
+		<br/>	
+		<div id="last" align="right">
+		
+		</div>
 	</form>
-	<br/>
-	<br/>
 	</div>
 </body>
 </html>
