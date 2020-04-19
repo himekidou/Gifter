@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+	<title>Home</title>	
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <script type="text/javascript">
@@ -19,79 +19,134 @@
 </script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-
+<style type="text/css">
+	
+	.box1 {
+  		background: white;
+  		grid-row : 1/3;
+	}
+	.box2 {
+  		background: #ff7f00;
+  		
+  		
+  		
+	}
+	.box3 {
+  		background: brown;
+  		
+	}
+	* {
+  		color: white;
+  		font-weight: bold;
+  		margin: 0;
+  		padding: 0;
+	}
+	.main {
+  		display: grid;
+  		grid-template-columns: 60% 40%;
+  		grid-template-rows: 70% 30%;			
+  		height: 100%; 
+  		width: 100%;			
+	}
+	
+</style>
 </head>
 <body>
-	 <c:choose>
+
+	 <div class="main">
+      <div class="box1">
+      
+        <c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
 	 		<br/>
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#" >${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link " href="<c:url value="/"/>" style="color: black;">Home</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+     				 	<a class="nav-link " href="/member/myPage" style="color: black; padding-right: 0">My Page</a>
     				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/bestForm">Best</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link" href="/member/logout">Logout</a>
-    				</li>
+    				
 				</ul>	
-			</div>
-			
-	 		<br/> 
-	 		<br/> 			
-	 		<div class="d-flex justify-content-center align-items-center " style="height:450px">		
-	 			<form action="taker/search" method="get" onsubmit="return formCheck();">
-	 				<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px;">
-	 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
-	 			</form>	
-	 		</div>	 		
-	 		<br/>
-	 		
+			</div>	
 	 	</c:when>
 	 	<c:otherwise>
 	 		<br/>
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black;">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm" style="color: black;">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link" href="/member/loginForm">Login</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/bestForm">Best</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0">Login</a>
     				</li>
   				</ul>	
-			</div>
-			
-			<br/>
-			<br/>
-					
-			<div class="d-flex justify-content-center align-items-center " style="height:450px">		
-	 			<form action="taker/search" method="get" onsubmit="return formCheck();">
-	 				<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px;">
-	 				<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
-	 			</form>	
-	 		</div>
-	 		<br/>	 						
+			</div>						
 	 	</c:otherwise>
-	 </c:choose>
+	 </c:choose>     
+        <br/><br/>    
+		<div class="d-flex justify-content-center align-items-center " style="height:450px">		
+	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
+	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O" style="width:500px; height:25px; font-size:18px; color: black;">
+	 			<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" width="18" height="18">
+	 		</form>	
+	 	</div>
+      </div>
+      
+      <div class="box2">
+      	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-start">				
+    				<li class="nav-item" style="padding-left: 0">
+      					<a class="nav-link " href="/category/bestForm" style="color: black; padding-left: 0;">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/category/viewCategory" style="color: black;">viewCategory</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link " href="/member/logout" style="color: black;">Logout</a>
+    				</li>
+				</ul>	
+			</div>	
+	 	</c:when>
+	 	<c:otherwise>
+	 		<br/>
+	 		<div class="container">
+				<ul class="nav justify-content-start">
+    				
+    				<li class="nav-item">
+      					<a class="nav-link text-body" href="/category/bestForm" style="color: black; padding-left: 0;">Best</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link text-body" href="/category/viewCategory" style="color: black;">viewCategory</a>
+    				</li>
+  				</ul>	
+			</div>						
+	 	</c:otherwise>
+	 </c:choose>   
+        
+        <div class="text-left" style="font-size: 40; color: black; padding-left: 100px; padding-right: 100px; padding-bottom: 25px; letter-spacing: 3px;">
+        <br/><br/>
+        Enter the<br/>
+        InstaGram ID of<br/>
+        the person you<br/>
+        want to present.
+        </div>
+      </div>
+      
+      <div class="box3 text-center" style="font-size: 145; color: black; padding-top: 10px;">
+        Gifter
+      </div>
+    </div>
+	 
 </body>
 </html>
