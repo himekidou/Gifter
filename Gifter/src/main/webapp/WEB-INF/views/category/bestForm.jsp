@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<title>best</title>
-<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+	<title>Best</title>	
+	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script>	
 	$(function(){			
@@ -40,30 +39,60 @@
 		return true;
 	}
 </script>
+<style type="text/css">
+	
+	.box1 {
+  		background: #d93c2c;
+  		/* grid-row : 1/3; */
+	}
+	.box2 {
+  		background: #f8f8d9; 
+	}
+	.box3 {
+  		background: #005282; 
+	}
+	* {
+  		color: white;
+  		font-weight: bold;
+  		margin: 0;
+  		padding: 0;
+	}
+	.main {
+  		display: grid;
+  		grid-template-columns: 20% 60% 20%;
+  		/* grid-template-rows: 60% 40%; */			
+  		height: 100%; 
+  		width: 100%;			
+	}
+	
+</style>
 </head>
-<body>
-	<c:choose>
+<body> 
+	<div class="main">
+      <div class="box1">
+        
+      </div>
+      <div class="box2">
+        <c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
 	 		<br/>
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#">${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link" href="/member/myPage">My Page</a>
+     				 	<a class="nav-link text-body" href="/member/myPage">My Page</a>
+    				</li>
+    				
+    				<li class="nav-item">
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link " href="/category/bestForm">Best</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link" href="/member/logout">Logout</a>
+      					<a class="nav-link text-body" href="/member/logout">Logout</a>
     				</li>
 				</ul>	
 			</div>
@@ -75,19 +104,17 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm">Login</a>
     				</li>
+    				
     				<li class="nav-item">
-      					<a class="nav-link " href="/category/bestForm">Best</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
   				</ul>	
 			</div>	
@@ -96,45 +123,46 @@
 	 	</c:otherwise>
 	 </c:choose>
 	
-	<div class="d-flex justify-content-center container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:800px; height:200px;">		
-	<form action="categoryList" method="post" id="ctForm">
+	<br/><br/><br/><br/>
+	<div class="d-flex justify-content-center container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:800px; height:220px; background-color: white;  border-radius: 10px;">		
+	<form action="categoryList" method="post" id="ctForm" >
 		<table id="ctTable">
 			<tr>
-				<th>AGE</th>
+				<th style="color: black;">AGE</th>
 				<th></th>
-				<th>AGE RANGE</th>
+				<th style="color: black;">AGE RANGE</th>
 				<th></th>
-				<th>GENDER</th>
+				<th style="color: black;">GENDER</th>
 				<th></th>
 			</tr>
 			<tr>
 				<td>
-					<select name="age" id="age" required="required">
-						<option value="not">Choose The Age of The Recipient</option>
-						<option value="10">0 ~ 9</option>
-						<option value="20">10 ~ 19</option>
-						<option value="30">20 ~ 29</option>
-						<option value="40">30 ~ 39</option>
+					<select name="age" id="age" required="required" style="color: black;">
+						<option value="not" style="color: black;">Choose The Age of The Recipient</option>
+						<option value="10" style="color: black;">0 ~ 9</option>
+						<option value="20" style="color: black;">10 ~ 19</option>
+						<option value="30" style="color: black;">20 ~ 29</option>
+						<option value="40" style="color: black;">30 ~ 39</option>
 					</select>	
 					&emsp;		
 				</td>
 				<td>
 				</td>
 				<td>
-					<select name="age_range" id="age_range" required="required">
-						<option value="not">Choose An Age Group</option>
-						<option value="10">Early</option>
-						<option value="5">Late</option>
+					<select name="age_range" id="age_range" required="required" style="color: black;">
+						<option value="not" style="color: black;">Choose An Age Group</option>
+						<option value="10" style="color: black;">Early</option>
+						<option value="5" style="color: black;">Late</option>
 					</select>
 					&emsp;			
 				</td>
 				<td>
 				</td>
 				<td >
-					<select name="gender" id="gender" required="required">					
-						<option value="not">Please Choose Your Gender</option>
-						<option value="0">Male</option>
-						<option value="1">Female</option>
+					<select name="gender" id="gender" required="required" style="color: black;">					
+						<option value="not" style="color: black;">Please Choose Your Gender</option>
+						<option value="0" style="color: black;">Male</option>
+						<option value="1" style="color: black;">Female</option>
 					</select>	
 					&emsp;
 				</td>
@@ -147,5 +175,10 @@
 		</div>
 	</form>
 	</div>
+      </div>
+      <div class="box3">
+      
+      </div>
+    </div>
 </body>
 </html>

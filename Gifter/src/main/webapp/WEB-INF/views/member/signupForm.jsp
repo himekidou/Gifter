@@ -86,7 +86,7 @@
   				</ul>		
 			</div>
 			
-			<div id="setting" class="container border  border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:320px; height:320px; background-color: white;">
+			<div id="setting" class="container border  border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:320px; height:320px; background-color: white;  border-radius: 10px;">
 			<div class="text-center">
 				<h2 style="color: black;">Sign Up</h2>	
 			</div>

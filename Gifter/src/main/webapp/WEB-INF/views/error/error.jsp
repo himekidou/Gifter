@@ -33,9 +33,6 @@
       					<a class="nav-link" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="/member/logout">Logout</a>
-    				</li>
-    				<li class="nav-item">
      				 	<a class="nav-link" href="/member/myPage">My Page</a>
     				</li>
     				<li class="nav-item">
@@ -43,6 +40,9 @@
     				</li>
     				<li class="nav-item">
       					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="/member/logout">Logout</a>
     				</li>
 				</ul>	
 			</div>
