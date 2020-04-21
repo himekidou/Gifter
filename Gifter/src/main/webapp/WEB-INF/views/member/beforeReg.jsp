@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<!DOCTYPE html>
 <html>
 <head>
-	<title>이메일 인증이 필요합니다.</title>
+	<meta charset="UTF-8">
+	<title>이메일 인증 필요</title>
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
@@ -70,7 +71,7 @@
 				<br/>
 				<h3 style="color: black;">이메일 인증을 하면</h3> 
 				<h3 style="color: black;">로그인이 가능합니다</h3><br/>
-				<a href="<c:url value='/'/>"><input type="button" class="btn btn-light" value="메인 페이지 이동"></a>
+				<a href="<c:url value='/'/>"><input type="button" class="btn btn-dark" value="메인 페이지 이동"></a>
 			</div>
 						
        </div>	

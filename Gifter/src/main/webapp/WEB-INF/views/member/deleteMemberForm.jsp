@@ -16,15 +16,17 @@
 			$("#yes").hide();
 			$("#no").hide();
 			var str = "";
+			str += "<br/><br/><br/>";
+			str += "<div class='container border  border-dark align-self-center align-items-center mx-auto m-5 pb-5' style='width:380px; height:240px; margin-left: 390px; margin-top: 135px; background-color: white;  border-radius: 10px;'>";
 			str += "<form action='/member/deleteMember' method='post'>";
-			str += "<div class='form-group'><label for='id'>ID</label>";
+			str += "<div class='form-group'><label for='id' style='color: black;'>ID</label>";
 			str += "<input type='text' class='form-control' name='member_id' value='${member_id}' readonly='readonly'></div>"
-			str += "<div class='form-group'><label for='password'>Password</label>";
+			str += "<div class='form-group'><label for='password' style='color: black;'>Password</label>";
 			str += "<input type='password' class='form-control' id='member_pw' name='member_pw'></div>";
 			str += "<div class='form-group text-center'>";
 			str += "<input type='submit' class='btn btn-primary' id='btn1' value='탈퇴' onclick='return formCheck();'>";
 			str += "&emsp;";
-			str += "<a href='/'><input type='button' class='btn btn-danger' value='취소'></a>";
+			str += "<a href='/'><input type='button' class='btn btn-danger' value='취소'></a></div>";
 			$("#next").append(str);
 		});
 
@@ -52,76 +54,98 @@
 	}
 	
 </script>
-<style>
-	#setting{
-		width:300px;
-		height:300px;
-		position:absolute;
-		left:50%;
-		top:50%;
-		margin:-100px 0 0 -150px;  
+<style type="text/css">
+	
+	.box1 {
+  		background: #6d6d6d;
+  		/* grid-row : 1/3; */
 	}
+	.box2 {
+  		background: #f5f5dc;
+  		/* grid-row : 2/2; */ 
+	}	
+	
+	
+	* {
+  		color: white;
+  		font-weight: bold;
+  		margin: 0;
+  		padding: 0;
+	}
+	.main {
+  		display: grid;
+  		grid-template-columns: 20% 80%;
+  		/* grid-template-rows: 100%; 	 */	
+  		height: 100%; 
+  		width: 100%;			
+	}
+	
 </style>
 </head>
-<body>
-	<c:choose>
+<body> 
+	<div class="main">
+	
+      <div class="box1">
+       
+      </div>
+      
+      <div class="box2">
+        
+        <c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
 	 		<br/>
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled" href="#">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#">${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
+    				</li>    				
+    				<li class="nav-item">
+      					<a class="nav-link text-body" href="/category/bestForm">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="/member/logout">Logout</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link" href="/member/myPage">My Page</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/bestForm">Best</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+      					<a class="nav-link text-body" href="/member/logout">Logout</a>
     				</li>
 				</ul>	
 			</div>
-			<br/>	
-	 		<br/>
+			
 	 	</c:when>
 	 	<c:otherwise>
 	 		<br/>
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="/member/signupForm">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link" href="/member/loginForm">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm">Login</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link " href="/category/bestForm">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link " href="/category/viewCategory">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
   				</ul>	
 			</div>	
-			<br/>	
-	 		<br/>	 						
+				 						
 	 	</c:otherwise>
 	 </c:choose>
-	
-	<div id="setting">
-		<div class="text-center" >
-			<div id="sign">
-			<h4>회원 탈퇴하시겠습니까?</h4> <br/>
+		
+		<br/><br/>
+		<div id="setting">
+		<div id="sign" class="text-center" style="width: 350px; height: 125px; background-color: white; margin-left: 390px; margin-top: 135px; border-radius: 10px;">
+			<div >
+			<h4 style="color: black;">회원 탈퇴하시겠습니까?</h4> 
+			<br/>
 			</div>
 			<input type="button" class="btn btn-primary" value="네" id="yes">
 			&emsp;
@@ -130,6 +154,10 @@
 		<div id="next">
 	
 		</div>
-	</div>	
+		</div>	
+
+      	</div>
+     
+    </div>
 </body>
 </html>
