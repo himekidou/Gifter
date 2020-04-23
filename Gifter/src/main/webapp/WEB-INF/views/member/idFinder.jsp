@@ -99,13 +99,16 @@
 				<ul class="nav justify-content-start">
     				
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/loginForm" style="padding-left: 0;">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm" style="padding-left: 0; font-size: 1.0416666666666667vw;">Login</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm" style="font-size: 1.0416666666666667vw;">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
     				</li>
   				</ul>	
 			</div>	

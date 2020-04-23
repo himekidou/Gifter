@@ -1,83 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
-<script type="text/javascript">
-	function formCheck(){
-		var taker_insta = document.getElementById("taker_insta");
-
-		
-		if(taker_insta.value == '' || taker_insta.value.length == 0){
-			alert("인스타그램 ID를 입력해주세요");
-			return false;
-		}		
-		return true;
-	}
-</script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<style type="text/css">
+<title>About</title>
+<style>
+	table {
+  	/* border-collapse: collapse; */
+  	width: 150px;
+	height: 150px;
+  	
+	}
+
+	th, td {
+  	text-align: center;
+  	padding: 8px;
+  	
+	}
+
+	tr:nth-child(even){background-color: #f2f2f2}
+
+	th {
+  	background-color: #4CAF50;
+  	color: white;
+	}
+	
+
+	
+	.table-bordered  {
+	
+		width: 43vw;
+		height: 20vh;
+	}
 	
 	.box1 {
-  		background: white;
-  		grid-row : 1/3;
+  		background: bege;
+  		/* grid-row : 1/3; */
 	}
 	.box2 {
-  		background: #ff7f00;
-  		
-  		
-  		
+  		background: #faebd7	;
 	}
-	.box3 {
-  		background: brown;
-  		
-	}
+	
 	* {
-  		color: white;
+  		/* color: white; */
   		font-weight: bold;
   		margin: 0;
   		padding: 0;
 	}
 	.main {
   		display: grid;
-  		grid-template-columns: 60% 40%;
-  		grid-template-rows: 70% 30%;			
+  		grid-template-columns: 70% 30% ;
+  		/* grid-template-rows: 60% 40%; */			
   		height: 100%; 
   		width: 100%;			
 	}
+	img{
+		width: 8vw;
+		height: 12vh;
+	}
 	
-	input::-webkit-input-placeholder {
-  		color: black;
-  		width:32.552083333333336vw;
-	}
-	input:-moz-placeholder {
-  		color: black;
-  		width:32.552083333333336vw;
-	}
-	#intro{
-		color: black; 
-		font-size: 2.6041666666666665vw; 
-		color: black; 
-		padding-left: 6.510416666666667vw; 
-		padding-right: 6.510416666666667vw; 
-		padding-bottom: 1.6276041666666667vw; 
-		letter-spacing: 0.1953125vw; 
+	h3{
+		line-height: 2.7rem;
 	}
 	
 </style>
 </head>
 <body>
-
-	 <div class="main">
-      <div class="box1">
-      
-        <c:choose>
+	<div class="main">
+	
+	
+	
+	<div class="box1">
+	
+		<c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
 	 		<br/>
 	 		<div class="container">
@@ -111,19 +112,50 @@
   				</ul>	
 			</div>						
 	 	</c:otherwise>
-	 </c:choose>    
-	  
-        <br/><br/>    
-		<div class="d-flex justify-content-center align-items-center " style="height:29.296875vw">		
-	 		<form action="taker/search" method="get" onsubmit="return formCheck();">
-	 			<input type="text" id="taker_insta" name="taker_insta" placeholder="@U.N.J.O.O"  style="width:32.552083333333336vw; height:1.6276041666666667vw; font-size:1.6276041666666667vw; color: black;">
-	 			<input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" style="width: 1.6276041666666667vw; height:1.6276041666666667vw;" >
-	 		</form>	
-	 	</div>
-      </div>
-      
-      <div class="box2">
-      	<c:choose>
+	 </c:choose> 
+								
+		<br/>
+		<div class="text-center" style="letter-spacing: -.03125rem;  margin: 45px;  border-radius: 10px;" >
+			<h3>Gifter의 목표는 선물받을 분의 <br/>
+				<span style="color: #4285f4">인스타그램 아이디</span>를 통해 <br/>
+				<span style="color: #ea4335">사진을 분석</span>해 어울리는<br/> 
+				<span style="color: #f9ab00">선물을 추천</span>해주는 것입니다<br/>     
+			</h3>
+		</div>
+		<br/>
+		<div class="table-responsive " style="border-radius: 10px;">
+			<h2 class="text-center">Members</h2>
+			<table class="table-bordered" style="margin-left: auto; margin-right: auto; border-radius: 5px;">
+  				<tr>
+  					<th></th>
+    				<th>박완</th>
+    				<th>강수현</th>
+    				<th>김언주</th>
+    				<th>이진원</th>
+  				</tr>
+  				<tr>
+    				<td>캐릭터</td>	
+    				<td><img src="${pageContext.request.contextPath}/resources/img/dolphin.png" /></td>
+    				<td><img src="${pageContext.request.contextPath}/resources/img/dog.png" /></td>
+    				<td><img src="${pageContext.request.contextPath}/resources/img/cat.png" /></td>
+    				<td><img src="${pageContext.request.contextPath}/resources/img/ant.png" /></td>
+  				</tr>
+  				<tr>
+  					<td>역할</td> 
+   					<td>프로젝트 지휘<br/>크롤링<br/>마이페이지</td>
+    				<td>크롤링<br/>카테고리 구현<br/>카테고리 디자인</td>
+    				<td>페이지 레이아웃<br/>구글 인증<br/>화면 디자인</td>
+    				<td>DB 설계<br/>로그인<br/>부트스트랩</td>
+  				</tr>
+			</table>
+		</div>
+		<br/><br/>
+		<div class="text-center">
+			Copyright 2020.Gifter.All rights reserved.
+		</div>
+	</div>
+	<div class="box2">
+		<c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
 	 		<br/>
 	 		<div class="container">
@@ -133,9 +165,6 @@
     				</li>
     				<li class="nav-item">
       					<a class="nav-link text-body" href="/category/viewCategory" style="color: black; font-size: 1.0416666666666667vw;">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
     				</li>
     				<li class="nav-item">
       					<a class="nav-link text-body" href="/member/logout" style="color: black; font-size: 1.0416666666666667vw;">Logout</a>
@@ -154,27 +183,12 @@
     				<li class="nav-item">
       					<a class="nav-link text-body" href="/category/viewCategory" style="color: black; font-size: 1.0416666666666667vw;">viewCategory</a>
     				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
-    				</li>
   				</ul>	
 			</div>						
 	 	</c:otherwise>
-	 </c:choose>   
-        
-        <div id="intro" class="text-left" >
-        <br/><br/>
-        	Enter the<br/>
-        	InstaGram ID of<br/>
-        	the person you<br/>
-        	want to present.
-        </div>
-      </div>
-      
-      <div class="box3 text-center" style="font-size: 8vw; color: black;">
-        Gifter
-      </div>
-    </div>
-	 
+	 </c:choose> 
+			
+	</div>
+	</div>
 </body>
 </html>

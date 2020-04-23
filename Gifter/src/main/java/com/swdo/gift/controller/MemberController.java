@@ -699,4 +699,10 @@ public class MemberController {
 		logger.info("회원 탈퇴 실패 창 이동");
 		return "member/deleteMemberFail";
 	}
+	
+	@RequestMapping(value="about", method = RequestMethod.GET)
+	public String about() {
+		logger.info("Gifter 소개");
+		return "member/about";
+	}
 }
