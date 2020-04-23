@@ -82,10 +82,10 @@
         	<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-     					<a class="nav-link text-body" href="/member/loginForm" style="padding-right: 0; font-size: 1.0416666666666667vw;">Login</a>
+     					<a class="nav-link text-body" href="/member/loginForm" style="padding-right: 0;">Login</a>
     				</li>
   				</ul>		
 			</div>
@@ -123,13 +123,10 @@
        		<div class="container">
 				<ul class="nav justify-content-start">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm" style="padding-left: 0; font-size: 1.0416666666666667vw;">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm" style="padding-left: 0;">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
   				</ul>	
 			</div>

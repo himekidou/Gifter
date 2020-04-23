@@ -97,22 +97,19 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled text-body" href="#" style="font-size: 1.0416666666666667vw;">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#">${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>    				
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm" style="font-size: 1.0416666666666667vw;">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/logout" style="font-size: 1.0416666666666667vw;">Logout</a>
+      					<a class="nav-link text-body" href="/member/logout">Logout</a>
     				</li>
 				</ul>	
 			</div>
@@ -123,22 +120,19 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/signupForm" style="font-size: 1.0416666666666667vw;">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/loginForm" style="font-size: 1.0416666666666667vw;">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm">Login</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm" style="font-size: 1.0416666666666667vw;">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
   				</ul>	
 			</div>	

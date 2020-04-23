@@ -80,23 +80,20 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled text-body" href="#" style="font-size: 1.0416666666666667vw;">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#">${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/myPage" style="font-size: 1.0416666666666667vw;">My Page</a>
+     				 	<a class="nav-link text-body" href="/member/myPage">My Page</a>
     				</li>
     				
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/logout" style="font-size: 1.0416666666666667vw;">Logout</a>
+      					<a class="nav-link text-body" href="/member/logout">Logout</a>
     				</li>
 				</ul>	
 			</div>
@@ -108,20 +105,17 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/signupForm" style="font-size: 1.0416666666666667vw;">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/loginForm" style="font-size: 1.0416666666666667vw;">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm">Login</a>
     				</li>
-   	
+    				
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
   				</ul>	
 			</div>	
@@ -131,11 +125,10 @@
 	 </c:choose>
 	
 	<br/><br/><br/><br/>
-	<div class="d-flex justify-content-center container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:790px; height:220px; background-color: white;  border-radius: 10px;">		
+	<div class="d-flex justify-content-center container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:800px; height:220px; background-color: white;  border-radius: 10px;">		
 	<form action="categoryList" method="post" id="ctForm" >
 		<table id="ctTable">
 			<tr>
-				<th></th>
 				<th style="color: black;">AGE</th>
 				<th></th>
 				<th style="color: black;">AGE RANGE</th>
@@ -144,7 +137,6 @@
 				<th></th>
 			</tr>
 			<tr>
-				<td></td>
 				<td>
 					<select name="age" id="age" required="required" style="color: black;">
 						<option value="not" style="color: black;">Choose The Age of The Recipient</option>

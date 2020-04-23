@@ -89,9 +89,6 @@
       					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
-    				</li>
-    				<li class="nav-item">
       					<a class="nav-link text-body" href="/member/logout">Logout</a>
     				</li>
 				</ul>	
@@ -116,9 +113,6 @@
     				</li>
     				<li class="nav-item">
       					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
-    				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
     				</li>
   				</ul>	
 			</div>	

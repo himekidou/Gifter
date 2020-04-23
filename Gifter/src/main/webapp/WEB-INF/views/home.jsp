@@ -54,20 +54,9 @@
 	
 	input::-webkit-input-placeholder {
   		color: black;
-  		width:32.552083333333336vw;
 	}
 	input:-moz-placeholder {
   		color: black;
-  		width:32.552083333333336vw;
-	}
-	#intro{
-		color: black; 
-		font-size: 2.6041666666666665vw; 
-		color: black; 
-		padding-left: 6.510416666666667vw; 
-		padding-right: 6.510416666666667vw; 
-		padding-bottom: 1.6276041666666667vw; 
-		letter-spacing: 0.1953125vw; 
 	}
 	
 </style>
@@ -135,9 +124,6 @@
       					<a class="nav-link text-body" href="/category/viewCategory" style="color: black; font-size: 1.0416666666666667vw;">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
-    				</li>
-    				<li class="nav-item">
       					<a class="nav-link text-body" href="/member/logout" style="color: black; font-size: 1.0416666666666667vw;">Logout</a>
     				</li>
 				</ul>	
@@ -154,15 +140,12 @@
     				<li class="nav-item">
       					<a class="nav-link text-body" href="/category/viewCategory" style="color: black; font-size: 1.0416666666666667vw;">viewCategory</a>
     				</li>
-    				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
-    				</li>
   				</ul>	
 			</div>						
 	 	</c:otherwise>
 	 </c:choose>   
         
-        <div id="intro" class="text-left" >
+        <div class="text-left" style="color: black; font-size: 2.6041666666666665vw; color: black; padding-left: 6.510416666666667vw; padding-right: 6.510416666666667vw; padding-bottom: 1.6276041666666667vw; letter-spacing: 0.1953125vw;">
         <br/><br/>
         	Enter the<br/>
         	InstaGram ID of<br/>
@@ -171,7 +154,7 @@
         </div>
       </div>
       
-      <div class="box3 text-center" style="font-size: 8vw; color: black;">
+      <div class="box3 text-center" style="font-size: 8vw; color: black; padding-top: ;">
         Gifter
       </div>
     </div>
