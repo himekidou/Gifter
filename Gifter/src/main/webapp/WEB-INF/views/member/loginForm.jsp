@@ -101,9 +101,7 @@
     				</li>
   				</ul>		
 			</div>
-			
-			
-						
+								
        </div>	
        <div class="box3">
        		<br/>
@@ -115,11 +113,13 @@
     				<li class="nav-item">
       					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
     				</li>
+    				<li class="nav-item">
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+    				</li>
   				</ul>	
 			</div>
 			
-			<c:choose>
-			
+	 <c:choose>		
 		<c:when test="${member_id != null}">
 			<c:if test="${member_id != null}">
 				<div id="socialLoginSuccess" class="text-center">
@@ -135,7 +135,7 @@
 		<c:otherwise>
 			
 		
-		<div id="setting" class="container border  border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:24.674479166666668vw; height:49vh; background-color: white;  border-radius: 10px;">
+		<div id="setting" class="container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:24.674479166666668vw; height:49vh; background-color: white;  border-radius: 10px;">
 			<div class="text-center">
 				<h2 style="color: black; font-size: 2.0833333333333335vw;">Login</h2>	
 			</div>
