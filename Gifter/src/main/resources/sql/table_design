@@ -13,7 +13,7 @@ CREATE TABLE GI_Member
 -- GI_Member Table Create SQL
 CREATE TABLE GI_Category
 (
-    Cat_Name     	VARCHAR2(30)    NOT NULL, 
+    Cat_Name     	VARCHAR2(200)    NOT NULL, 
     Cat_Incre    	NUMBER          default 0,
     Info_Age       	NUMBER       	NULL, 
     Info_Gender    	NUMBER(1)       NULL

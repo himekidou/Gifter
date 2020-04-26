@@ -36,7 +36,20 @@
   		width: 100%;			
 	}
 	
+
+	
 </style>
+<script type="text/javascript">
+function paging(page){
+		var pagingForm = document.getElementById("pagingForm");
+		var currenPage = document.getElementById("currenPage");
+	
+		currentPage.value = page;
+		pagingForm.submit();		
+		
+		
+	}
+</script>
 </head>
 <body> 
 	<div class="main">
@@ -103,45 +116,89 @@
 	<br/><br/><br/><br/>
 	
 	
-	<div id="list" class="d-flex justify-content-center align-items-center ">
+	<div id="list" class="d-flex justify-content-center align-items-center " style="padding-top: 100px;">
 	<form>
 		<table class="table" style="width:350px; background-color: white;  border-radius: 10px;">
 			<thead>
-			<tr>
-				<th style="color: black;">순위</th>
-				<th style="color: black;">카테고리 </th>
-				<th style="color: black;">횟수</th>
-				<th style="color: black;">나이</th>
-				<th style="color: black;">성별</th>
+			<tr>	
+				<c:forEach  var="item" items="${list}" varStatus="status">
+					
+					<c:if test="${navi.currentPage == 1}">
+						<th style="color: black; text-align: center;">${status.count}위</th>
+					</c:if>
+				
+					<c:if test="${navi.currentPage == 2}">
+						<th style="color: black; text-align: center;">${status.count + 3}위</th>
+					</c:if>
+				
+					<c:if test="${navi.currentPage == 3}">
+						<th style="color: black; text-align: center;">${status.count + 6}위</th>
+					</c:if>
+				
+					<c:if test="${navi.currentPage == 4}">
+						<th style="color: black; text-align: center;">${status.count + 9}위</th>
+					</c:if>	
+						
+				</c:forEach>			
+				
 			</tr>
 			</thead>
-			<c:forEach  var="item" items="${list}" varStatus="status">
-				<tbody>
-				<tr>
-					<td style="color: black;">${status.count}</td>
-					<td style="color: black;">${item.cat_name}</td>
-					<td style="color: black;">${item.cat_incre}</td>	
-					<td style="color: black;">${item.info_age}</td>
-					<td style="color: black;">
-					<c:if test="${item.info_gender == 0}">
-						남자
-					</c:if>
-					<c:if test="${item.info_gender == 1}">
-						여자
-					</c:if>	
-					</td>
-				</tr>	
-				</tbody>	
-			</c:forEach>
+				
+			<tbody>
+			<tr>
+    			<c:forEach  var="item" items="${list}" varStatus="status">
+					<td style="color: black; text-align: center;">${item.CAT_NAME}</td>	
+				</c:forEach>
+			</tr>
+			</tbody>	
+			
 		</table>
 	</form>
-	</div>
 	
 	</div>
-		<div class="box3">
+	
+	<br/>
+	<div id="list" class="d-flex justify-content-center align-items-center ">
+	<!-- 페이징 처리 -->
+		<a href="javascript:paging('${navi.currentPage - navi.pagePerGroup}')" style="color: black;">◁◁</a>
+		&nbsp;
+		
+		<a href="javascript:paging('${navi.currentPage - 1}')" style="color: black;">Back</a>
+		
+		&nbsp;
+		<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
+			<c:choose>
+				<c:when test="${counter == navi.currentPage}">
+					<b><a href="javascript:paging('${counter}')" style="color: #dc143c;">${counter}</a></b>
+				</c:when>
+				<c:otherwise>
+					<small><a href="javascript:paging('${counter}')" style="color: black;">${counter}</a></small>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		&nbsp;
+		<a href="javascript:paging('${navi.currentPage + 1}')" style="color: black;" class="next">Next</a>
+		&nbsp;
+		<a href="javascript:paging('${navi.currentPage + navi.pagePerGroup}')" style="color: black;">▷▷</a>
+			
+		<!-- 검색 처리 -->
+		<!-- 페이징 or 검색 요청시 전달할 폼 -->
+		<form action="pagingMove" method="get" id="pagingForm">
+			<input type="hidden" id="currentPage" name="currentPage">
+		</form>
+	</div>
+
+	
+	</div>
+	
+	<div class="box3">
+		
+    </div>
+		
+	</div>
+		
       
-      </div>
-      </div>
+      
       
     
 </body>

@@ -1,6 +1,7 @@
 package com.swdo.gift.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -16,8 +17,8 @@ public class CategoryDAO {
 	private SqlSession session;
 	
 	//리스트
-	public ArrayList<Category> categoryList(Category category, int startRecord, int countPerPage){
-		ArrayList<Category> list = null;
+	public ArrayList<HashMap<String, Object>> categoryList(Category category, int startRecord, int countPerPage){
+		ArrayList<HashMap<String, Object>> list = null;
 		try {
 			CategoryMapper mapper = session.getMapper(CategoryMapper.class);
 			RowBounds rb = new RowBounds(startRecord, countPerPage);
