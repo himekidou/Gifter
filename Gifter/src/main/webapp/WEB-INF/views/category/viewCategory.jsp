@@ -8,9 +8,33 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 <title>CategoryView</title>
 <script src="/resources/jquery-3.4.1.js"></script>
 <style type="text/css">
+
+	#gifter{
+	 	
+		 font-family: 'Bangers', cursive; 
+		/* font-family: 'Open Sans', sans-serif; */
+	} 
+	#gifter2{
+			font-family: 'Open Sans', sans-serif;
+	}
+	#taker_insta{
+		font-family: 'Open Sans', sans-serif;
+		border: 3px solid #030000; 
+		box-sizing: border-box;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+	
+	#board{
+		font-family: 'Sunflower', sans-serif;
+	}
+
+
 * {
   	color: 	#955050;
   	font-weight: bold;
@@ -20,6 +44,7 @@
 
 body {
 	background-color:	#ff8080;
+	font-size: 1.0rem;
 }
 
 table {
@@ -30,10 +55,10 @@ table {
 	margin-right:auto;
 }
 
-.ths {
+/* .ths {
 	width:180px;
 	scope:row;
-}
+} */
 
 .table td, .table th {
     padding: .75rem;
@@ -42,7 +67,7 @@ table {
 }
 
 a {
-	color : #ff8080;
+	color : black;
 }
 
 a:hover {
@@ -81,57 +106,63 @@ a:hover {
 	top:120px;
 }
 
+img {
+	display: block; margin: 0px auto; 
+}
+
+td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
 </style>
 
 </head>
 <body>
 
-
-<!-- <div id="scroll" style="position:absolute;right:0;top:0;"> 
-<table> 
-<tr><td>■■■■■■■■■■■</td> </tr>
-<tr><td>■■■■b1ix■■■■</td> </tr>
-<tr><td>■■■■■■■■■■■</td> </tr> 
-</table> 
-</div>
-<span id="brr"></span>
-
-<script type="text/javascript"> 
-function scroll_follow( id )
-{
-  $(window).scroll(function( )  //스크롤이 움직일때마다 이벤트 발생
-  { 
-      var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-      $( id ).stop().animate({top:position+"px"}, 1); //해당 오브젝트 위치값 재설정
-   });
-}
- scroll_follow( "#scroll" );
-//스크롤이 생기도록 <br> 을 여러게 넣은 부분..
-$(document).ready(function(){ for( var i=0; i<200; i++ ) {$('#brr').html($('#brr').html() +"<br>" + i);} });
-</script> 
- -->
-
-
 	<!-- 배너 -->
-	<div class="bg-secondary"> 
-		<div class="container">
-			<ul class="nav justify-content-end">
-				<li class="nav-item">
-      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
-    			</li>
-    			<li class="nav-item">
-     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
-    			</li>
-			</ul>	
-		</div>	
-	</div>
+	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+			<div class="bg-secondary"> 
+				<div class="container">
+					<ul class="nav justify-content-end" id = "gifter2">
+						<li class="nav-item">
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
+		    			</li>
+		    			<li class="nav-item">
+		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
+		    			</li>
+		    		</ul>
+		    	</div>
+		    </div>
+    	</c:when>
+    	<c:otherwise>
+	    	<div class="bg-secondary"> 
+		    	<div class="container">
+					<ul class="nav justify-content-end" id = "gifter2">
+		    			<li class="nav-item">
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.0416666666666667vw;">Home</a>
+		    			</li>
+		    			<li class="nav-item">
+		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.0416666666666667vw;">Sign Up</a>
+		    			</li>
+		    			<li class="nav-item">
+		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.0416666666666667vw;">Login</a>
+		    			</li>
+					</ul>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	
 	<!-- 추천페이지 버튼 -->
 	<div class="container">	
 		<!-- <div style="padding:10px;"> -->
 		<div style="position: relative; left: 730px; top: 10px;"> 
 			<div class="d-flex justify-content-between">
-				<ul class="list-group">
+				<ul class="list-group" id = "gifter2">
 				  <li class="list-group-item d-flex justify-content-between align-items-center">
 				    <a href="recommendList">Recommendation</a><br>
 				    <span class="badge badge-danger badge-pill">3</span>
@@ -144,29 +175,30 @@ $(document).ready(function(){ for( var i=0; i<200; i++ ) {$('#brr').html($('#brr
 	<!-- 스크롤 배너 -->
 	<!-- <div id="floatMenu" style="position: fixed; right: 80px;bottom:300px;"> -->
 	<div id="floatMenu">
-	
-		<table>
-			<tr>
-				<td class="align-middle col-8" >
-					recommend
-				</td>
-			</tr>
-			<tr class="d-flex">
-				<td class="ths col-2" width="120px" height="120">
-					<img alt="shoppingPhoto" src="<c:out value="${recomSrc1}"/>" width="100" height="100">
-				</td>
-			</tr>
-			<tr class="d-flex">
-				<td class="ths col-2" width="120px" >
-					<img alt="shoppingPhoto" src="<c:out value="${recomSrc2}"/>" width="100" height="100">
-				</td>
-			</tr>
-			<tr>
-				<td class="align-middle col-5" >
-					<a href="recommendList">>> more</a>
-				</td>
-			</tr>
-		</table>
+		<div id="gifter2">
+			<table style="text-align: center; width:160px; ">
+				<tr>
+					<td class="align-middle col-8" >
+						recommend
+					</td>
+				</tr>
+				<tr>
+					<td class="align-middle ths" height="120px">
+						<img alt="shoppingPhoto" src="<c:out value="${recomSrc1}"/>" width="100" height="100">
+					</td>
+				</tr>
+				<tr>
+					<td class="align-middle ths">
+						<img alt="shoppingPhoto" src="<c:out value="${recomSrc2}"/>" width="100" height="100">
+					</td>
+				</tr>
+				<tr>
+					<td class="align-middle" >
+						<a href="recommendList">>> more</a>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 <!-- <div class="row">
@@ -174,8 +206,8 @@ $(document).ready(function(){ for( var i=0; i<200; i++ ) {$('#brr').html($('#brr
 <!-- style="max-width:500px" 잠깐 수정 -->
 
 <!-- 테이블 -->
-<div class="container-sm">
-<table class="table table-hover" style="width:750px;">
+<div class="container-sm" id="board" style="letter-spacing: -.03200rem;">
+<table class="table table-hover" style="width:750px;" id = "gifter3">
 	<c:forEach items="${srcs}" varStatus="sta">
 	<c:set var="flag" value="false"/>
 		<tr class="d-flex" style="display:block;">
@@ -311,27 +343,8 @@ $(function () {
 })
 </script>
 
-<!-- <script type="text/javascript">
-$(window).scroll(function(event){
-if(jQuery(window).scrollTop() > jQuery(".banner").offset().top) {
-jQuery("#chase").css("position", "fixed");
-}
-else if((jQuery(window).scrollTop() < jQuery(".banner").offset().top)) {
-jQuery("#chase").css("position", "static");
-}
-});
-</script>
-
 <script type="text/javascript">
-$(window).scroll(function(){
-    var position = $(document).scrollTop();
-    $("#scrollBar").css('top',  position );     
-});
-</script>
- -->
- 
-<script type="text/javascript">
-
+// 배너 스크롤 이동
 $(function(){
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
 	 var floatPosition = parseInt($("#floatMenu").css('top'));
@@ -349,16 +362,8 @@ $(function(){
 	    $("#floatMenu").stop().animate({
 	        "top" : newPosition
 	     }, 500);
-
 	 }).scroll();
-
-
 })
-
- </script>
-
-<script type="text/javascript">
-
 </script>
 
 </body>
