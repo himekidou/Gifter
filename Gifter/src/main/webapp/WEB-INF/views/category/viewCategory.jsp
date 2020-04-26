@@ -9,59 +9,182 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>CategoryView</title>
-
-<!-- <style type="text/css">
-	table {
-		width: 100%;
-		border-top: 1px solid #444444;
-		border-collapse: collapse;
-	}
-
-	th, td {
-		border-bottom: 1px solid #444444;
-		padding: 10px;
-	}
-</style> -->
-
-<script type="text/javascript">
-
-// 페이징 (이동)
-function paging(page){
-
-	var currentPage2 = $("#currentPage").val();
-	currentPage2 = page;
-	
-	location.href="selePageMove?currentPage="+currentPage2;
+<script src="/resources/jquery-3.4.1.js"></script>
+<style type="text/css">
+* {
+  	color: 	#955050;
+  	font-weight: bold;
+  	margin: 0;
+  	padding: 0;
 }
 
-</script>
+body {
+	background-color:	#ff8080;
+}
+
+table {
+	/* background: #53cec2; */
+	background : #ffcec2;
+	table-layout:fixed; 
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.ths {
+	width:180px;
+	scope:row;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 10px solid #ff8080;
+}
+
+a {
+	color : #ff8080;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #ff4d4d;
+}
+
+.pagination a {
+  	color : #ff8080;
+  	border-radius: 5px;
+}
+
+.pagination a.active {
+  	color : red;
+  	border-radius: 5px;
+}
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: pink;
+    border-color: #ff8080;
+}
+
+.pagination a:hover {
+	background-color: #cfafaf;
+	color : #ff4d4d;
+}
+
+.pagination a:focus {
+	background-color: pink;
+}
+
+#floatMenu {
+	position : absolute;
+	right: 80px;
+	top:120px;
+}
+
+</style>
+
 </head>
 <body>
 
-<div style="padding:10px;"> 
-	<div class="d-flex justify-content-between">
-		<ul class="list-group">
-		  <li class="list-group-item d-flex justify-content-between align-items-center">
-		    <a href="recommendList">오늘의 상품추천</a><br>
-		    <span class="badge badge-primary badge-pill">3</span>
-		  </li>
-		</ul>
-	</div>
-</div>
 
+<!-- <div id="scroll" style="position:absolute;right:0;top:0;"> 
+<table> 
+<tr><td>■■■■■■■■■■■</td> </tr>
+<tr><td>■■■■b1ix■■■■</td> </tr>
+<tr><td>■■■■■■■■■■■</td> </tr> 
+</table> 
+</div>
+<span id="brr"></span>
+
+<script type="text/javascript"> 
+function scroll_follow( id )
+{
+  $(window).scroll(function( )  //스크롤이 움직일때마다 이벤트 발생
+  { 
+      var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+      $( id ).stop().animate({top:position+"px"}, 1); //해당 오브젝트 위치값 재설정
+   });
+}
+ scroll_follow( "#scroll" );
+//스크롤이 생기도록 <br> 을 여러게 넣은 부분..
+$(document).ready(function(){ for( var i=0; i<200; i++ ) {$('#brr').html($('#brr').html() +"<br>" + i);} });
+</script> 
+ -->
+
+
+	<!-- 배너 -->
+	<div class="bg-secondary"> 
+		<div class="container">
+			<ul class="nav justify-content-end">
+				<li class="nav-item">
+      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
+    			</li>
+    			<li class="nav-item">
+     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
+    			</li>
+			</ul>	
+		</div>	
+	</div>
+	
+	<!-- 추천페이지 버튼 -->
+	<div class="container">	
+		<!-- <div style="padding:10px;"> -->
+		<div style="position: relative; left: 730px; top: 10px;"> 
+			<div class="d-flex justify-content-between">
+				<ul class="list-group">
+				  <li class="list-group-item d-flex justify-content-between align-items-center">
+				    <a href="recommendList">Recommendation</a><br>
+				    <span class="badge badge-danger badge-pill">3</span>
+				  </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 스크롤 배너 -->
+	<!-- <div id="floatMenu" style="position: fixed; right: 80px;bottom:300px;"> -->
+	<div id="floatMenu">
+	
+		<table>
+			<tr>
+				<td class="align-middle col-8" >
+					recommend
+				</td>
+			</tr>
+			<tr class="d-flex">
+				<td class="ths col-2" width="120px" height="120">
+					<img alt="shoppingPhoto" src="<c:out value="${recomSrc1}"/>" width="100" height="100">
+				</td>
+			</tr>
+			<tr class="d-flex">
+				<td class="ths col-2" width="120px" >
+					<img alt="shoppingPhoto" src="<c:out value="${recomSrc2}"/>" width="100" height="100">
+				</td>
+			</tr>
+			<tr>
+				<td class="align-middle col-5" >
+					<a href="recommendList">>> more</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
 <!-- <div class="row">
     <div class="col-sm-6">전체 컨테이너의 절반 크기로 띄우게 됨 -->
+<!-- style="max-width:500px" 잠깐 수정 -->
 
-<table class="table table-sm" style="table-layout: fixed">
-
+<!-- 테이블 -->
+<div class="container-sm">
+<table class="table table-hover" style="width:750px;">
 	<c:forEach items="${srcs}" varStatus="sta">
 	<c:set var="flag" value="false"/>
-		<tr>
+		<tr class="d-flex" style="display:block;">
 		<c:if test="${not flag}" >
-				<c:forEach items="${srcs}" var="src" begin="${navi.countPerPage * (navi.currentPage-1)}" end="${navi.countPerPage * navi.currentPage - 1}" varStatus="status">
+				<c:forEach items="${srcs}" var="src"
+				begin="${navi.countPerPage * (navi.currentPage-1)}" end="${navi.countPerPage * navi.currentPage - 1}" varStatus="status">
 					<c:if test="${sta.index eq status.index}">
 					
-						<th width="180px" scope="row">
+						<th class="ths col-3">
 							<img alt="shoppingPhoto" src="<c:out value="${src}"/>" width="150" height="150">
 						</th>
 						
@@ -79,12 +202,12 @@ function paging(page){
 					
 						<input type="hidden" id="title${status2.index}" value="<c:out value="${tit}"/>">
 						
-						<td class="align-middle" >
+						<td class="align-middle col-8" >
 							<div id="blank${status2.index}"></div>
 							<p>
 							<div id="blanks${status2.index}"></div>
 						</td>
-						
+						<td class="col-2"></td>
 						<input type="hidden" id="titSize" value="${navi.currentPage}">
 						
 						<c:set var="flag" value="true"/>
@@ -96,8 +219,6 @@ function paging(page){
 	</c:forEach>
 </table>
 
-<!-- </div>
-</div> -->
 <c:forEach items="${prices}" var="price" varStatus="status3">
 	<input type="hidden" id="price${status3.index}" value="<c:out value="${price}"/>">
 </c:forEach>
@@ -105,7 +226,7 @@ function paging(page){
 <!-- 페이징 처리 -->
 <nav aria-label="Page navigation example">
  <div class="text-center">
- <ul class="pagination justify-content-center">
+ <ul class="pagination pg-red justify-content-center">
  
 <%--<li class="page-item">
 	<a class="page-link" href="javascript:paging('${navi.countPerPage - navi.pagePerGroup}')" aria-label="Previous">
@@ -116,6 +237,7 @@ function paging(page){
 	<li class="page-item">
 	<a class="page-link" href="javascript:paging('${navi.currentPage - 1}')" aria-label="Previous">
 	<span aria-hidden="true">&laquo;</span>
+	<span class="sr-only">Previous</span>
 	</a>
 	</li>
 	
@@ -133,8 +255,9 @@ function paging(page){
 		</c:forEach>
 		
 	<li class="page-item">	
-	<a class="page-link" href="javascript:paging('${navi.currentPage + 1}')" aria-label="Previous">
+	<a class="page-link" href="javascript:paging('${navi.currentPage + 1}')" aria-label="Next">
 	<span aria-hidden="true">&raquo;</span>
+	<span class="sr-only">Next</span>
 	</a>
 	</li>
 	
@@ -149,10 +272,22 @@ function paging(page){
 </nav>
 
 	<input type="hidden" name="currentPage" id="currentPage">
+	
+</div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+
+<script type="text/javascript">
+// 페이징 (이동)
+function paging(page){
+
+	var currentPage2 = $("#currentPage").val();
+	currentPage2 = page;
+	
+	location.href="selePageMove?currentPage="+currentPage2;
+}
+</script>
 
 <script type="text/javascript">
 //타이틀,가격 innerHTML
@@ -174,6 +309,56 @@ $(function () {
 		$(temp4).html(price);
 	}
 })
+</script>
+
+<!-- <script type="text/javascript">
+$(window).scroll(function(event){
+if(jQuery(window).scrollTop() > jQuery(".banner").offset().top) {
+jQuery("#chase").css("position", "fixed");
+}
+else if((jQuery(window).scrollTop() < jQuery(".banner").offset().top)) {
+jQuery("#chase").css("position", "static");
+}
+});
+</script>
+
+<script type="text/javascript">
+$(window).scroll(function(){
+    var position = $(document).scrollTop();
+    $("#scrollBar").css('top',  position );     
+});
+</script>
+ -->
+ 
+<script type="text/javascript">
+
+$(function(){
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	 var floatPosition = parseInt($("#floatMenu").css('top'));
+ 	
+	 // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	 $(window).scroll(function() {
+	    // 현재 스크롤 위치를 가져온다.
+	    //alert(1);	
+	    var scrollTop = $(window).scrollTop();
+	    var newPosition = scrollTop + floatPosition + "px";
+	       /* 애니메이션 없이 바로 따라감*/
+	     //$("#floatMenu").css('top', newPosition);
+	     
+	    $("#floatMenu").stop().animate({
+	        "top" : newPosition
+	     }, 500);
+
+	 }).scroll();
+
+
+})
+
+ </script>
+
+<script type="text/javascript">
+
 </script>
 
 </body>

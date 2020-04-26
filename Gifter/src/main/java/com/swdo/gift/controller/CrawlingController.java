@@ -56,6 +56,45 @@ public class CrawlingController {
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, currentPage, totalCount);
 		
 		model.addAttribute("navi", navi);
+		
+		/* 배너용 추천상품 */
+    	
+    	// 추천상품으로 랜덤으로 2개 가져옴
+    	Random random = new Random();
+    	int[] num = new int[2];
+    	for (int i = 0; i < 2; i++) {
+    		num[i] = random.nextInt(srcs.size());
+    		for (int j = 0; j < i; j++) {
+    			if(num[i] == num[j]) {
+    				i--;
+    			}
+			}
+    	}
+    	
+    	// 타 컨트롤러에서 이용하기 위해 세션에 담음
+    	session.setAttribute("p1", num[0]);
+    	session.setAttribute("p2", num[1]);
+    	
+    	// 상품 이미지 2개
+    	String recomSrc1 = srcs.get(num[0]);
+    	String recomSrc2 = srcs.get(num[1]);
+
+    	// 타이틀 및 하이퍼링크 2개		
+    	Element recomTit1 = title.get(num[0]);
+    	Element recomTit2 = title.get(num[1]);
+
+    	// 해당 가격 2개
+    	String recompri1 = prices[num[0]].toString();
+    	String recompri2 = prices[num[1]].toString();
+
+    	// 세션에 담아서 jsp에 보냄 (추천페이지에서 또 사용해야해서)
+    	
+    	model.addAttribute("recomSrc1", recomSrc1);
+    	model.addAttribute("recomTit1", recomTit1);
+    	model.addAttribute("recompri1", recompri1);
+    	model.addAttribute("recomSrc2", recomSrc2);
+    	model.addAttribute("recomTit2", recomTit2);
+    	model.addAttribute("recompri2", recompri2);
 
 		return "/category/viewCategory";
 	}
@@ -95,6 +134,10 @@ public class CrawlingController {
     	Elements title = (Elements) session.getAttribute("title");
     	String[] prices = (String[]) session.getAttribute("prices");
     	
+    	// 기존 배너 상품의 번호를 가져옴
+    	int p1 = (int) session.getAttribute("p1");
+    	int p2 = (int) session.getAttribute("p2");
+    	
     	// 추천상품으로 랜덤으로 3개 가져옴
     	Random random = new Random();
     	int[] num = new int[3];
@@ -104,33 +147,50 @@ public class CrawlingController {
     			if(num[i] == num[j]) {
     				i--;
     			}
+    			if(num[i] == p1 || num[i] == p2) {
+    				i--;
+    			}
 			}
     	}
-    	// 상품 이미지 3개
-    	String recomSrc1 = srcs.get(num[0]);
- 		String recomSrc2 = srcs.get(num[1]);
-    	String recomSrc3 = srcs.get(num[2]);
-    	// 타이틀 및 하이퍼링크 3개		
-    	Element recomTit1 = title.get(num[0]);
-    	Element recomTit2 = title.get(num[1]);
-    	Element recomTit3 = title.get(num[2]);
-    	// 해당 가격 3개
-    	String recompri1 = prices[num[0]].toString();
-    	String recompri2 = prices[num[1]].toString();
-    	String recompri3 = prices[num[2]].toString();
+    	
+    	// 상품 이미지 5개
+    	String recomSrc1 = srcs.get(p1);
+    	String recomSrc2 = srcs.get(p2);
+    	String recomSrc3 = srcs.get(num[0]);
+ 		String recomSrc4 = srcs.get(num[1]);
+    	String recomSrc5 = srcs.get(num[2]);
+    	// 타이틀 및 하이퍼링크 5개
+    	Element recomTit1 = title.get(p1);
+    	Element recomTit2 = title.get(p2);
+    	Element recomTit3 = title.get(num[0]);
+    	Element recomTit4 = title.get(num[1]);
+    	Element recomTit5 = title.get(num[2]);
+    	// 해당 가격 5개
+    	String recompri1 = prices[p1].toString();
+    	String recompri2 = prices[p2].toString();
+    	String recompri3 = prices[num[0]].toString();
+    	String recompri4 = prices[num[1]].toString();
+    	String recompri5 = prices[num[2]].toString();
     			
-    	// 모델에 담아서 jsp에 보냄
+    	// 세션에 담아서 jsp에 보냄 (추천페이지에서 또 사용해야해서)
+    	
     	model.addAttribute("recomSrc1", recomSrc1);
-		model.addAttribute("recomSrc2", recomSrc2);
-		model.addAttribute("recomSrc3", recomSrc3);
+    	model.addAttribute("recomSrc2", recomSrc2);
+    	model.addAttribute("recomSrc3", recomSrc3);
+    	model.addAttribute("recomSrc4", recomSrc4);
+    	model.addAttribute("recomSrc5", recomSrc5);
 		
-		model.addAttribute("recomTit1", recomTit1);
-		model.addAttribute("recomTit2", recomTit2);
-		model.addAttribute("recomTit3", recomTit3);
+    	model.addAttribute("recomTit1", recomTit1);
+    	model.addAttribute("recomTit2", recomTit2);
+    	model.addAttribute("recomTit3", recomTit3);
+    	model.addAttribute("recomTit4", recomTit4);
+    	model.addAttribute("recomTit5", recomTit5);
 		
-		model.addAttribute("recompri1", recompri1);
-		model.addAttribute("recompri2", recompri2);
-		model.addAttribute("recompri3", recompri3);
+    	model.addAttribute("recompri1", recompri1);
+    	model.addAttribute("recompri2", recompri2);
+    	model.addAttribute("recompri3", recompri3);
+    	model.addAttribute("recompri4", recompri4);
+    	model.addAttribute("recompri5", recompri5);
     	
    		return "/category/recommendList";
    	}
