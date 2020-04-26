@@ -10,7 +10,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <style type="text/css">
 	
-	.box1 {
+	.box1 { 	
   		background: #fb5b17;
   		grid-row : 1/3;
 	}
@@ -24,8 +24,15 @@
   		background: #0d7373;
 	}
 	.box5 {
-  		background: #eee6c4;
+  		background: #4B89DC;
 	}
+	.box6 {
+  		background: #fb5b17;
+	}
+	.box7 {
+  		background: #0d7373;
+	}
+	
 	* {
   		color: white;
   		font-weight: bold;
@@ -35,7 +42,7 @@
 	.main {
   		display: grid;
   		grid-template-columns: 1fr 1fr 1fr;
-  		grid-template-rows: 70% 30%;			
+  		grid-template-rows: 70% 20% 10%;			
   		height: 100%; 
   		width: 100%; 			
 	}
@@ -96,6 +103,12 @@
       	<div class="box5">
         	
     	</div>   
+    	
+    	</div>   
+    	<div class="box6">
+        
+      	</div>
+      	<div class="box7">
 	</div>
 </body>
 </html>
