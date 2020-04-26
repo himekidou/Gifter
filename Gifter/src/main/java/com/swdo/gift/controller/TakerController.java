@@ -130,7 +130,12 @@ public class TakerController {
 		SeleniumCrawling craw = new SeleniumCrawling();
 		ArrayList<String> imgList = craw.InstaCrawl(taker_insta);
 		URLAnotationGoogle Ano = new URLAnotationGoogle();
-		Ano.AsyncBatchAnnotateImages(imgList);
+		try {
+			Ano.AsyncBatchAnnotateImages(imgList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 		 return "taker/search";
