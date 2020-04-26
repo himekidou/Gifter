@@ -6,9 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 <title>recommendList</title>
 
 <style type="text/css">
+
+	#gifter{
+	 	
+		 font-family: 'Bangers', cursive; 
+		/* font-family: 'Open Sans', sans-serif; */
+	} 
+	#gifter2{
+			font-family: 'Open Sans', sans-serif;
+	}
+	#taker_insta{
+		font-family: 'Open Sans', sans-serif;
+		border: 3px solid #030000; 
+		box-sizing: border-box;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+	
+	#board{
+		font-family: 'Sunflower', sans-serif;
+	}
+
+
 * {
   	color: 	#955050;
   	font-weight: bold;
@@ -72,46 +96,51 @@ a:hover {
 .pagination a:focus {
 	background-color: pink;
 }
-
-/* body {margin:0;}
- #wrap {margin:0 auto;text-align:center;}
- #quick_bg {margin:0 auto;text-align:center;width:1130px;position:relative;}
- #quick {position:absolute;z-index:2;top:15px;width:153px;right:0px;}
- #container {position:relative;} */
  
 </style>
 </head>
 <body>
 
-<!-- <div id="wrap">
-	<div id="container">
-		<div id="quick_bg">
-			<div id="quick">
-				<a href="#form">test중</a>
-			</div>
-		</div>
-	</div>
-</div> -->
-
 	<!-- 배너 -->
-	<div class="bg-secondary"> 
-		<div class="container">
-			<ul class="nav justify-content-end">
-				<li class="nav-item">
-      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
-    			</li>
-    			<li class="nav-item">
-     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
-    			</li>
-			</ul>	
-		</div>	
-	</div>
+	<c:choose>
+	 	<c:when test="${sessionScope.member_id != null}">
+			<div class="bg-secondary"> 
+				<div class="container">
+					<ul class="nav justify-content-end" id = "gifter2">
+						<li class="nav-item">
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
+		    			</li>
+		    			<li class="nav-item">
+		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
+		    			</li>
+		    		</ul>
+		    	</div>
+		    </div>
+    	</c:when>
+    	<c:otherwise>
+	    	<div class="bg-secondary"> 
+		    	<div class="container">
+					<ul class="nav justify-content-end" id = "gifter2">
+		    			<li class="nav-item">
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.0416666666666667vw;">Home</a>
+		    			</li>
+		    			<li class="nav-item">
+		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.0416666666666667vw;">Sign Up</a>
+		    			</li>
+		    			<li class="nav-item">
+		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.0416666666666667vw;">Login</a>
+		    			</li>
+					</ul>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 
 <p>
-<h2 class="text-center">Today's Recommendation!</h2>
+<h2 class="text-center" id="gifter2">Today's Recommendation!</h2>
 <p>
 <div class="container">
-<table class="table table-hover" style="width:750px;">
+<table class="table table-hover" id="board" style="width:750px;">
 	<tr class="d-flex" style="display:block;">
 		<th class="ths col-3">
 			<img alt="shoppingPhoto" src="<c:out value="${recomSrc1}"/>" width="140" height="140">
@@ -168,20 +197,6 @@ a:hover {
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-<!-- <script type="text/javascript">
-var quick_menu = $('#quick');
-var quick_top = 470;
-
-quick_menu.css('top', $(window).height() );
-$(document).ready(function(){
-quick_menu.animate( { "top": $(document).scrollTop() + quick_top +"px" }, 200 ); 
-$(window).scroll(function(){
-quick_menu.stop();
-quick_menu.animate( { "top": $(document).scrollTop() + quick_top + "px" }, 500 );
-});
-});
-</script> -->
 
 </body>
 </html>
