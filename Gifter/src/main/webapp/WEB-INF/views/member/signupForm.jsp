@@ -5,12 +5,50 @@
 <html>
 <head>
    <meta charset="UTF-8">
+   
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="Some ideas for modern button styles and effects">
+   <meta name="keywords" content="button, effect, hover, style, inspiration, web design">
+   <meta name="author" content="Codrops">
+   <link rel="stylesheet" type="text/css" href="css/normalize.css">
+   <link rel="stylesheet" type="text/css" href="css/vicons-font.css">
+   <link rel="stylesheet" type="text/css" href="css/base.css">
+   <link rel="stylesheet" type="text/css" href="css/buttons.css">
+   <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
+   <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7243260-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+   <style>
+	body #cdawrap {
+		--cda-top: 15px;
+		--cda-sp-color: #999;
+		--cda-text-color: #333;
+		--cda-remove-color: #999;
+		--cda-background: transparent;
+		--cda-border-color: rgba(255,255,255,0.5);
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="https://tympanus.net/codrops/adpacks/demoad.css?1587939706635">
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css">
+
+
+
    <title>회원가입</title>   
    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
 <script type="text/javascript">
 
    function formCheck(){
@@ -42,18 +80,24 @@
         grid-row : 1/3;
          
    }
-   .box2 {
-        background: #DEDEDE;
-   }
-   .box3 {
-        background: #554FFB;
-   }
-   .box4 {
-        background: #225034;
-   }
-   .box5 {
-        background: #EBE6C0;
-   }
+  	.box2 {
+  		background: #E1DEDD;
+	}
+	.box3 {
+  		background: #554FFB;
+	}
+	.box4 {
+  		background: #0d7373;
+	}
+	.box5 {
+  		background: #554FFB;
+	}
+	.box6 {
+  		background: #FB8963;
+	}
+	.box7 {
+  		background: #0d7373;
+	}
    * {
         color: white;
         font-weight: normal;
@@ -63,7 +107,7 @@
     .main {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 70% 30%;         
+        grid-template-rows: 70% 20% 10%;         
         height: 100%; 
         width: 100%;    
         font-family: 'Open Sans', sans-serif;      
@@ -78,136 +122,7 @@
    .form-control{
       font-family: 'Montserrat', sans-serif;
    }
-   *, *:after, *::before { box-sizing: border-box; }
 
-@font-face {
-   font-weight: normal;
-   font-style: normal;
-   font-family: 'icomoon';
-   src:url('../fonts/icomoon/icomoon.eot');
-   src:url('../fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/icomoon/icomoon.ttf') format('truetype'),
-      url('../fonts/icomoon/icomoon.woff') format('woff'),
-      url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
-}
-
-.progress-button {
-   position: relative;
-   display: inline-block;
-   padding: 0 60px;
-   outline: none;
-   border: none;
-   background: #1d9650;
-   color: #fff;
-   text-transform: uppercase;
-   letter-spacing: 1px;
-   font-size: 1em;
-   line-height: 4;
-}
-
-.progress-button[disabled],
-.progress-button[disabled].state-loading {
-   cursor: default;
-}
-
-.progress-button .content {
-   position: relative;
-   display: block;
-}
-
-.progress-button .content::before,
-.progress-button .content::after  {
-   position: absolute;
-   right: 20px;
-   color: #0e7138;
-   font-family: "icomoon";
-   opacity: 0;
-   transition: opacity 0.3s 0.3s;
-}
-
-.progress-button .content::before {
-   content: "e600"; /* Checkmark for success */
-}
-
-.progress-button .content::after {
-   content: "e601"; /* Cross for error */
-}
-
-.progress-button.state-success .content::before,
-.progress-button.state-error .content::after {
-   opacity: 1;
-}
-
-.notransition {
-   transition: none !important;
-}
-
-.progress-button .progress {
-   background: #148544;
-}
-
-.progress-button .progress-inner {
-   position: absolute;
-   left: 0;
-   background: #0e7138;
-}
-
-.progress-button[data-horizontal] .progress-inner {
-   top: 0;
-   width: 0;
-   height: 100%;
-   transition: width 0.3s, opacity 0.3s;
-}
-
-.progress-button[data-vertical] .progress-inner {
-   bottom: 0;
-   width: 100%;
-   height: 0;
-   transition: height 0.3s, opacity 0.3s;
-}
-
-/* Necessary styles for buttons with 3D transforms */
-
-.progress-button[data-perspective] {
-   position: relative;
-   display: inline-block;
-   padding: 0;
-   background: transparent;
-   perspective: 900px;
-}
-
-.progress-button[data-perspective] .content {
-   padding: 0 60px;
-   background: #1d9650;
-}
-
-.progress-button[data-perspective] .progress-wrap {
-   display: block;
-   transition: transform 0.2s;
-   transform-style: preserve-3d;
-}
-
-.progress-button[data-perspective] .content,
-.progress-button[data-perspective] .progress {
-   outline: 1px solid rgba(0,0,0,0); /* Smoothen jagged edges in FF */
-}
-/* Rotate bottom 3d */
-/* ====================== */
-
-.progress-button[data-style="rotate-angle-bottom"] .progress {
-   position: absolute;
-   top: 100%;
-   left: 0;
-   width: 100%;
-   height: 20px;
-   box-shadow: 0 -1px 0 #148544; /* fix the blurriness that causes a gap */
-   transform: rotateX(-90deg);
-   transform-origin: 50% 0%;
-}
-
-.progress-button[data-style="rotate-angle-bottom"].state-loading .progress-wrap {
-   transform: rotateX(45deg);
-}
 </style>
 
 </head>
@@ -249,22 +164,9 @@
                   <input type="email" class="form-control" placeholder="Email to be authenticated" id="member_email" name="member_email" style="width:250px; height:25px; font-size:13px;">      
              </div>   
              <div class="form-group text-center">
-                <!-- <input type="submit" class="btn btn-primary" id="btn1 "value="가입" onclick="return formCheck();">           
-                &emsp;  -->
-                <button 
-                      type="submit"
-                      id="btn1" value="submit"
-                      onclick="return formCheck();"
-                      class="progress-button" 
-                      data-style="rotate-angle-bottom" 
-                      data-perspective data-horizontal>
-               <span class="progress-wrap">
-                  <span class="content">Submit</span>
-                  <span class="progress">
-                     <span class="progress-inner"></span>
-                  </span>
-               </span>
-            </button>
+                 <input type="submit" class="btn btn-primary" id="btn1 "value="가입" onclick="return formCheck();">           
+                &emsp;  
+       			
                 <a href="<c:url value="/"/>"><input type="button" class="btn btn-danger" id="btn2" value="취소"></a>                   
              </div>
               </form>
@@ -293,6 +195,12 @@
          <div class="box5">
            
        </div>   
+       <div class="box6">
+        
+      </div>
+      <div class="box7">
+        
+      </div> 
    </div>
 </body>
 </html>

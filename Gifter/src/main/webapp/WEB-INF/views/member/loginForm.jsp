@@ -9,6 +9,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
+	
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
 	function formCheck(){
@@ -52,30 +55,30 @@
 <style type="text/css">
 	
 	.box1 { 	
-  		background: #fb5b17;
+  		background: #FB8963;
   		grid-row : 1/3;
 	}
 	.box2 {
-  		background: #cccccc;
+  		background: #E1DEDD;
 	}
 	.box3 {
-  		background: #4B89DC;
+  		background: #554FFB;
 	}
 	.box4 {
   		background: #0d7373;
 	}
 	.box5 {
-  		background: #4B89DC;
+  		background: #554FFB;
 	}
 	.box6 {
-  		background: #fb5b17;
+  		background: #FB8963;
 	}
 	.box7 {
   		background: #0d7373;
 	}
 	* {
   		color: white;
-  		font-weight: bold;
+  		font-weight: normal;
   		margin: 0;
   		padding: 0;
 	}
@@ -84,9 +87,17 @@
   		grid-template-columns: 1fr 1fr 1fr;
   		grid-template-rows: 70% 20% 10%;			
   		height: 100%; 
-  		width: 100%; 			
+  		width: 100%; 
+  		font-family: 'Open Sans', sans-serif;    			
 	}
-	
+	.form-control{
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 0;
+   }
+    #setting{
+       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+      
+   }
 </style>
 </head>
 <body> 
@@ -100,10 +111,10 @@
         	<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.5vw;">Home</a>
     				</li>
     				<li class="nav-item">     					
-    					<a class="nav-link text-body" href="/member/signupForm" style="padding-right: 0; font-size: 1.0416666666666667vw;">Sign Up</a>
+    					<a class="nav-link text-body" href="/member/signupForm" style="padding-right: 0; font-size: 1.5vw;">Sign Up</a>
     				</li>
   				</ul>		
 			</div>
@@ -114,13 +125,13 @@
        		<div class="container">
 				<ul class="nav justify-content-start">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm" style="padding-left: 0; font-size: 1.0416666666666667vw;">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm" style="padding-left: 0; font-size: 1.5vw;">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.5vw;">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.5vw;">About</a>
     				</li>
   				</ul>	
 			</div>
@@ -141,19 +152,19 @@
 		<c:otherwise>
 			
 		<br/>
-		<div id="setting" class="container border border-dark align-self-center align-items-center mx-auto m-5 pb-5"  style="width:24.674479166666668vw; height:49vh; background-color: white;  border-radius: 10px;">
+		<div id="setting" class="container border border-white align-self-center align-items-center mx-auto m-5 pb-5"  style="width:22vw; height:49vh; background-color: #3A36AB; background: rgba(1, 0, 40, 0.67);">
 			<div class="text-center">
-				<h2 style="color: black; font-size: 2.0833333333333335vw;">Login</h2>	
+				<h2 style="color: white; font-size: 2.1vw;">Login</h2>	
 			</div>
 			<div class="d-flex justify-content-center align-items-center">
   				<form action="/member/login" method="post">
   					<div class="form-group"> 			
-      					<label for="id" style="color: black; font-size: 0.9114583333333334vw;">ID</label>    		
-      					<input type="text" class="form-control" placeholder="ID" id="member_id" name="member_id" style="width:16.276041666666668vw; height:3vh; font-size:1.171875vw;">		
+      					<label for="id" style="color: white; ">ID</label>    		
+      					<input type="text" class="form-control" placeholder="ID" id="member_id" name="member_id" style="width:250px; height:25px; font-size:13px;">		
     				</div>			
     				<div class="form-group">
-      					<label for="pwd" style="color: black; font-size: 0.9114583333333334vw;">Password</label>
-      					<input type="password" class="form-control" placeholder="Password" id="member_pw" name="member_pw" style="width:16.276041666666668vw; height:3vh; font-size:1.171875vw;">
+      					<label for="pwd" style="color: white; ">Password</label>
+      					<input type="password" class="form-control" placeholder="Password" id="member_pw" name="member_pw" style="width:250px; height:25px; font-size:13px;">
     				</div> 
     				<div class="form-group text-center">
     					<input type="submit" class="btn btn-primary" id="btn1 "value="로그인" style="font-size: 1.0416666666666667vw; width: 5vw;" onclick="return formCheck();">  			
@@ -163,9 +174,9 @@
   				</form>
 			</div>
 			<div class="text-center">
-				<input type="button" class="btn btn-outline-secondary"  id="idFind" value="아이디 찾기" style="font-size: 1.0416666666666667vw;">
+				<input type="button" class="btn btn-outline-light"  id="idFind" value="아이디 찾기" style="font-size: 1.0416666666666667vw;">
 				&emsp;
-				<input type="button"  class="btn btn-outline-secondary" id="pwFind" value="비밀번호 찾기" style="font-size: 1.0416666666666667vw;">					
+				<input type="button"  class="btn btn-outline-light" id="pwFind" value="비밀번호 찾기" style="font-size: 1.0416666666666667vw;">					
 			</div>	
 			
 			<br/>

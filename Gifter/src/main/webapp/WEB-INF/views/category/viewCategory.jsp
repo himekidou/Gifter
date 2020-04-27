@@ -11,6 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff">
+
 <title>CategoryView</title>
 <script src="/resources/jquery-3.4.1.js"></script>
 <style type="text/css">
@@ -31,25 +33,36 @@
 	}
 	
 	#board{
-		font-family: 'Sunflower', sans-serif;
+		font-family: 'MapoFlowerIsland'; 
+		font-weight: normal; 
+		font-style: normal;  
 	}
 
-
+	@font-face { 
+		font-family: 'MapoFlowerIsland'; 
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); 
+		font-weight: normal; 
+		font-style: normal; 
+	}
+	 
+	 
 * {
-  	color: 	#955050;
+	/*가격 */
+  	color: 	#000000;
   	font-weight: bold;
   	margin: 0;
   	padding: 0;
 }
 
+/*전체 배경*/
 body {
-	background-color:	#ff8080;
+	background-color:	#000000;
 	font-size: 1.0rem;
 }
-
+/*카테고리 보여주는 부분*/
 table {
 	/* background: #53cec2; */
-	background : #ffcec2;
+	background : #000000;
 	table-layout:fixed; 
 	margin-left:auto;
 	margin-right:auto;
@@ -60,50 +73,61 @@ table {
 	scope:row;
 } */
 
+/*사이사이 흰 줄*/
 .table td, .table th {
-    padding: .75rem;
+    padding: .70rem;
     vertical-align: top;
-    border-top: 10px solid #ff8080;
+    border-top: 7px solid #ffffff;
+}
+/*테이블 마우스 호버*/
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ffc107;
 }
 
 a {
-	color : black;
+	color : #ffffff;
 }
 
 a:hover {
 	text-decoration: none;
-	color: #ff4d4d;
+	color: #000000;
 }
 
 .pagination a {
-  	color : #ff8080;
-  	border-radius: 5px;
+  	color : #000000;
+  	border-radius: 2px;
 }
+
 
 .pagination a.active {
-  	color : red;
-  	border-radius: 5px;
+  	color : #ffffff;
+  	border-radius: 2px;
 }
 
+/*클릭 된 페이지 */
 .page-item.active .page-link {
-    color: #fff;
-    background-color: pink;
-    border-color: #ff8080;
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #ffc107;
 }
 
+/*페이지에 마우스 호버 했을 때*/
 .pagination a:hover {
-	background-color: #cfafaf;
-	color : #ff4d4d;
+	background-color: #ffc107;
+	color : #000000;
+	font-color:#000000;
 }
 
+/*페이지 버튼 눌렸을 때*/
 .pagination a:focus {
-	background-color: pink;
+	background-color: #ffc107;
 }
 
 #floatMenu {
 	position : absolute;
 	right: 80px;
 	top:120px;
+	
 }
 
 img {
@@ -125,31 +149,31 @@ td img{
 	<!-- 배너 -->
 	<c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
-			<div class="bg-secondary"> 
+			<div class="bg-warning text-dark"> 
 				<div class="container">
 					<ul class="nav justify-content-end" id = "gifter2">
 						<li class="nav-item">
-		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.5vw;">Home</a>
 		    			</li>
 		    			<li class="nav-item">
-		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
+		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.5vw;">My Page</a>
 		    			</li>
 		    		</ul>
 		    	</div>
 		    </div>
     	</c:when>
     	<c:otherwise>
-	    	<div class="bg-secondary"> 
+	    	<div class="bg-warning text-dark"> 
 		    	<div class="container">
 					<ul class="nav justify-content-end" id = "gifter2">
 		    			<li class="nav-item">
-		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.0416666666666667vw;">Home</a>
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.5vw;">Home</a>
 		    			</li>
 		    			<li class="nav-item">
-		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.0416666666666667vw;">Sign Up</a>
+		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.5vw;">Sign Up</a>
 		    			</li>
 		    			<li class="nav-item">
-		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.0416666666666667vw;">Login</a>
+		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.5vw;">Login</a>
 		    			</li>
 					</ul>
 				</div>
@@ -162,7 +186,7 @@ td img{
 		<!-- <div style="padding:10px;"> -->
 		<div style="position: relative; left: 730px; top: 10px;"> 
 			<div class="d-flex justify-content-between">
-				<ul class="list-group" id = "gifter2">
+				<ul class="list-group" id = "gifter2" style= "color:#000000;">
 				  <li class="list-group-item d-flex justify-content-between align-items-center">
 				    <a href="recommendList">Recommendation</a><br>
 				    <span class="badge badge-danger badge-pill">3</span>

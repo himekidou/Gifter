@@ -8,6 +8,9 @@
 	<title>비밀번호 찾기</title>	
 	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script>
 	$(function(){
@@ -49,9 +52,25 @@
   		grid-template-columns: 20% 40% 40%;
   		/* grid-template-rows: 60% 40%; */			
   		height: 100%; 
-  		width: 100%;			
+  		width: 100%;
+  		font-family: 'Open Sans', sans-serif; 			
 	}
-	
+	h3, h7{
+		font-family: 'MapoFlowerIsland'; 
+		font-weight: bord; 
+		font-style: normal; 
+		color: #000000;
+	}
+	@font-face { 
+		font-family: 'MapoFlowerIsland'; 
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); 
+		font-weight: normal; 
+		font-style: normal; 
+	}
+	 #setting{
+       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+      
+   }
 </style>
 </head>
 <body> 
@@ -65,10 +84,10 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>">Home</a>
+      					<a class="nav-link text-body"  style="font-size: 1.4vw;" href="<c:url value="/"/>">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/signupForm" style="padding-right: 0;">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm" style="padding-right: 0; font-size: 1.4vw;">Sign Up</a>
     				</li>
     				
   				</ul>	
@@ -84,34 +103,35 @@
 				<ul class="nav justify-content-start">
     				
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/loginForm" style="padding-left: 0;">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm" style="padding-left: 0; font-size: 1.4vw;">Login</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm" style="font-size: 1.4vw;" >Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.4vw;" >viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.4vw;">About</a>
     				</li>
   				</ul>	
 			</div>	
 			<br/>	
 	 		<br/>	
         
-        <div id="setting" class="border border-dark  align-items-center" style="width:400px; height:340px; margin: 110px; background-color: white;  border-radius: 10px;">
+        <div id="setting" class="border border-dark  align-items-center" style="width:350px; height:380px; margin: 110px; background-color: white; background: rgba(255, 255, 255, 0.25);">
 			<div class="text-center" style="color: black;">
 				<br/>
 				<h3 style="color: black;">비밀번호 찾기</h3>
-				가입할 때 입력한 아이디와 이메일을 적어 주세요 <br/>
-				이메일로 임시 비밀번호를 보내 드립니다 ! <br/><br/>
+				<h7>가입할 때 입력한 아이디와 이메일을 적어 주세요 <br/>
+				이메일로 임시 비밀번호를 보내 드립니다 !</h7> <br/><br/>
 			</div>
 			<div class="d-flex justify-content-center align-items-center ">
 	 			<form action="pwFind" method="post">
 	 			<div class="form-group"> 
 	 				<label for="id" style="color: black;">ID</label>   
-	 				<input type="text" class="form-control" id="member_id" name="member_id" placeholder="가입한 아이디" style="width:250px; height:25px; font-size:16px;">
+	 				<input type="text" class="form-control" id="member_id" name="member_id" placeholder="Subscribed ID" 
+	 				style="width:250px; height:25px; font-size:16px;  ">
 	 			</div>
 	 			<div class="form-group">
 	 				<label for="email" style="color: black;">Email</label> 

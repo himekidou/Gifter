@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff">
+
 <title>recommendList</title>
 
 <style type="text/css">
@@ -29,24 +31,34 @@
 	}
 	
 	#board{
-		font-family: 'Sunflower', sans-serif;
+		font-family: 'MapoFlowerIsland'; 
+		font-weight: normal; 
+		font-style: normal;  
+	}
+
+	@font-face { 
+		font-family: 'MapoFlowerIsland'; 
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); 
+		font-weight: normal; 
+		font-style: normal; 
 	}
 
 
 * {
-  	color: 	#955050;
+  	color: 	#000000;
   	font-weight: bold;
   	margin: 0;
   	padding: 0;
 }
 
 body {
-	background-color:	#ff8080;
+	background-color:	#000000;
+	font-size: 1.0rem;
 }
 
 table {
 	/* background: #53cec2; */
-	background : #ffcec2;
+	background : #000000;
 	table-layout:fixed; 
 	margin-left:auto;
 	margin-right:auto;
@@ -58,43 +70,48 @@ table {
 }
 
 .table td, .table th {
-    padding: .75rem;
+    padding: .70rem;
     vertical-align: top;
-    border-top: 10px solid #ff8080;
+    border-top: 7px solid #ffffff;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ffc107;
 }
 
 a {
-	color : #ff8080;
+	color : #ffffff;
 }
 
 a:hover {
 	text-decoration: none;
-	color: #ff4d4d;
+	color: #000000;
 }
 
 .pagination a {
-  	color : #ff8080;
-  	border-radius: 5px;
+  	color : #000000;
+  	border-radius: 2px;
 }
 
 .pagination a.active {
-  	color : red;
-  	border-radius: 5px;
+  	color : #ffffff;
+  	border-radius: 2px;
 }
 
 .page-item.active .page-link {
-    color: #fff;
-    background-color: pink;
-    border-color: #ff8080;
+    color: #000000;
+    background-color: #fffffff;
+    border-color: #ffc107;
 }
 
 .pagination a:hover {
-	background-color: #cfafaf;
-	color : #ff4d4d;
+	background-color: #ffc107;
+	color : #000000;
+	font-color:#000000;
 }
 
 .pagination a:focus {
-	background-color: pink;
+	background-color: #ffc107;
 }
  
 </style>
@@ -104,31 +121,31 @@ a:hover {
 	<!-- 배너 -->
 	<c:choose>
 	 	<c:when test="${sessionScope.member_id != null}">
-			<div class="bg-secondary"> 
+			<div class="bg-warning text-dark"> 
 				<div class="container">
 					<ul class="nav justify-content-end" id = "gifter2">
 						<li class="nav-item">
-		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.4vw;">Home</a>
 		    			</li>
 		    			<li class="nav-item">
-		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
+		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.4vw;">My Page</a>
 		    			</li>
 		    		</ul>
 		    	</div>
 		    </div>
     	</c:when>
     	<c:otherwise>
-	    	<div class="bg-secondary"> 
+	    	<div class="bg-warning text-dark"> 
 		    	<div class="container">
 					<ul class="nav justify-content-end" id = "gifter2">
 		    			<li class="nav-item">
-		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.0416666666666667vw;">Home</a>
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.4vw;">Home</a>
 		    			</li>
 		    			<li class="nav-item">
-		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.0416666666666667vw;">Sign Up</a>
+		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.4vw;">Sign Up</a>
 		    			</li>
 		    			<li class="nav-item">
-		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.0416666666666667vw;">Login</a>
+		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.4vw;">Login</a>
 		    			</li>
 					</ul>
 				</div>

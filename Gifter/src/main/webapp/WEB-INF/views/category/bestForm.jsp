@@ -8,6 +8,9 @@
 	<title>Best</title>	
 	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
+	
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script>	
 	$(function(){			
@@ -63,9 +66,17 @@
   		grid-template-columns: 20% 60% 20%;
   		/* grid-template-rows: 60% 40%; */			
   		height: 100%; 
-  		width: 100%;			
+  		width: 100%;	
+  		font-family: 'Open Sans', sans-serif; 		
 	}
-	
+	#ctTable{
+		 font-family: 'Montserrat', sans-serif;
+		 font-size: 1vw;
+	}
+	select:active, select:hover {
+ 		outline-color: red
+	} 
+
 </style>
 </head>
 <body> 
@@ -80,23 +91,23 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled text-body" href="#" style="font-size: 1.0416666666666667vw;">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#" style="font-size: 1.2vw;">${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.2vw;">Home</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/myPage" style="font-size: 1.0416666666666667vw;">My Page</a>
+     				 	<a class="nav-link text-body" href="/member/myPage" style="font-size: 1.2vw;">My Page</a>
     				</li>
     				
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.2vw;">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.2vw;">About</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/logout" style="font-size: 1.0416666666666667vw;">Logout</a>
+      					<a class="nav-link text-body" href="/member/logout" style="font-size: 1.2vw;">Logout</a>
     				</li>
 				</ul>	
 			</div>
@@ -108,20 +119,20 @@
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.2vw;">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/signupForm" style="font-size: 1.0416666666666667vw;">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm" style="font-size: 1.2vw;">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/loginForm" style="font-size: 1.0416666666666667vw;">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm" style="font-size: 1.2vw;">Login</a>
     				</li>
    	
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.2vw;">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.2vw;">About</a>
     				</li>
   				</ul>	
 			</div>	
@@ -136,18 +147,18 @@
 		<table id="ctTable">
 			<tr>
 				<th></th>
-				<th style="color: black;">AGE</th>
+				<th style="color: black; font-size: 1.5vw;">AGE</th>
 				<th></th>
-				<th style="color: black;">AGE RANGE</th>
+				<th style="color: black; font-size: 1.5vw;">AGE RANGE</th>
 				<th></th>
-				<th style="color: black;">GENDER</th>
+				<th style="color: black; font-size: 1.5vw;">GENDER</th>
 				<th></th>
 			</tr>
 			<tr>
 				<td></td>
 				<td>
 					<select name="age" id="age" required="required" style="color: black;">
-						<option value="not" style="color: black;">Choose The Age of The Recipient</option>
+						<option value="not" style="color: black; font-size: 1vw;">Choose The Age of The Recipient</option>
 						<option value="10" style="color: black;">0 ~ 9</option>
 						<option value="20" style="color: black;">10 ~ 19</option>
 						<option value="30" style="color: black;">20 ~ 29</option>

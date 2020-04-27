@@ -8,6 +8,8 @@
 	<title>카테고리 리스트</title>	
 	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 
 <style type="text/css">
@@ -33,7 +35,8 @@
   		grid-template-columns: 20% 60% 20%;
   		/* grid-template-rows: 60% 40%; */			
   		height: 100%; 
-  		width: 100%;			
+  		width: 100%;	
+  		font-family: 'Open Sans', sans-serif;  		
 	}
 	
 
@@ -63,25 +66,25 @@ function paging(page){
 	 		<div class="container">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-      					<a class="nav-link disabled text-body" href="#" style="font-size: 1.0416666666666667vw;">${sessionScope.member_id}'s Gifter</a> 
+      					<a class="nav-link disabled text-body" href="#" style="font-size: 1.2vw;">${sessionScope.member_id}'s Gifter</a> 
     				</li>
 					<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.2vw;">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/logout" style="font-size: 1.0416666666666667vw;">Logout</a>
+      					<a class="nav-link text-body" href="/member/logout" style="font-size: 1.2vw;">Logout</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/myPage" style="font-size: 1.0416666666666667vw;">My Page</a>
+     				 	<a class="nav-link text-body" href="/member/myPage" style="font-size: 1.2vw;">My Page</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/bestForm" style="font-size: 1.0416666666666667vw;">Best</a>
+      					<a class="nav-link text-body" href="/category/bestForm" style="font-size: 1.2vw;">Best</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.2vw;">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.2vw;">About</a>
     				</li>
 				</ul>	
 			</div>
@@ -92,19 +95,19 @@ function paging(page){
 	 		<div class="container">
 				<ul class="nav justify-content-end">
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.0416666666666667vw;">Home</a>
+      					<a class="nav-link text-body" href="<c:url value="/"/>" style="font-size: 1.2vw;">Home</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/signupForm" style="font-size: 1.0416666666666667vw;">Sign Up</a>
+      					<a class="nav-link text-body" href="/member/signupForm" style="font-size: 1.2vw;">Sign Up</a>
     				</li>
     				<li class="nav-item">
-     				 	<a class="nav-link text-body" href="/member/loginForm" style="font-size: 1.0416666666666667vw;">Login</a>
+     				 	<a class="nav-link text-body" href="/member/loginForm" style="font-size: 1.2vw;">Login</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.0416666666666667vw;">viewCategory</a>
+      					<a class="nav-link text-body" href="/category/viewCategory" style="font-size: 1.2vw;">viewCategory</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.0416666666666667vw;">About</a>
+      					<a class="nav-link text-body" href="/member/about" style="color: black; font-size: 1.2vw;">About</a>
     				</li>
   				</ul>	
 			</div>	
