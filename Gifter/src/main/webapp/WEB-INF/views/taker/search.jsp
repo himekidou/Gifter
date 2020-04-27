@@ -35,7 +35,7 @@
 	}
 
 	body {
-		background-color:	#666699;
+		background-color:	#ffffff;
 	}
 	
 	  table {
@@ -51,6 +51,45 @@
 	  	width : 300px;
 	  	hegiht : 300px;
 	  }
+	  .container2 {
+		  display: flex;
+		  width: 90%;
+		  padding: 4% 2%;
+		  box-sizing: border-box;
+		  height: 80vh;
+		  font-family: 'Bangers', cursive; 
+		}
+		
+		.box {
+		  flex: 1;
+		  overflow: hidden;
+		  transition: .5s;
+		  margin: 0 2%;
+		  box-shadow: 0 20px 30px rgba(128, 124, 122, 0.84);
+		  line-height: 0;
+		}
+		
+		.box > img {
+		  width: 200%;
+		  height: calc(100% - 10vh);
+		  object-fit: cover; 
+		  transition: .5s;
+		}
+		
+		.box > span {
+		  font-size: 3.8vh;
+		  display: block;
+		  text-align: center;
+		  height: 5vh;
+		  line-height: 2.6;
+		}
+		
+		.box:hover { flex: 1 1 50%; }
+		.box:hover > img {
+		  width: 100%;
+		  height: 100%;
+		}
+ 
 </style>
 <script>
 	$(function() {
@@ -99,10 +138,10 @@ function moveCategory(categoryName){
 				<div class="container">
 					<ul class="nav justify-content-end" id = "gifter2">
 						<li class="nav-item">
-		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.0416666666666667vw;">Home</a>
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color:white; font-size: 1.5vw;">Home</a>
 		    			</li>
 		    			<li class="nav-item">
-		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.0416666666666667vw;">My Page</a>
+		     			 	<a class="nav-link text-body" href="/member/myPage" style="color:white; padding-right: 0; font-size: 1.5vw;">My Page</a>
 		    			</li>
 		    		</ul>
 		    	</div>
@@ -113,13 +152,13 @@ function moveCategory(categoryName){
 		    	<div class="container">
 					<ul class="nav justify-content-end" id = "gifter2">
 		    			<li class="nav-item">
-		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.0416666666666667vw;">Home</a>
+		      				<a class="nav-link text-body" href="<c:url value="/"/>" style="color: black; font-size: 1.5vw;">Home</a>
 		    			</li>
 		    			<li class="nav-item">
-		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.0416666666666667vw;">Sign Up</a>
+		      				<a class="nav-link text-body" href="/member/signupForm" style="color: black; font-size: 1.5vw;">Sign Up</a>
 		    			</li>
 		    			<li class="nav-item">
-		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.0416666666666667vw;">Login</a>
+		     			 	<a class="nav-link text-body" href="/member/loginForm" style="color: black; padding-right: 0; font-size: 1.5vw;">Login</a>
 		    			</li>
 					</ul>
 				</div>
@@ -127,8 +166,7 @@ function moveCategory(categoryName){
 		</c:otherwise>
 	</c:choose>
 	<div style="color:white;">
-	여기는 검색 결과인 카테고리별 순위 10개에 대한 정보를 보여주는 곳입니다.<br/>
-	${userTaker.member_id}님이 검색한 인스타그램 ID는 ${userTaker.taker_insta}입니다.<br/>
+	
 	<br/>
 	</div>
 	
@@ -166,23 +204,21 @@ function moveCategory(categoryName){
 	
 	
 	
-	<div class="container-sm">
-	<form id="first">
-		<div id="gifter2">
-		<table class="table">
-			<tr>
-				<th class="align-middle">1st.cosmetic</th>			
-				<th class="align-middle">2nd.smartPhone</th>			
-				<th class="align-middle">3rd.clothes</th>			
-			</tr>	
-			<tr>
-			<c:forEach var="item" items="${taker }" begin="0" end="2" step="1">
-				<td>
+	<div class="container2">
+	
+
+			<c:forEach var="item" items="${taker }" begin="0" end="4" step="1">
+				<div class= "box">
 					<a href="javascript:moveCategory('${item.category_name }');">
-					<img alt="${item.category_name }" src="${pageContext.request.contextPath}/resources/searchImg/${item.category_name }.jpg" width="300" height="300"/>
+					<img alt="${item.category_name }" src="${pageContext.request.contextPath}/resources/searchImg/${item.category_name }.jpg" width= "700px" height="400px"/>
 					</a>
-				</td>
+					<span>${item.category_name }</span>
+				</div>
 			</c:forEach>
+			<div class="center">
+			<input type="button" id="btn1" value="More..."><br/><br/></div>
+			</div>
+			
 				<%-- <td>
 					<a href="javascript:moveCategory();">
 					<img alt="cosmetic" src="${pageContext.request.contextPath}/resources/searchImg/Cosmetic.jpg" width="300" height="300"/>
@@ -194,11 +230,12 @@ function moveCategory(categoryName){
 				<td>
 					<img alt="clothes" src="${pageContext.request.contextPath}/resources/searchImg/clothes.jpg" width="300" height="300"/>
 				</td> --%>
-			</tr>	
-		</table>
-		</div>
-	</form>
-	</div>
-	<input type="button" id="btn1" value="More..."><br/><br/>
+				
+		
+		
+		
+	
+	
+	
 </body>
 </html>
