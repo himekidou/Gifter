@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,10 +84,9 @@
 </script>
 
 <script type="text/javascript">
-function moveCategory(){
+function moveCategory(categoryName){
 	var age_range = "20대"
 	var gender = "여성"
-	var categoryName = "화장품"
 	location.href = "/category/viewCategory?age_range="+age_range+"&gender="+gender+"&categoryName="+categoryName;
 }
 </script>
@@ -128,7 +128,7 @@ function moveCategory(){
 	</c:choose>
 	<div style="color:white;">
 	여기는 검색 결과인 카테고리별 순위 10개에 대한 정보를 보여주는 곳입니다.<br/>
-	${member_id}님이 검색한 인스타그램 ID는 ${taker_insta}입니다.<br/>
+	${userTaker.member_id}님이 검색한 인스타그램 ID는 ${userTaker.taker_insta}입니다.<br/>
 	<br/>
 	</div>
 	
@@ -176,17 +176,24 @@ function moveCategory(){
 				<th class="align-middle">3rd.clothes</th>			
 			</tr>	
 			<tr>
+			<c:forEach var="item" items="${taker }" begin="0" end="2" step="1">
 				<td>
+					<a href="javascript:moveCategory('${item.category_name }');">
+					<img alt="${item.category_name }" src="${pageContext.request.contextPath}/resources/searchImg/${item.category_name }.jpg" width="300" height="300"/>
+					</a>
+				</td>
+			</c:forEach>
+				<%-- <td>
 					<a href="javascript:moveCategory();">
 					<img alt="cosmetic" src="${pageContext.request.contextPath}/resources/searchImg/Cosmetic.jpg" width="300" height="300"/>
-					</a>
+					</a>	
 				</td>
 				<td>
 					<img alt="smartPhone" src="${pageContext.request.contextPath}/resources/searchImg/smartPhone.jpeg" width="300" height="300"/>
 				</td>
 				<td>
 					<img alt="clothes" src="${pageContext.request.contextPath}/resources/searchImg/clothes.jpg" width="300" height="300"/>
-				</td>
+				</td> --%>
 			</tr>	
 		</table>
 		</div>

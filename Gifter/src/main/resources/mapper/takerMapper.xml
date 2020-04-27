@@ -13,4 +13,14 @@
 				,#{taker_insta}			
 			)
 	</insert>
+	
+	<select id="takerSelect" resultType="taker">
+		select
+			category_name
+			,category_count
+		from
+			gi_category_test
+		order by
+			category_count desc
+	</select>
 </mapper>

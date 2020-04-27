@@ -127,15 +127,29 @@ public class TakerController {
 //		 model.addAttribute("taker_insta", taker_insta);
 //		 
 		
-		SeleniumCrawling craw = new SeleniumCrawling();
-		ArrayList<String> imgList = craw.InstaCrawl(taker_insta);
-		URLAnotationGoogle Ano = new URLAnotationGoogle();
-		try {
-			Ano.AsyncBatchAnnotateImages(imgList);
-		} catch (Exception e) {
-			e.printStackTrace();
+//		SeleniumCrawling craw = new SeleniumCrawling();
+//		ArrayList<String> imgList = craw.InstaCrawl(taker_insta);
+//		URLAnotationGoogle Ano = new URLAnotationGoogle();
+//		try {
+//			Ano.AsyncBatchAnnotateImages(imgList);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		String savedId = (String) session.getAttribute("member_id");
+		
+		ArrayList<Taker> taker = dao.takerSelect();
+		Taker userTaker = new Taker();
+		userTaker.setMember_id(savedId);
+		userTaker.setTaker_insta(taker_insta);
+		if(savedId != null) {
+			dao.takerInsert(userTaker);
 		}
 		
+		
+		model.addAttribute("taker", taker);
+		model.addAttribute("userTaker",userTaker);
+				
 		
 		
 		 return "taker/search";

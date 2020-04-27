@@ -1,5 +1,7 @@
 package com.swdo.gift.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,5 +26,17 @@ public class TakerDAO {
 		}
 		return cnt;
 		
+	}
+	
+	public ArrayList<Taker> takerSelect() {
+		ArrayList<Taker> taker = null;
+		try {
+			TakerMapper mapper = session.getMapper(TakerMapper.class);
+			taker = mapper.takerSelect();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return taker;
 	}
 }
