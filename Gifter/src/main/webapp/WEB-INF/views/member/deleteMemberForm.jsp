@@ -28,9 +28,13 @@
 			str += "<div class='form-group'><label for='password' style='color: black;'>Password</label>";
 			str += "<input type='password' class='form-control' id='member_pw' name='member_pw'></div>";
 			str += "<div class='form-group text-center'>";
-			str += "<input type='submit' class='btn btn-primary' id='btn1' value='탈퇴' onclick='return formCheck();'>";
-			str += "&emsp;";
-			str += "<a href='/'><input type='button' class='btn btn-danger' value='취소'></a></div>";
+			str += "<button type = 'submit' id='btn1' class ='btn-img' onclick='return formCheck();'>";
+			str += "<img src='/resources/icon/right-tick.png' style = 'width :2.2vw;' >";
+			str += "</button>";
+			str += "&emsp;&emsp";
+			str += "<a href='<c:url value='/'/>'>";
+			str += "<img style = 'width: 2.2vw;' src = '/resources/icon/cancel.png'/></a></div>";
+
 			$("#next").append(str);
 		});
 
@@ -88,7 +92,7 @@
        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
       
    }
-   h4{
+   h2{
 		font-family: 'MapoFlowerIsland'; 
 		font-weight: bord; 
 		font-style: normal; 
@@ -100,6 +104,16 @@
 		font-weight: normal; 
 		font-style: normal; 
 	}
+	#yes, #no{
+   	border-style : none;
+   	background-color: rgba(255, 255, 255, 0); 
+   	
+   }
+   #btn1{
+   	border-style : none;
+   	background-color: rgba(255, 255, 255, 0); 
+   	
+   }
 </style>
 </head>
 <body> 
@@ -168,14 +182,20 @@
 		
 		<br/><br/>
 		<div id="setting">
-		<div id="sign" class="text-center border border-dark" style="width: 350px; height: 150px; background-color: white; margin-left: 390px; margin-top: 135px; background: rgba(255, 255, 255, 0.25);">
+		<div id="sign" class="text-center border border-dark" style="width: 350px; height: 150px; background-color: white; margin-left: 390px; margin-top: 135px; background: rgba(255, 255, 255, 0.25);  border-radius: 10px;">
 			<div >
-			<h4 style="color: black;">회원 탈퇴하시겠습니까?</h4> 
+			<h2 style="color: black;">회원 탈퇴하시겠습니까?</h2> 
 			<br/>
 			</div>
-			<input type="button" class="btn btn-primary" value="네" id="yes">
-			&emsp;
-			<input type="button" class="btn btn-danger" value="아니요" id="no">
+			
+			<button type = "submit" id="yes" class ="btn-img">
+    			 <img src="/resources/icon/right-tick.png" style = "width :2.2vw; " >
+    			</button>
+			&emsp;&emsp;
+			<button type = "submit" id="no" class ="btn-img"">
+    			 <img src="/resources/icon/cancel.png" style = "width :2.2vw; " >
+    			</button>
+			
 		</div>
 		<div id="next">
 	

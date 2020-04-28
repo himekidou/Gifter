@@ -45,7 +45,7 @@
 
 
 * {
-  	color: 	#000000;
+  	color: 	#ffffff;
   	font-weight: bold;
   	margin: 0;
   	padding: 0;

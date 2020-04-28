@@ -98,6 +98,11 @@
        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
       
    }
+   #btn1{
+   	border-style : none;
+   	background-color: rgba(255, 255, 255, 0); 
+   	
+   }
 </style>
 </head>
 <body> 
@@ -152,31 +157,34 @@
 		<c:otherwise>
 			
 		<br/>
-		<div id="setting" class="container border border-white align-self-center align-items-center mx-auto m-5 pb-5"  style="width:22vw; height:49vh; background-color: #3A36AB; background: rgba(1, 0, 40, 0.67);">
+		<div id="setting" class="container border border-white align-self-center align-items-center mx-auto m-5 pb-5"  style="width:22vw; height:49vh; background-color: white; background: rgba(255, 255, 255, 0.55);">
 			<div class="text-center">
-				<h2 style="color: white; font-size: 2.1vw;">Login</h2>	
+				<h2 style="color: #000000; font-size: 2.1vw;">Login</h2>	
 			</div>
 			<div class="d-flex justify-content-center align-items-center">
   				<form action="/member/login" method="post">
   					<div class="form-group"> 			
-      					<label for="id" style="color: white; ">ID</label>    		
+      					<label for="id" style="color: #000000; ">ID</label>    		
       					<input type="text" class="form-control" placeholder="ID" id="member_id" name="member_id" style="width:250px; height:25px; font-size:13px;">		
     				</div>			
     				<div class="form-group">
-      					<label for="pwd" style="color: white; ">Password</label>
+      					<label for="pwd" style="color: #000000; ">Password</label>
       					<input type="password" class="form-control" placeholder="Password" id="member_pw" name="member_pw" style="width:250px; height:25px; font-size:13px;">
     				</div> 
     				<div class="form-group text-center">
-    					<input type="submit" class="btn btn-primary" id="btn1 "value="로그인" style="font-size: 1.0416666666666667vw; width: 5vw;" onclick="return formCheck();">  			
-    					&emsp; &nbsp;
-    					<a href="<c:url value="/"/>"><input type="button" class="btn btn-danger" id="btn2" value="취소" style="font-size: 1.0416666666666667vw; width: 5vw;"></a>   			 		
+    					<button type = "submit" id="btn1" class ="btn-img">
+    					<img src="/resources/icon/right-tick.png" style = "width :2.2vw; " >
+    					</button>
+    					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					<a href="<c:url value="/"/>">
+    					<img style = "width: 2.2vw;" src = "/resources/icon/cancel.png"/></a>   			 		
     				</div>
   				</form>
 			</div>
 			<div class="text-center">
-				<input type="button" class="btn btn-outline-light"  id="idFind" value="아이디 찾기" style="font-size: 1.0416666666666667vw;">
+				<input type="button" class="btn btn-outline-dark"  id="idFind" value="아이디 찾기" style="font-size: 1.0416666666666667vw;">
 				&emsp;
-				<input type="button"  class="btn btn-outline-light" id="pwFind" value="비밀번호 찾기" style="font-size: 1.0416666666666667vw;">					
+				<input type="button"  class="btn btn-outline-dark" id="pwFind" value="비밀번호 찾기" style="font-size: 1.0416666666666667vw;">					
 			</div>	
 			
 			<br/>

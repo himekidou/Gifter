@@ -122,7 +122,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
    .form-control{
       font-family: 'Montserrat', sans-serif;
    }
-
+	 #btn1{
+   	border-style : none;
+   	background-color: rgba(255, 255, 255, 0); 
+   	
+   }
 </style>
 
 </head>
@@ -164,10 +168,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                   <input type="email" class="form-control" placeholder="Email to be authenticated" id="member_email" name="member_email" style="width:250px; height:25px; font-size:13px;">      
              </div>   
              <div class="form-group text-center">
-                 <input type="submit" class="btn btn-primary" id="btn1 "value="가입" onclick="return formCheck();">           
-                &emsp;  
-       			
-                <a href="<c:url value="/"/>"><input type="button" class="btn btn-danger" id="btn2" value="취소"></a>                   
+                 <button type = "submit" id="btn1" class ="btn-img" onclick="return formCheck();">
+    			 <img src="/resources/icon/right-tick.png" style = "width :2.2vw; " >
+    			</button>
+    					&emsp;&emsp;&emsp;&emsp;
+    					<a href="<c:url value="/"/>">
+    					<img style = "width: 2.2vw;" src = "/resources/icon/cancel.png"/></a>   	                 
              </div>
               </form>
          </div>

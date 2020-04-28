@@ -23,8 +23,10 @@
 				if($("#ctList2").length == 1){
 					return false;
 				}
-				var str = "<input type='submit' id='ctList2' class='btn btn-secondary pull-right' value='next >' onclick='return formCheck();'>"
+				/* var str = "<input type='submit' id='ctList2' class='btn btn-secondary pull-right' value='next >' onclick='return formCheck();'>" */
 				//버튼 만들기
+				var str = "<button type = 'submit' id='btn1' class ='btn-img' onclick='return formCheck();'> <img src='/resources/icon/next.png' style = 'width :2.2vw; '> </button>"
+    			
 				$("#last").append(str); //				
 			}		
 				
@@ -76,7 +78,11 @@
 	select:active, select:hover {
  		outline-color: red
 	} 
-
+ 	#btn1{
+   	border-style : none;
+   	background-color: rgba(255, 255, 255, 0); 
+   	
+   }
 </style>
 </head>
 <body> 

@@ -71,6 +71,11 @@
        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
       
    }
+    #btn1{
+   	border-style : none;
+   	background-color: rgba(255, 255, 255, 0); 
+   	
+   }
 </style>
 </head>
 <body> 
@@ -138,9 +143,11 @@
 	 				<input type="text" class="form-control" id="member_email" name="member_email" placeholder="abc@gmail.com" style="width:250px; height:25px; font-size:16px;">
 	 			</div>
 	 			<div class="form-group text-center">
-	 				<input type="submit" id="btn" class="btn btn-primary" value="확인">
-	 				&emsp;
-	 				<a href="<c:url value='/'/>"><input type="button" class="btn btn-danger" value="취소"></a>
+	 				<button type = "submit" id="btn1" class ="btn-img">
+    			 <img src="/resources/icon/right-tick.png" style = "width :2.2vw; " >
+    			</button>
+	 		&emsp;&emsp;
+	 		<a href="<c:url value='/'/>"><img style = "width: 2.2vw;" src = "/resources/icon/cancel.png"/></a>  
 	 			</div>
 	 			</form>
 			</div>

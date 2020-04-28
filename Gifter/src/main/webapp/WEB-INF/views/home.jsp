@@ -262,7 +262,7 @@
       </div>
           <form action="/taker/search" method="get" onsubmit="return formCheck();" id="userForm">
              <div id = "instaID"style = "float:left;">
-             <input type="text" id="taker_insta" name="taker_insta" placeholder=" @U.N.J.O.O"  style="width:35vw; height:3.2vw; font-size:1.6vw; color: black;">
+             <input type="text" id="taker_insta" name="taker_insta" placeholder=" @instagram ID"  style="width:35vw; height:3.2vw; font-size:1.6vw; color: black;">
              </div>
              <div style = "float:left;">
              <input type="image" id="btn1" src="${pageContext.request.contextPath}/resources/iconfinder_-_Magnifier-Search-Zoom-_3844432.png" style="width: 2.7vw; height:2.7vw;" >           
