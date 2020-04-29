@@ -25,11 +25,14 @@ public class CategoryController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 	
-	//보여주는 글 개수는 3개
-	private final int countPerPage = 3;
+	//보여주는 글 개수는 10개
+	private final int countPerPage = 10;
 		
-	//글 그룹은 4개
-	private final int pagerPerGroup = 4;
+	//글 그룹은 1개
+	private final int pagerPerGroup = 1;
+	
+	//	총 글 개수는 10개
+	//	private final int totalRecordsCount = 10;
 		
 	/*
 	 * //현재 페이지는 1페이지 private final int currentPage = 1;
@@ -63,6 +66,7 @@ public class CategoryController {
 		int totalRecordsCount = dao.listCount(); //글 개수 가져오기
 		System.out.println("저장된 글 개수는 " + totalRecordsCount + "개");
 		
+		
 		PageNavigator navi = new PageNavigator(countPerPage, pagerPerGroup, currentPage, totalRecordsCount);
 		
 		int info_age = age - age_range; // 받아온 나이 - 받아온 나이대
@@ -86,58 +90,58 @@ public class CategoryController {
 		logger.info("리스트가 있습니다.");
 		System.out.println(list);
 		model.addAttribute("list", list);
-		model.addAttribute("navi", navi);
+		//model.addAttribute("navi", navi);
 				
 		return "category/categoryList";
 	}
 
 	
-	@RequestMapping(value="pagingMove", method = RequestMethod.GET)
-	public String pagingMove(@RequestParam(value="currentPage", defaultValue="1") int currentPage
-			,HttpSession session, Model model) {
-	
-		int totalRecordsCount = dao.listCount(); //글 개수 가져오기
-		System.out.println("저장된 글 개수는 " + totalRecordsCount + "개");
-		
-		if(currentPage > 4) {
-			
-			currentPage = 4;
-		}
-		
-		if(currentPage < 0) {
-			
-			currentPage = 1;
-		}
-		
-		
-		PageNavigator navi = new PageNavigator(countPerPage, pagerPerGroup, currentPage, totalRecordsCount);	
-		
-		int info_age = (int)session.getAttribute("info_age");
-		int info_gender = (int)session.getAttribute("info_gender");
-	 
-		Category category = new Category();
-		category.setInfo_age(info_age);
-		category.setInfo_gender(info_gender);
-	 
-		ArrayList<HashMap<String, Object>> list = dao.categoryList(category, navi.getStartRecord(), countPerPage);
-	 
-//		if(list.isEmpty()) {
-//			logger.info("리스트가 없습니다.");
-//			
-//			//bestForm.jsp에 리스트가 없다는 것을 alert()로 띄우기
+//	@RequestMapping(value="pagingMove", method = RequestMethod.GET)
+//	public String pagingMove(@RequestParam(value="currentPage", defaultValue="1") int currentPage
+//			,HttpSession session, Model model) {
+//	
+//		int totalRecordsCount = dao.listCount(); //글 개수 가져오기
+//		System.out.println("저장된 글 개수는 " + totalRecordsCount + "개");
 //		
+//		if(currentPage > 4) {
 //			
-//			return "redirect:bestForm";
+//			currentPage = 4;
 //		}
-		logger.info("리스트가 있습니다.");
-		System.out.println(list);
-		model.addAttribute("list", list);
-		model.addAttribute("navi", navi);
-				
-		return "category/categoryList";
-		
-	
-	}
+//		
+//		if(currentPage < 0) {
+//			
+//			currentPage = 1;
+//		}
+//		
+//		
+//		PageNavigator navi = new PageNavigator(countPerPage, pagerPerGroup, currentPage, totalRecordsCount);	
+//		
+//		int info_age = (int)session.getAttribute("info_age");
+//		int info_gender = (int)session.getAttribute("info_gender");
+//	 
+//		Category category = new Category();
+//		category.setInfo_age(info_age);
+//		category.setInfo_gender(info_gender);
+//	 
+//		ArrayList<HashMap<String, Object>> list = dao.categoryList(category, navi.getStartRecord(), countPerPage);
+//	 
+////		if(list.isEmpty()) {
+////			logger.info("리스트가 없습니다.");
+////			
+////			//bestForm.jsp에 리스트가 없다는 것을 alert()로 띄우기
+////		
+////			
+////			return "redirect:bestForm";
+////		}
+//		logger.info("리스트가 있습니다.");
+//		System.out.println(list);
+//		model.addAttribute("list", list);
+//		model.addAttribute("navi", navi);
+//				
+//		return "category/categoryList";
+//		
+//	
+//	}
 	
 	
 	
